@@ -17,6 +17,15 @@
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
+# Favicons live at the site root. Cache a day, revalidate, so an icon change
+# propagates without a year-long immutable lock.
+/favicon.svg
+  Cache-Control: public, max-age=86400, must-revalidate
+/favicon.ico
+  Cache-Control: public, max-age=86400, must-revalidate
+/*.png
+  Cache-Control: public, max-age=86400, must-revalidate
+
 # Basic security headers
 /*
   X-Content-Type-Options: nosniff

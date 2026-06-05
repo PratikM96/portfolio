@@ -154,28 +154,33 @@
   .wcs .docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
   .wcs .doc{border:1px solid var(--ln);border-radius:10px;padding:14px 16px;font-size:.86rem;background:rgba(20,12,9,.3);color:var(--t1);}
   .wcs .doc .fn{font-family:var(--mono);font-size:.72rem;color:var(--tl);}
+
+  /* branded navbar + footer */
+  .wtop{position:sticky;top:0;z-index:40;background:rgba(12,7,6,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--ln);}
+  .wtop .in{max-width:1000px;margin:0 auto;padding:13px 30px;display:flex;align-items:center;justify-content:space-between;}
+  .wtop .bd{font-size:.95rem;color:var(--t1);text-decoration:none;letter-spacing:.01em;}
+  .wtop .bk{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--ik);text-decoration:none;}
+  .wtop .bk:hover{color:var(--tl);}
+  .wfoot{border-top:1px solid var(--ln);background:radial-gradient(120% 130% at 50% 130%, var(--g2) 0%, var(--vd) 68%);padding:78px 0 72px;margin-top:30px;}
+  .wfoot .in{max-width:1000px;margin:0 auto;padding:0 30px;}
+  .wfoot .orb{display:grid;place-items:center;margin-bottom:34px;}
+  .wfoot .big{font-weight:200;font-size:clamp(2rem,5vw,3.4rem);line-height:1.04;letter-spacing:-.01em;color:var(--t1);}
+  .wfoot .big a{color:var(--c2);text-decoration:none;}
+  .wfoot .big a:hover{text-decoration:underline;}
+  .wfoot .rw{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:30px;font-size:.9rem;color:var(--ik);}
+  .wfoot .rw a{color:var(--t2);text-decoration:none;border-bottom:1px solid var(--ln);}
+  .wfoot .rw a:hover{color:var(--tl);}
+  .wfoot .legal{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;color:var(--id);margin-top:22px;}
 </style>
 </head>
 <body>
 
-<nav><div class="nav-inner">
-  <a class="brand" href="../index.html">Pratik Mehta©</a>
-  <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <div class="nav-links">
-    <a href="../about.html">About</a>
-    <a href="../brand.html">Brand</a>
-    <a href="../reel.html">Reel</a>
-    <a href="../work.html" class="active">Work</a>
-    <a href="../blog.html">Blog</a>
-    <a href="../contact.html">Contact↗</a>
-  </div>
-</div></nav>
+<div class="wcs wtop"><div class="in"><a class="bd" href="../index.html">Pratik Mehta©</a><a class="bk" href="../work.html">← All work</a></div></div>
 
 <main class="wcs">
 
   <!-- HERO -->
   <section class="hero">
-    <a class="back" href="../work.html">← All work</a>
     <div class="presence p-lg s-idle" aria-hidden="true"><div class="field"></div><div class="core"></div><div class="seed"></div></div>
     <div class="wm">wisp</div>
     <div class="tl">Not a person. Not pretending.</div>
@@ -440,12 +445,14 @@
 
 </main>
 
-<footer><div class="wrap">
-  <div class="fbig">Next:<br/><a href="sportime-clubs.html">SPORTIME↗</a></div>
-  <div class="frow">
+<footer class="wcs wfoot"><div class="in">
+  <div class="orb"><div class="presence p-sm s-quiet" aria-hidden="true"><div class="field"></div><div class="core"></div><div class="seed"></div></div></div>
+  <div class="big">Next<br/><a href="sportime-clubs.html">SPORTIME ↗</a></div>
+  <div class="rw">
     <div>Pratik Mehta · New York · 2026</div>
-    <div><a href="mailto:mehtadpratik@gmail.com">Email</a> / <a href="https://linkedin.com/in/pratikm96" target="_blank" rel="noopener noreferrer">LinkedIn</a> / <a href="https://behance.net/pratikm96" target="_blank" rel="noopener noreferrer">Behance</a></div>
+    <div><a href="mailto:mehtadpratik@gmail.com">Email</a> · <a href="https://linkedin.com/in/pratikm96" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="https://behance.net/pratikm96" target="_blank" rel="noopener noreferrer">Behance</a></div>
   </div>
+  <div class="legal">A self-initiated concept. Figures describe the industry, not claimed results.</div>
 </div></footer>
 
 <script src="../assets/site.js"></script>

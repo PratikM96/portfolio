@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G5ZSN5RXX0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G5ZSN5RXX0');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Ninth Case Study / Pratik Mehta</title>
+<meta name="description" content="The Ninth: a membership OS for a top esports org that turns watching into belonging, with a live AI moment-clipper at its core. Brand, product UI, AI, broadcast motion, and a social content engine, built as one cross-channel system." />
+<meta property="og:title" content="The Ninth Case Study / Pratik Mehta" />
+<meta property="og:description" content="An esports membership OS: brand, app, a working AI moment-clipper, broadcast motion, and a social engine, built as one cross-channel system." />
+<meta property="og:image" content="https://cdn.mehtapratik.com/concepts/og-cloud9.webp" />
+<meta property="og:type" content="article" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--c9:#29ABE2;--ink:#07142B;--blue-deep:#1B6FA8;--cloud:#F4F8FB;--mist:#AEC3D4;--frost:#DCEAF6;--line:#E4ECF3;--paper:#fff;--disp:'Space Grotesk',ui-sans-serif,system-ui,Segoe UI,Helvetica,Arial,sans-serif;--text:'Inter',ui-sans-serif,system-ui,Segoe UI,Helvetica,Arial,sans-serif}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--cloud);color:var(--ink);font-family:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 32px}
+  a{color:inherit}
+  /* topbar */
+  .topbar{position:sticky;top:0;z-index:30;background:rgba(244,248,251,.82);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}
+  .topbar .in{max-width:1060px;margin:0 auto;padding:13px 32px;display:flex;align-items:center;justify-content:space-between}
+  .topbar .bd{font-family:var(--disp);font-weight:600;font-size:14px;text-decoration:none;letter-spacing:.02em}
+  .topbar .bk{font-family:var(--disp);font-size:12.5px;color:var(--c9);text-decoration:none}
+  /* hero */
+  .hero{padding:74px 0 26px}
+  .tag{display:inline-block;font-family:var(--disp);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--c9);border:1px solid var(--c9);border-radius:999px;padding:5px 12px;margin-bottom:22px}
+  .hero h1{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(46px,10vw,116px);line-height:.9;margin:0}
+  .hero h1 .a{color:var(--c9)}
+  .snap{max-width:620px;margin:26px 0 0;font-size:18px;color:#2c3e52}
+  .snap b{color:var(--ink);font-weight:600}
+  .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px;border-top:1px solid var(--line);padding-top:22px}
+  .meta .k{font-family:var(--disp);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist)}
+  .meta .v{font-family:var(--disp);font-size:13.5px;font-weight:500;margin-top:5px}
+  /* sections */
+  .sec{padding:56px 0;border-top:1px solid var(--line);margin-top:6px}
+  .kick{font-family:var(--disp);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--c9);margin:0 0 7px}
+  h2.h{font-family:var(--disp);font-weight:600;font-size:clamp(26px,4vw,34px);letter-spacing:.01em;margin:0 0 14px}
+  h3.h{font-family:var(--disp);font-weight:600;font-size:18px;margin:34px 0 14px}
+  p.lead{max-width:680px;font-size:16px;color:#33485b;margin:0 0 14px}
+  .pull{font-family:var(--disp);font-weight:600;font-size:clamp(22px,4vw,34px);color:var(--ink);margin:30px 0;max-width:760px;line-height:1.18}
+  .pull .a{color:var(--c9)}
+  .embcap{font-family:var(--disp);font-size:12.5px;color:var(--mist);margin-top:14px;text-align:center}
+  /* projected impact */
+  .stat{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:8px}
+  .stat .n{font-family:var(--disp);font-weight:700;font-size:clamp(28px,4vw,42px);color:var(--ink);line-height:1}
+  .stat .l{font-size:13px;color:#54677a;margin-top:8px}
+  .kpis{font-family:var(--disp);font-size:13px;color:#54677a;margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+  .kpis b{color:var(--ink);font-weight:600}
+  /* member cards */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+  .cards .cw{display:flex;flex-direction:column;gap:11px}
+  .cards svg{width:100%;height:auto;border-radius:13px;display:block;box-shadow:0 18px 40px -24px rgba(7,20,43,.5)}
+  .cards .cc{text-align:center;font-size:12px;color:var(--mist)}
+  .cards .cc b{display:block;font-family:var(--disp);color:var(--ink);font-weight:600;font-size:13px}
+  /* brand: color */
+  .pal{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+  .sw{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+  .sw .chip{height:72px}
+  .sw .meta2{padding:11px 12px}
+  .sw .nm{font-family:var(--disp);font-weight:600;font-size:12px}
+  .sw .role{font-size:11px;color:#54677a;margin-top:3px;line-height:1.4}
+  .sw .hex{font-family:var(--disp);font-size:10.5px;color:var(--mist);margin-top:7px}
+  /* brand: type */
+  .typ{border:1px solid var(--line);border-radius:14px;background:#fff;padding:6px 24px}
+  .typ .row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed var(--line);padding:17px 0;gap:18px}
+  .typ .row:last-child{border-bottom:0}
+  .typ .spec{font-family:var(--disp);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);white-space:nowrap}
+  .t-d{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:32px}
+  .t-s{font-family:var(--disp);font-weight:500;font-size:19px}
+  .t-b{font-size:15px;color:#2c3e52;max-width:520px}
+  /* brand: voice */
+  .vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .vpr{border:1px solid var(--line);border-radius:13px;background:#fff;padding:18px 20px}
+  .vpr .n{font-family:var(--disp);color:var(--mist);font-weight:600;font-size:12px}
+  .vpr h4{font-family:var(--disp);font-weight:600;font-size:16px;margin:5px 0 7px}
+  .vpr p{font-size:13px;color:#3a4d60;margin:0}
+  .vpr .ex{margin-top:12px;font-size:12.5px;border-left:2px solid var(--c9);padding-left:11px;color:#2c3e52}
+  .vpr .ex b{color:var(--mist)}
+  .wchips{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+  .wchips span{font-family:var(--disp);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:6px 11px;color:#33485b}
+  /* brand: tiers */
+  .ladder{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+  .rung{display:grid;grid-template-columns:42px 1.1fr 2fr 140px;gap:16px;align-items:center;padding:17px 22px;border-top:1px solid var(--line)}
+  .rung:first-child{border-top:0}
+  .rung .ix{font-family:var(--disp);font-weight:700;color:var(--mist);font-size:14px}
+  .rung .tier{font-family:var(--disp);font-weight:600;font-size:17px}
+  .rung .desc{font-size:13px;color:#3a4d60}
+  .rung .st{justify-self:end;font-family:var(--disp);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;border:1px solid var(--line);color:#3a4d60;white-space:nowrap}
+  .rung .st.earn{border-color:var(--ink);color:var(--ink);font-weight:600}
+  /* brand: motion */
+  .princ{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .mcard{border:1px solid var(--line);border-radius:13px;background:#fff;padding:18px 20px}
+  .mcard .n{font-family:var(--disp);color:var(--mist);font-weight:600;font-size:12px}
+  .mcard h4{font-family:var(--disp);font-weight:600;font-size:15px;margin:5px 0 6px}
+  .mcard p{font-size:13px;color:#3a4d60;margin:0}
+
+  /* === APP phones (a-) === */
+  .a-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 18px;font-family:var(--disp)}
+  .a-ph{width:100%;max-width:300px;justify-self:center;background:#0b1322;border-radius:34px;padding:8px;box-shadow:0 26px 48px -28px rgba(7,20,43,.5)}
+  .a-sc{border-radius:27px;overflow:hidden;height:540px;display:flex;flex-direction:column;position:relative}
+  .a-sb{height:28px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:10.5px;font-weight:600;flex:none}
+  .a-sb i{width:4px;height:4px;border-radius:50%;display:inline-block;margin-left:3px;opacity:.75}
+  .a-bd{flex:1;overflow:hidden;position:relative}
+  .a-pad{padding:6px 14px 12px}
+  .a-hd{display:flex;justify-content:space-between;align-items:center;padding:4px 0 11px}
+  .a-hi{font-weight:600;font-size:16px}
+  .a-chip{font-size:9.5px;background:#eaf6fc;color:var(--blue-deep);border-radius:999px;padding:5px 10px;font-weight:600;white-space:nowrap}
+  .a-chip.dk{background:var(--ink);color:#fff}
+  .a-card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:12px;margin-bottom:10px}
+  .a-card.tint{background:linear-gradient(135deg,#eaf7fd,#f5fbfe);border-color:#d6ecf8}
+  .a-kx{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist)}
+  .a-big{font-weight:600;font-size:14px}.a-sm{font-size:12px;color:#54677a}.a-xs{font-size:10.5px;color:#7d93a6}
+  .a-bt{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .a-rw{display:flex;gap:7px;margin-top:9px}
+  .a-btn{flex:1;text-align:center;background:var(--c9);color:#fff;font-weight:600;font-size:12px;border-radius:10px;padding:10px}
+  .a-btn.g{background:transparent;border:1px solid var(--line);color:var(--ink)}
+  .a-btn.dk{background:var(--ink)}
+  .a-bar{height:6px;border-radius:99px;background:#e7eef4;overflow:hidden;margin:8px 0}.a-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--c9),var(--blue-deep))}
+  .a-pill{font-size:8.5px;font-weight:600;border-radius:999px;padding:2px 7px;font-family:var(--disp)}.a-pill.m{background:#eaf6fc;color:var(--blue-deep)}.a-pill.i{background:#e7edf6;color:#34507a}.a-pill.ix{background:linear-gradient(135deg,#dceaf6,#c9d2ff,#ead9ff);color:#1a2d4a}
+  .a-av{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#9fd4ef,#3f9fd0);flex:none}
+  .a-tabs{flex:none;height:54px;background:#fff;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-around}
+  .a-tab{display:flex;flex-direction:column;align-items:center;gap:3px;color:#9fb2c4;font-size:8.5px}
+  .a-tab svg{width:20px;height:20px}.a-tab.on{color:var(--c9)}
+  .a-nav{display:flex;align-items:center;gap:10px;padding:4px 0 12px}
+  .a-bk{width:24px;height:24px;border-radius:7px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink);font-family:var(--disp)}
+  .a-nt{font-weight:600;font-size:15px}.a-nr{margin-left:auto;font-size:10.5px;color:var(--c9)}
+  .a-lr{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 2px;border-bottom:1px solid var(--line)}
+  .a-lr:last-child{border-bottom:0}.a-lt{font-size:13px}.a-ls{font-size:10.5px;color:#7d93a6;margin-top:2px}
+  .a-tg{width:36px;height:21px;border-radius:99px;background:#d8e2ea;position:relative;flex:none}.a-tg::after{content:"";position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:#fff;transition:.2s}.a-tg.on{background:var(--c9)}.a-tg.on::after{left:17px}
+  .a-seg{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-top:8px}.a-seg span{flex:1;text-align:center;font-size:10.5px;padding:7px 3px;color:#54677a}.a-seg span.on{background:var(--c9);color:#fff}
+  .a-opt{font-size:11px;border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:#33485b;display:inline-flex;align-items:center;gap:5px;margin:0 5px 7px 0}.a-opt.on{background:#eaf6fc;border-color:var(--c9);color:var(--blue-deep)}.a-opt .a-av{width:16px;height:16px}
+  .a-cap{font-family:var(--disp);font-size:12px;color:var(--mist);text-align:center}
+  .a-cap b{display:block;color:var(--ink);font-weight:600;font-size:13px;margin-bottom:1px}
+
+  /* === AI demo (d-) light === */
+  .d-wrap{display:grid;grid-template-columns:300px 1fr;gap:34px;align-items:start;font-family:var(--disp)}
+  .d-phone{width:300px;background:#0b1322;border-radius:42px;padding:9px;box-shadow:0 30px 56px -32px rgba(7,20,43,.5)}
+  .d-screen{position:relative;height:600px;background:#0a1322;border-radius:34px;overflow:hidden;display:flex;flex-direction:column}
+  .d-sb{height:30px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:11px;font-weight:600;color:#fff;flex:none}
+  .d-sb i{width:4px;height:4px;border-radius:50%;background:#fff;opacity:.8;display:inline-block;margin-left:3px}
+  .d-body{flex:1;position:relative;overflow:hidden}
+  .d-scene{position:relative;height:184px;background:radial-gradient(130% 100% at 50% 0%,#16324b,#0a1322);overflow:hidden}
+  .d-badge{position:absolute;top:10px;left:14px;font-size:9px;letter-spacing:.1em;color:#fff;background:#e0322b;padding:3px 7px;border-radius:5px}
+  .d-score{position:absolute;top:10px;right:14px;font-size:11px;color:#fff}
+  .d-watch{position:absolute;bottom:10px;left:14px;font-size:9.5px;color:#8fa7c4}
+  .d-dot{position:absolute;width:11px;height:11px;border-radius:50%;transition:transform 1.1s cubic-bezier(.4,0,.2,1),opacity .5s}
+  .d-b{background:#3fbcec;box-shadow:0 0 10px #3fbcec}.d-r{background:#e0594f;box-shadow:0 0 8px #e0594f}
+  .d-flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 46%,rgba(220,234,246,.9),rgba(41,171,226,0) 42%);opacity:0;transition:opacity .25s;pointer-events:none}.d-flash.on{opacity:1}
+  .d-feed{padding:10px 14px 0;min-height:74px}
+  .d-ln{display:flex;gap:8px;font-size:11.5px;color:#9fb2c4;opacity:0;transform:translateY(4px);transition:.3s;margin-bottom:6px}.d-ln.on{opacity:1;transform:none}.d-ln b{color:#cfe6f6;font-weight:600}.d-ln .k{color:#7fd0f0}
+  .d-alert{position:absolute;left:14px;right:14px;bottom:14px;background:linear-gradient(135deg,#0e2138,#0a1830);border:1px solid #2a4a6e;border-radius:14px;padding:12px 13px;box-shadow:0 18px 30px -16px rgba(0,0,0,.6);transform:translateY(140%);opacity:0;transition:.45s cubic-bezier(.2,.7,.2,1)}.d-alert.on{transform:none;opacity:1}
+  .d-ix{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#dceaf6,#c9d2ff,#ead9ff);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#1a2d4a;flex:none}
+  .d-kx{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8fa7c4}
+  .d-bt{display:flex;align-items:center;justify-content:space-between}.d-rw{display:flex;align-items:center;gap:9px}
+  .d-ti{color:#fff;font-weight:600;font-size:13px}.d-go{font-size:11px;color:#29ABE2;cursor:pointer}
+  .d-clip{position:absolute;inset:0;background:#070f1d;transform:translateY(100%);transition:.45s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column}.d-clip.on{transform:none}
+  .d-top{display:flex;align-items:center;gap:10px;padding:14px 14px 8px}
+  .d-x{width:26px;height:26px;border-radius:8px;border:1px solid #24395a;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .d-tt{font-weight:600;font-size:15px;color:#fff}
+  .d-view{position:relative;height:150px;margin:4px 14px 12px;border-radius:13px;background:radial-gradient(120% 90% at 50% 0%,#16324b,#0a1322);overflow:hidden}
+  .d-stamp{position:absolute;top:9px;left:11px;font-size:8.5px;letter-spacing:.1em;color:#1a2d4a;background:linear-gradient(135deg,#dceaf6,#c9d2ff,#ead9ff);padding:3px 7px;border-radius:5px}
+  .d-dur{position:absolute;bottom:9px;right:11px;font-size:11px;color:#cfe6f6}
+  .d-lp{position:absolute;width:10px;height:10px;border-radius:50%;background:#3fbcec;box-shadow:0 0 10px #3fbcec;top:60%;left:20%;animation:d-loop 2.4s infinite}.d-lp2{left:auto;right:24%;top:32%;background:#e0594f;animation-delay:.3s}
+  @keyframes d-loop{0%{transform:translate(0,0)}45%{transform:translate(56px,-32px)}55%{transform:translate(56px,-32px)}100%{transform:translate(0,0)}}
+  .d-meta{padding:0 16px}.d-cap{color:#eaf4fb;font-weight:600;font-size:14px}.d-sub{font-size:11px;color:#9fb2c4;margin:5px 0 11px}
+  .d-opt{font-size:10.5px;border:1px solid #24395a;color:#9fb2c4;border-radius:999px;padding:5px 9px;margin:0 5px 8px 0;display:inline-block}
+  .d-btn{display:block;text-align:center;background:#29ABE2;color:#fff;font-weight:600;font-size:13px;border-radius:11px;padding:11px;cursor:pointer}.d-ghost{background:transparent;border:1px solid #24395a;color:#cfe6f6}
+  .d-toast{position:absolute;left:50%;bottom:22px;transform:translate(-50%,16px);background:#fff;color:#07142B;font-weight:600;font-size:12px;padding:10px 16px;border-radius:999px;box-shadow:0 16px 30px -14px rgba(0,0,0,.5);opacity:0;transition:.35s;pointer-events:none;z-index:5}.d-toast.on{opacity:1;transform:translate(-50%,0)}
+  .d-panel{border:1px solid var(--line);border-radius:18px;background:#fff;padding:24px}
+  .d-panel h4{font-weight:600;font-size:18px;margin:0 0 6px;color:var(--ink)}.d-panel .p{font-size:14px;color:#3a4d60;margin:0 0 20px;max-width:430px}
+  .d-eng{display:grid;grid-template-columns:1fr 132px;gap:24px;align-items:center}
+  .d-mtr{margin-bottom:14px}.d-lab{display:flex;justify-content:space-between;font-size:12px;color:#54677a;margin-bottom:5px}.d-lab b{font-weight:600;color:var(--ink)}
+  .d-track{height:8px;border-radius:99px;background:#eef3f7;overflow:hidden}.d-track i{display:block;height:100%;width:6%;border-radius:99px;background:linear-gradient(90deg,#29ABE2,#1B6FA8);transition:width 1.4s cubic-bezier(.3,.7,.3,1)}
+  .d-ring{position:relative;width:132px;height:132px;justify-self:center}.d-ring .pct{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}.d-ring .pct b{font-weight:700;font-size:26px;color:var(--ink)}.d-ring .pct span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);margin-top:2px}
+  .d-stt{margin-top:8px;font-size:12px;font-weight:600;color:#54677a;text-align:center}.d-stt.hit{color:#29ABE2}
+  .d-ctrls{display:flex;gap:12px;margin-top:24px}.d-ctl{flex:1;text-align:center;font-weight:600;font-size:13px;padding:13px;border-radius:12px;cursor:pointer;border:1px solid var(--line);color:var(--ink)}.d-ctl.go{background:var(--ink);color:#fff;border-color:var(--ink)}.d-ctl.go[disabled]{opacity:.4;cursor:default}
+  .d-note{margin-top:22px;font-size:12.5px;color:#54677a;border-top:1px solid var(--line);padding-top:16px}.d-note b{color:var(--ink);font-weight:600}
+  @media(max-width:760px){.d-wrap{grid-template-columns:1fr;justify-items:center}.d-panel{max-width:430px}.d-eng{grid-template-columns:1fr}.d-ring{margin:0 auto}}
+
+  /* === broadcast (b-) === */
+  .b-stage{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:radial-gradient(80% 120% at 20% 0%,#163a52,#0a1626 60%),radial-gradient(70% 120% at 100% 100%,#2a1530,#0a1626 55%);box-shadow:0 30px 60px -32px rgba(7,20,43,.5);font-family:var(--disp)}
+  .b-field{position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(115deg,rgba(255,255,255,.03) 0 2px,transparent 2px 22px),repeating-linear-gradient(65deg,rgba(255,255,255,.03) 0 2px,transparent 2px 22px)}
+  .b-flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 44%,rgba(220,234,246,.55),rgba(41,171,226,0) 46%);opacity:0;transition:opacity .3s;pointer-events:none}.b-flash.on{opacity:1}
+  .b-u{position:absolute;width:9px;height:9px;border-radius:50%;transition:transform 1.1s cubic-bezier(.4,0,.2,1),opacity .5s}.b-ub{background:#3fbcec;box-shadow:0 0 10px #3fbcec}.b-ur{background:#e0594f;box-shadow:0 0 9px #e0594f}
+  .b-glass{background:rgba(8,16,30,.52);border:1px solid rgba(255,255,255,.13);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+  .b-bug{position:absolute;top:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;border-radius:11px;padding:8px 14px;color:#fff}
+  .b-bug .tm{font-size:13px;font-weight:600}.b-bug .c9{color:#7fd0f0}.b-bug .sc{font-size:16px;font-weight:700}.b-bug .dv{width:1px;height:18px;background:rgba(255,255,255,.18)}.b-bug .mt{font-size:11px;color:#aebfce}
+  .b-corner{position:absolute;top:14px;right:14px;display:flex;align-items:center;gap:8px;border-radius:9px;padding:6px 10px;color:#fff;font-size:10px;letter-spacing:.12em}.b-ixm{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#dceaf6,#c9d2ff,#ead9ff);display:flex;align-items:center;justify-content:center;color:#1a2d4a;font-weight:700;font-size:10px}
+  .b-live{display:flex;align-items:center;gap:5px;color:#ff6a5e}.b-live i{width:6px;height:6px;border-radius:50%;background:#ff6a5e;animation:b-pulse 1.6s infinite}@keyframes b-pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .b-cw{position:absolute;right:14px;bottom:14px;border-radius:11px;padding:9px 12px;color:#fff}.b-cw .l{font-size:8.5px;letter-spacing:.16em;color:#9fc3da}.b-cw .n{font-size:13px;font-weight:600;margin-top:3px;display:flex;align-items:center;gap:8px}
+  .b-avs{display:flex}.b-avs i{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#9fd4ef,#3f9fd0);border:1.5px solid #0a1626;margin-left:-6px;display:block}.b-avs i:first-child{margin-left:0}
+  .b-react{position:absolute;right:34px;bottom:64px;width:60px;height:120px;pointer-events:none}.b-react i{position:absolute;bottom:0;font-size:11px;color:#bcd6ea;opacity:0;animation:b-rise 3.2s infinite}.b-react i:nth-child(2){left:20px;animation-delay:1s;color:#7fd0f0}.b-react i:nth-child(3){left:38px;animation-delay:2s}@keyframes b-rise{0%{opacity:0;transform:translateY(0)}15%{opacity:.9}100%{opacity:0;transform:translateY(-86px)}}
+  .b-l3{position:absolute;left:16px;bottom:16px;display:flex;border-radius:11px;overflow:hidden;color:#fff;transform:translateX(-118%);opacity:0;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .4s}.b-l3.on{transform:none;opacity:1}
+  .b-ph{width:46px;background:linear-gradient(135deg,#3fbcec,#1b6fa8)}.b-tx{padding:8px 16px 8px 13px}.b-nm{font-weight:700;font-size:18px;line-height:1}.b-rl{font-size:10px;color:#bcd6ea;margin:3px 0 5px}.b-stt{font-size:11px;color:#eaf4fb}.b-stt b{color:#7fd0f0}
+  .b-sting{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%) scale(.96);display:flex;align-items:center;gap:12px;border-radius:13px;padding:12px 18px;color:#fff;opacity:0;transition:.4s cubic-bezier(.2,.7,.2,1);overflow:hidden;border-top:2px solid transparent}.b-sting.on{opacity:1;transform:translate(-50%,-50%) scale(1);border-top-color:#c9d2ff}
+  .b-sting .im{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#dceaf6,#c9d2ff,#ead9ff);display:flex;align-items:center;justify-content:center;color:#1a2d4a;font-weight:700;font-size:14px}.b-sting .l{font-size:9px;letter-spacing:.16em;color:#aebfce}.b-sting .t{font-weight:600;font-size:16px;margin-top:2px}
+  .b-shim{position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(220,234,246,.28) 50%,transparent 70%);transform:translateX(-120%)}.b-sting.on .b-shim{animation:b-shimk 1s .15s ease-out}@keyframes b-shimk{to{transform:translateX(120%)}}
+  .b-shout{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%) translateY(14px);text-align:center;color:#fff;border-radius:13px;padding:16px 26px;opacity:0;transition:.5s cubic-bezier(.2,.7,.2,1)}.b-shout.on{opacity:1;transform:translate(-50%,-50%)}
+  .b-shout .im{width:38px;height:38px;border-radius:9px;margin:0 auto 8px;background:linear-gradient(135deg,#dceaf6,#c9d2ff,#ead9ff);display:flex;align-items:center;justify-content:center;color:#1a2d4a;font-weight:700;font-size:16px}.b-shout .l{font-size:9px;letter-spacing:.2em;color:#bcd6ea}.b-shout .t{font-weight:600;font-size:18px;margin-top:4px}.b-shout .s{font-size:11px;color:#aebfce;margin-top:3px}
+  .b-ctrls{display:flex;gap:12px;margin-top:16px;max-width:420px}.b-ctl{flex:1;text-align:center;font-weight:600;font-size:13px;padding:13px;border-radius:12px;cursor:pointer;border:1px solid var(--line);color:var(--ink);font-family:var(--disp)}.b-ctl.go{background:var(--ink);color:#fff;border-color:var(--ink)}.b-ctl.go[disabled]{opacity:.4;cursor:default}
+
+  /* === social (s-) === */
+  .s-pipe{display:flex;align-items:stretch;gap:9px;flex-wrap:wrap;font-family:var(--disp)}
+  .s-node{flex:1;min-width:140px;border:1px solid var(--line);border-radius:13px;padding:14px;background:#fff}
+  .s-node .nn{font-size:9px;letter-spacing:.12em;color:var(--mist)}.s-node .nt{font-weight:600;font-size:14px;margin:5px 0 4px}.s-node .nd{font-size:12px;color:#54677a}
+  .s-node.ai{background:linear-gradient(135deg,#0b1322,#15324d);border-color:#15324d}.s-node.ai .nt{color:#fff}.s-node.ai .nd{color:#9fc3da}.s-node.ai .nn{color:#7fa8c8}
+  .s-node .im{display:inline-flex;width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#dceaf6,#c9d2ff,#ead9ff);align-items:center;justify-content:center;color:#1a2d4a;font-weight:700;font-size:9px;margin-bottom:7px}
+  .s-arrow{align-self:center;color:var(--mist);font-family:var(--disp)}
+  .s-port{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+  .s-pc{border:1px solid var(--line);border-radius:13px;background:#fff;overflow:hidden}.s-pc .bar{height:5px}.s-pc .in{padding:16px 17px}.s-pc .role{font-family:var(--disp);font-weight:600;font-size:15px}.s-pc .cnt{font-family:var(--disp);font-size:11.5px;color:#54677a;margin:3px 0 9px}.s-pc .d{font-size:12.5px;color:#3a4d60}.s-pc .cad{margin-top:10px;font-family:var(--disp);font-size:10.5px;color:var(--ink);background:#f1f6fa;border-radius:8px;padding:6px 9px;display:inline-block}
+  .s-tpls{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:1.1rem}
+  .s-tpl{aspect-ratio:9/16;border-radius:12px;position:relative;color:#fff;overflow:hidden;font-family:var(--disp)}
+  .s-tpl .lab{position:absolute;left:10px;top:9px;font-size:8px;letter-spacing:.14em;opacity:.85}.s-tpl .big{position:absolute;left:10px;right:10px;top:50%;transform:translateY(-50%);font-weight:700;font-size:17px;line-height:1.05}.s-tpl .bot{position:absolute;left:10px;right:10px;bottom:9px;font-size:8.5px;opacity:.8}
+  .s-legend{display:flex;gap:16px;flex-wrap:wrap;margin:18px 0 12px;font-size:12px;color:#54677a;font-family:var(--disp)}.s-legend span{display:inline-flex;align-items:center;gap:6px}.s-legend i{width:11px;height:11px;border-radius:3px}
+  .s-week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+  .s-day{border:1px solid var(--line);border-radius:11px;background:#fff;padding:10px 8px;display:flex;flex-direction:column;font-family:var(--disp)}.s-day.peak{border-color:var(--c9);box-shadow:0 0 0 1px var(--c9) inset}
+  .s-day .dn{font-weight:600;font-size:12px}.s-day .ph{font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--mist);margin:1px 0 8px}.s-day .ph.hot{color:var(--c9)}
+  .s-chip{height:7px;border-radius:99px;margin-bottom:5px}.s-day .tot{margin-top:auto;padding-top:7px;font-size:10.5px;color:#54677a}.s-day .tot b{color:var(--ink);font-weight:600}
+
+  .foot{border-top:1px solid var(--line);margin-top:60px;padding:34px 0 70px}
+  .foot .big{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,46px);line-height:.95;letter-spacing:.02em}
+  .foot .big a{color:var(--c9);text-decoration:none}
+  .foot .rw{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:26px;font-size:13px;color:#54677a}
+  .foot .rw a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  .foot .legal{font-family:var(--disp);font-size:11px;color:var(--mist);margin-top:22px}
+
+  @media(max-width:820px){.meta,.stat,.pal,.princ{grid-template-columns:repeat(2,1fr)}.vgrid,.a-row{grid-template-columns:1fr 1fr}.s-port{grid-template-columns:1fr}.rung{grid-template-columns:30px 1fr;row-gap:6px}.rung .desc{grid-column:1/-1}.rung .st{justify-self:start}}
+  @media(max-width:560px){.cards,.pal,.princ,.a-row,.s-tpls{grid-template-columns:1fr 1fr}.s-tpls{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="in"><a class="bd" href="../index.html">Pratik Mehta©</a><a class="bk" href="../work.html">← All work</a></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="cloud" viewBox="0 0 120 60"><circle cx="34" cy="38" r="20"/><circle cx="62" cy="27" r="27"/><circle cx="90" cy="38" r="20"/><rect x="16" y="40" width="90" height="20" rx="10"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-watch" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></symbol>
+  <symbol id="i-predict" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-comm" viewBox="0 0 24 24"><circle cx="9" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 19c.6-3 2.8-4.5 5.5-4.5s4.9 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="16.5" cy="8" r="2.4" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 10h16" stroke="currentColor" stroke-width="1.6"/></symbol>
+</svg>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="tag">Esports · Membership OS · 2026</span>
+    <h1>The <span class="a">Ninth</span></h1>
+    <p class="snap">A membership OS that turns watching into belonging. One system across brand, product, a working <b>AI moment-clipper</b>, broadcast motion, and a social engine, built to move a fandom from buying merch to belonging to something.</p>
+    <div class="meta">
+      <div><div class="k">Client</div><div class="v">Cloud9</div></div>
+      <div><div class="k">Role</div><div class="v">Creative direction, strategy, design, prototype</div></div>
+      <div><div class="k">Year</div><div class="v">2026</div></div>
+      <div><div class="k">Disciplines</div><div class="v">Brand / UI/UX / AI / Motion / Social</div></div>
+    </div>
+  </header>
+
+  <section class="sec" style="border-top:0;padding-top:18px">
+    <p class="kick">Projected impact</p>
+    <h2 class="h">The numbers it is built to move</h2>
+    <p class="lead">Anchored to category benchmarks and the mechanics of the system.</p>
+    <div class="stat">
+      <div><div class="n">322M</div><div class="l">Casual esports viewers, the conversion audience the clipper is built for</div></div>
+      <div><div class="n">5 to 20x</div><div class="l">Reach from the account portfolio over a single official account, same cost</div></div>
+      <div><div class="n">10 to 25</div><div class="l">Social-ready moments produced per match day, detected automatically</div></div>
+      <div><div class="n">56%</div><div class="l">Of esports viewing is mobile, so the product is mobile-first by default</div></div>
+    </div>
+    <p class="kpis"><b>Target KPIs the system is scored against:</b> free-to-Member conversion off the clipper, dead-Tuesday active users as a share of match-day actives, paid-tier retention, and predictions per member per week.</p>
+  </section>
+
+  <section class="sec">
+    <p class="kick">The situation</p>
+    <h2 class="h">A fandom with no year-round home</h2>
+    <p class="lead">Esports is shifting from one-off merch and tickets toward subscription digital ecosystems, the move the industry calls Membership 2.0, and the orgs that fold access and digital status into real tiers retain better. Cloud9 has more brand equity than almost any North American org and one of the few esports identities with genuine staying power, built on a calm, premium, fashion-credible register that is the deliberate opposite of aggressive gamer branding. What it has never built is a year-round home for that fandom.</p>
+    <p class="lead">Audience-first, the gap is obvious. A fan does not want another hoodie. They want status inside the in-group, real access to the players and the culture, and a reason to show up on a dead Tuesday when no match is live. The brand has the equity to carry a membership and has left the daily-belonging loop on the table.</p>
+    <div class="pull">Turn watching into <span class="a">belonging</span>.</div>
+    <p class="lead">The Ninth is an additive membership sub-brand under Cloud9. The name comes from the three interwoven nines in the Cloud9 mark, and from cloud nine, the feeling of belonging the product sells. It runs on one idea: altitude. The higher you climb, the closer you get to cloud nine. And one rule holds the whole system together: the summit is earned, never sold. The top tier, Inner Nine, cannot be purchased anywhere in the product, which separates it from the pay-to-flex and NFT-pass models the category is full of, and fits Cloud9's calm register better than any bought status could.</p>
+  </section>
+
+  <section class="sec">
+    <p class="kick">01 · Brand and identity</p>
+    <h2 class="h">A sub-brand built on altitude</h2>
+    <p class="lead">A full system under Cloud9: the IX monogram, an altitude palette anchored on the Cloud9 blue, type, tone of voice, and motion. The member card is the hero object.</p>
+
+    <div class="cards" style="margin-top:26px">
+      <div class="cw">
+        <svg viewBox="0 0 260 364" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Open tier card">
+          <defs><linearGradient id="gOpen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#EAF3FA"/></linearGradient></defs>
+          <rect x="1" y="1" width="258" height="362" rx="18" fill="url(#gOpen)" stroke="#D4E2EC"/>
+          <text x="22" y="40" font-family="'Space Grotesk',sans-serif" font-size="11" letter-spacing="3" fill="#9DB4C6">THE NINTH</text>
+          <text x="238" y="40" text-anchor="end" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="15" fill="#C2D2DE">I</text>
+          <use href="#cloud" x="-26" y="286" width="172" height="86" fill="#E4EFF6"/><use href="#cloud" x="116" y="294" width="188" height="92" fill="#E9F2F9"/><use href="#cloud" x="-12" y="308" width="152" height="78" fill="#FFFFFF"/><use href="#cloud" x="120" y="314" width="172" height="84" fill="#FFFFFF"/>
+          <text x="22" y="206" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="34" fill="#1B6FA8">Open</text>
+          <text x="22" y="230" font-family="'Inter',sans-serif" font-size="11" letter-spacing="2" fill="#9DB4C6">VISITOR</text>
+          <text x="238" y="332" text-anchor="end" font-family="'Space Grotesk',sans-serif" font-size="12" fill="#A9BECD">01 / 09</text>
+        </svg>
+        <div class="cc"><b>Open</b>In the clouds · free</div>
+      </div>
+      <div class="cw">
+        <svg viewBox="0 0 260 364" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Member tier card">
+          <defs><linearGradient id="gMem" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3FBCEC"/><stop offset="1" stop-color="#229AD0"/></linearGradient></defs>
+          <rect x="1" y="1" width="258" height="362" rx="18" fill="url(#gMem)" stroke="#1E8FC4"/>
+          <text x="22" y="40" font-family="'Space Grotesk',sans-serif" font-size="11" letter-spacing="3" fill="#DBF1FB">THE NINTH</text>
+          <text x="238" y="40" text-anchor="end" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="15" fill="#EAF8FF">II</text>
+          <use href="#cloud" x="-18" y="300" width="152" height="76" fill="#FFFFFF" opacity="0.18"/><use href="#cloud" x="122" y="312" width="166" height="78" fill="#FFFFFF" opacity="0.14"/>
+          <text x="22" y="206" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="34" fill="#ffffff">Member</text>
+          <text x="22" y="230" font-family="'Inter',sans-serif" font-size="11" letter-spacing="2" fill="#DBF1FB">IN THE CLUB</text>
+          <text x="238" y="332" text-anchor="end" font-family="'Space Grotesk',sans-serif" font-size="12" fill="#EAF8FF">02 / 09</text>
+        </svg>
+        <div class="cc"><b>Member</b>Clear daytime · bought</div>
+      </div>
+      <div class="cw">
+        <svg viewBox="0 0 260 364" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Insider tier card">
+          <defs><linearGradient id="gIns" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B6FA8"/><stop offset="1" stop-color="#0C2E4E"/></linearGradient></defs>
+          <rect x="1" y="1" width="258" height="362" rx="18" fill="url(#gIns)" stroke="#0A2740"/>
+          <text x="22" y="40" font-family="'Space Grotesk',sans-serif" font-size="11" letter-spacing="3" fill="#9FC6E2">THE NINTH</text>
+          <text x="238" y="40" text-anchor="end" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="15" fill="#CFE6F6">III</text>
+          <use href="#cloud" x="-24" y="320" width="162" height="66" fill="#2E7FB4" opacity="0.5"/><use href="#cloud" x="118" y="328" width="174" height="64" fill="#3C8BC0" opacity="0.42"/>
+          <circle cx="206" cy="86" r="2" fill="#CFE6F6" opacity=".8"/><circle cx="226" cy="120" r="1.4" fill="#CFE6F6" opacity=".7"/>
+          <text x="22" y="206" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="32" fill="#EAF4FB">Insider</text>
+          <text x="22" y="230" font-family="'Inter',sans-serif" font-size="11" letter-spacing="2" fill="#9FC6E2">RECOGNIZED</text>
+          <text x="238" y="332" text-anchor="end" font-family="'Space Grotesk',sans-serif" font-size="12" fill="#9FC6E2">03 / 09</text>
+        </svg>
+        <div class="cc"><b>Insider</b>Dusk · bought or earned</div>
+      </div>
+      <div class="cw">
+        <svg viewBox="0 0 260 364" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Inner Nine tier card">
+          <defs>
+            <linearGradient id="gIN" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B1A33"/><stop offset="1" stop-color="#05101F"/></linearGradient>
+            <linearGradient id="frost" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#DCEAF6"/><stop offset="0.5" stop-color="#C9D2FF"/><stop offset="1" stop-color="#EAD9FF"/></linearGradient>
+            <radialGradient id="aurora" cx="0.5" cy="0.18" r="0.7"><stop offset="0" stop-color="#29ABE2" stop-opacity=".34"/><stop offset="1" stop-color="#29ABE2" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect x="1" y="1" width="258" height="362" rx="18" fill="url(#gIN)" stroke="#1A2D4A"/>
+          <rect x="1" y="1" width="258" height="362" rx="18" fill="url(#aurora)"/>
+          <g fill="#DCEAF6"><circle cx="40" cy="60" r="1.2"/><circle cx="92" cy="44" r="0.9"/><circle cx="150" cy="72" r="1"/><circle cx="206" cy="52" r="1.3"/><circle cx="64" cy="104" r="0.8"/></g>
+          <use href="#cloud" x="-34" y="330" width="184" height="58" fill="#52688F" opacity="0.55"/><use href="#cloud" x="112" y="334" width="194" height="56" fill="#6A7EA6" opacity="0.45"/>
+          <text x="238" y="40" text-anchor="end" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="16" fill="url(#frost)">IX</text>
+          <text x="22" y="40" font-family="'Space Grotesk',sans-serif" font-size="11" letter-spacing="3" fill="#8FA7C4">THE NINTH</text>
+          <text x="130" y="176" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="78" fill="url(#frost)" opacity=".9">IX</text>
+          <text x="22" y="232" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="27" fill="#F2F7FC">Inner Nine</text>
+          <text x="22" y="254" font-family="'Inter',sans-serif" font-size="11" letter-spacing="2" fill="#8FA7C4">EARNED, NOT SOLD</text>
+          <text x="238" y="332" text-anchor="end" font-family="'Space Grotesk',sans-serif" font-size="12" fill="url(#frost)">09 / 09</text>
+        </svg>
+        <div class="cc"><b>Inner Nine</b>Above the clouds · earned</div>
+      </div>
+    </div>
+
+    <h3 class="h">Color</h3>
+    <p class="lead">Anchored on the Cloud9 blue and built as an altitude gradient. No warm accents. The premium signal at the summit is frost, not gold.</p>
+    <div class="pal">
+      <div class="sw"><div class="chip" style="background:#F4F8FB;border-bottom:1px solid #e7eef4"></div><div class="meta2"><div class="nm">Cloud White</div><div class="role">Primary surface</div><div class="hex">#F4F8FB</div></div></div>
+      <div class="sw"><div class="chip" style="background:#29ABE2"></div><div class="meta2"><div class="nm">Cloud9 Blue</div><div class="role">Brand accent</div><div class="hex">#29ABE2</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1B6FA8"></div><div class="meta2"><div class="nm">Climb Blue</div><div class="role">Secondary, text</div><div class="hex">#1B6FA8</div></div></div>
+      <div class="sw"><div class="chip" style="background:#07142B"></div><div class="meta2"><div class="nm">Altitude Night</div><div class="role">Ink, dark surfaces</div><div class="hex">#07142B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#AEC3D4"></div><div class="meta2"><div class="nm">Mist</div><div class="role">Tertiary, lines</div><div class="hex">#AEC3D4</div></div></div>
+      <div class="sw"><div class="chip" style="background:linear-gradient(135deg,#DCEAF6,#C9D2FF 55%,#EAD9FF)"></div><div class="meta2"><div class="nm">Frost</div><div class="role">Inner Nine only</div><div class="hex">iridescent</div></div></div>
+    </div>
+
+    <h3 class="h">Typography</h3>
+    <div class="typ">
+      <div class="row"><div class="t-d">The Ninth</div><div class="spec">Space Grotesk · 700 · display</div></div>
+      <div class="row"><div class="t-s">Find your altitude.</div><div class="spec">Space Grotesk · 500 · subhead</div></div>
+      <div class="row"><div class="t-b">Status is earned, access is real, and the brand you already wear becomes a place you log into.</div><div class="spec">Inter · 400 · body</div></div>
+    </div>
+
+    <h3 class="h">Tone of voice</h3>
+    <p class="lead">Calm at altitude. The Ninth never shouts. Confidence is quiet, the wit is dry, and the fan comes first. If a line reads like a hype drop or a casino, it is wrong.</p>
+    <div class="vgrid">
+      <div class="vpr"><div class="n">01</div><h4>Calm at altitude</h4><p>Confidence without volume. No caps-lock, no countdown urgency.</p><div class="ex"><b>Yes:</b> You are in. Welcome to the Ninth.<br><b>No:</b> UNLOCK INSANE MEMBER PERKS NOW</div></div>
+      <div class="vpr"><div class="n">02</div><h4>Earned, not hyped</h4><p>We talk about belonging and access, never FOMO.</p><div class="ex"><b>Yes:</b> The Inner Nine is earned, not bought.<br><b>No:</b> Buy your way to VIP today</div></div>
+    </div>
+    <div style="margin-top:14px">
+      <p class="a-kx" style="color:var(--mist);font-family:var(--disp);font-size:13px;margin-bottom:4px">Avoid</p>
+      <div class="wchips"><span>VIP</span><span>unlock insane</span><span>hype</span><span>grind / XP</span><span>whale</span><span>NFT</span><span>GG / LET'S GO</span><span>limited time only</span></div>
+    </div>
+
+    <h3 class="h">The status ladder</h3>
+    <p class="lead">Four tiers. The summit is earned, never sold, which is the whole positioning in one mechanic.</p>
+    <div class="ladder">
+      <div class="rung"><div class="ix">I</div><div class="tier">Open</div><div class="desc">Free. The front door. Follow, watch, basic moment alerts.</div><div class="st">Free</div></div>
+      <div class="rung"><div class="ix">II</div><div class="tier">Member</div><div class="desc">Paid base. Full co-watch, the leveling card, drops, member feed.</div><div class="st">Bought</div></div>
+      <div class="rung"><div class="ix">III</div><div class="tier">Insider</div><div class="desc">Early and exclusive drops, votes, events. Tenure can lift you here.</div><div class="st">Bought or earned</div></div>
+      <div class="rung"><div class="ix">IX</div><div class="tier">Inner Nine</div><div class="desc">Invite and earned only. Meet-and-greets, real influence, the grail card.</div><div class="st earn">Earned only</div></div>
+    </div>
+
+    <h3 class="h">Motion</h3>
+    <div class="princ">
+      <div class="mcard"><div class="n">Rise</div><h4>Enter from below</h4><p>Surfaces drift up the way you rise through cloud. Nothing snaps.</p></div>
+      <div class="mcard"><div class="n">Ease</div><h4>240 to 500ms, no bounce</h4><p>Controlled easing reads as premium, the brand's register at speed.</p></div>
+      <div class="mcard"><div class="n">Summit</div><h4>Frost is rationed</h4><p>The iridescent IX appears only on the moment and the Inner Nine welcome.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <p class="kick">02 · The product</p>
+    <h2 class="h">An app built to earn a dead Tuesday</h2>
+    <p class="lead">Mobile-first, because 56% of esports viewing is on mobile. Every surface feeds one loop: watch, predict, belong, climb. Predict is free-to-play in points, never money, and those points feed the climb, which keeps the engine on the right side of the calm brand. Community is owned inside the app, so tier roles create status where the org controls the surface. The member card is the live status object at the center.</p>
+    <div class="a-row" style="margin-top:26px">
+
+      <div>
+        <div class="a-ph"><div class="a-sc" style="background:#F4F8FB">
+          <div class="a-sb" style="color:#07142B"><span>9:41</span><span><i style="background:#07142B"></i><i style="background:#07142B"></i><i style="background:#07142B"></i></span></div>
+          <div class="a-bd" style="display:flex;flex-direction:column">
+            <div style="height:138px;background:linear-gradient(180deg,#BFE6F8,#F4F8FB);position:relative;flex:none"><div style="position:absolute;top:32px;left:0;right:0;text-align:center"><div style="font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:25px;color:#07142B">The Ninth</div><div style="font-size:9px;letter-spacing:.26em;color:#3a6b8a;margin-top:7px">CLOUD NINE, YEAR ROUND</div></div></div>
+            <div class="a-pad" style="flex:1">
+              <p class="a-kx" style="margin:2px 0 9px">Choose where you start</p>
+              <div class="a-card"><div class="a-bt"><div><div class="a-big">Open</div><div class="a-xs">Watch, follow, alerts</div></div><span class="a-pill m">FREE</span></div></div>
+              <div class="a-card tint" style="border-color:var(--c9)"><div class="a-bt"><div><div class="a-big">Member</div><div class="a-xs">Co-watch, the card, drops</div></div><span class="a-big" style="color:var(--blue-deep)">$7.99</span></div></div>
+              <div class="a-card"><div class="a-bt"><div><div class="a-big">Insider</div><div class="a-xs">Votes, exclusive drops</div></div><span class="a-pill i">CLIMB</span></div></div>
+              <div class="a-card" style="opacity:.6"><div class="a-bt"><div><div class="a-big">Inner Nine</div><div class="a-xs">Earned, not sold</div></div><span class="a-pill ix">IX</span></div></div>
+              <div class="a-btn">Join the Ninth</div>
+            </div>
+          </div>
+        </div></div>
+        <div class="a-cap"><b>Onboarding</b>Tier pick, summit locked</div>
+      </div>
+
+      <div>
+        <div class="a-ph"><div class="a-sc" style="background:#F4F8FB">
+          <div class="a-sb" style="color:#07142B"><span>9:41</span><span><i style="background:#07142B"></i><i style="background:#07142B"></i><i style="background:#07142B"></i></span></div>
+          <div class="a-bd"><div class="a-pad">
+            <div class="a-hd"><div class="a-hi">Evening, Pratik</div><span class="a-chip">Member · II</span></div>
+            <div class="a-card" style="padding:0;overflow:hidden"><div style="height:96px;background:linear-gradient(135deg,#0b1322,#15324d);position:relative"><span style="position:absolute;top:9px;left:10px;font-size:8px;letter-spacing:.1em;color:#fff;background:#e0322b;padding:3px 6px;border-radius:5px">LIVE · LCS</span><span style="position:absolute;bottom:10px;left:10px;color:#fff;font-size:13px;font-weight:600">C9 <span style="color:#7fd0f0">2</span> · 1 TL</span></div><div style="padding:10px"><div class="a-btn">Watch with the Ninth</div></div></div>
+            <div class="a-card"><div class="a-bt"><span class="a-kx">Your climb</span><span class="a-xs">Member to Insider</span></div><div class="a-bar"><i style="width:66%"></i></div><span class="a-xs">2 of 3 quests this month</span></div>
+            <div class="a-card tint"><span class="a-kx">Predict · free</span><div class="a-big" style="margin-top:3px">Who takes Game 4?</div><div class="a-rw"><div class="a-btn">Cloud9</div><div class="a-btn g">Team Liquid</div></div></div>
+          </div></div>
+          <div class="a-tabs"><div class="a-tab on"><svg><use href="#i-home"/></svg>Home</div><div class="a-tab"><svg><use href="#i-watch"/></svg>Watch</div><div class="a-tab"><svg><use href="#i-predict"/></svg>Predict</div><div class="a-tab"><svg><use href="#i-comm"/></svg>Community</div><div class="a-tab"><svg><use href="#i-card"/></svg>Card</div></div>
+        </div></div>
+        <div class="a-cap"><b>Home</b>The daily-return loop</div>
+      </div>
+
+      <div>
+        <div class="a-ph"><div class="a-sc" style="background:#F4F8FB">
+          <div class="a-sb" style="color:#07142B"><span>9:41</span><span><i style="background:#07142B"></i><i style="background:#07142B"></i><i style="background:#07142B"></i></span></div>
+          <div class="a-bd"><div class="a-pad">
+            <div class="a-hd"><div class="a-hi">Predict</div><span class="a-chip dk">1,240 pts</span></div>
+            <p class="a-xs" style="margin:-4px 0 10px">Free to play. Points only, never money. Picks feed your climb.</p>
+            <div class="a-card"><div class="a-bt"><span class="a-big">Game 4 winner</span><span class="a-pill m">+50</span></div><div class="a-rw"><div class="a-btn">Cloud9</div><div class="a-btn g">Team Liquid</div></div></div>
+            <div class="a-card"><div class="a-bt"><span class="a-big">First Baron</span><span class="a-pill m">+30</span></div><div class="a-bar"><i style="width:50%"></i></div><span class="a-xs">C9 picked · locks in 2:00</span></div>
+            <div class="a-card tint"><div class="a-bt"><div><span class="a-kx">Leaderboard</span><div class="a-big" style="margin-top:2px">You are #312</div></div><span class="a-xs">top 5% climbs faster</span></div></div>
+          </div></div>
+          <div class="a-tabs"><div class="a-tab"><svg><use href="#i-home"/></svg>Home</div><div class="a-tab"><svg><use href="#i-watch"/></svg>Watch</div><div class="a-tab on"><svg><use href="#i-predict"/></svg>Predict</div><div class="a-tab"><svg><use href="#i-comm"/></svg>Community</div><div class="a-tab"><svg><use href="#i-card"/></svg>Card</div></div>
+        </div></div>
+        <div class="a-cap"><b>Predict</b>Free-to-play, feeds the climb</div>
+      </div>
+
+      <div>
+        <div class="a-ph"><div class="a-sc" style="background:#F4F8FB">
+          <div class="a-sb" style="color:#07142B"><span>9:41</span><span><i style="background:#07142B"></i><i style="background:#07142B"></i><i style="background:#07142B"></i></span></div>
+          <div class="a-bd"><div class="a-pad">
+            <div class="a-hd"><div class="a-hi">Community</div><span class="a-chip">Member · II</span></div>
+            <div class="a-card tint"><div class="a-bt"><div><span class="a-kx">Watch room · live</span><div class="a-big" style="margin-top:3px">LCS night, Game 4</div></div></div><div class="a-bt" style="margin-top:8px"><span class="a-xs">840 members in</span><span style="font-size:11px;color:var(--c9)">Join →</span></div></div>
+            <div class="a-card"><div class="a-bt" style="justify-content:flex-start;gap:9px"><span class="a-av"></span><div><div style="display:flex;gap:6px;align-items:center"><span class="a-big">@skylar</span><span class="a-pill i">Insider</span></div><div class="a-sm">clipped Blaber's flank.</div></div></div></div>
+            <div class="a-card"><div class="a-bt" style="justify-content:flex-start;gap:9px"><span class="a-av" style="background:linear-gradient(135deg,#cdb8f0,#8a6fd0)"></span><div><div style="display:flex;gap:6px;align-items:center"><span class="a-big">@nine_lives</span><span class="a-pill ix">Inner Nine</span></div><div class="a-sm">Meet-and-greet slots tomorrow.</div></div></div></div>
+          </div></div>
+          <div class="a-tabs"><div class="a-tab"><svg><use href="#i-home"/></svg>Home</div><div class="a-tab"><svg><use href="#i-watch"/></svg>Watch</div><div class="a-tab"><svg><use href="#i-predict"/></svg>Predict</div><div class="a-tab on"><svg><use href="#i-comm"/></svg>Community</div><div class="a-tab"><svg><use href="#i-card"/></svg>Card</div></div>
+        </div></div>
+        <div class="a-cap"><b>Community</b>Tier roles beside names</div>
+      </div>
+
+      <div>
+        <div class="a-ph"><div class="a-sc" style="background:#070f1d">
+          <div class="a-sb" style="color:#fff"><span>9:41</span><span><i style="background:#fff"></i><i style="background:#fff"></i><i style="background:#fff"></i></span></div>
+          <div class="a-bd"><div class="a-pad" style="padding-top:10px">
+            <svg viewBox="0 0 268 150" width="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Member card" style="border-radius:12px">
+              <defs><linearGradient id="amc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3FBCEC"/><stop offset="1" stop-color="#1E8FC4"/></linearGradient></defs>
+              <rect x="1" y="1" width="266" height="148" rx="15" fill="url(#amc)"/>
+              <text x="16" y="28" font-family="'Space Grotesk',sans-serif" font-size="10" letter-spacing="2.5" fill="#DBF1FB">THE NINTH</text>
+              <text x="250" y="28" text-anchor="end" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="13" fill="#EAF8FF">II</text>
+              <text x="16" y="98" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="28" fill="#fff">Member</text>
+              <text x="16" y="128" font-family="'Inter',sans-serif" font-size="11" fill="#EAF8FF">@pratik</text>
+              <text x="250" y="128" text-anchor="end" font-family="'Space Grotesk',sans-serif" font-size="11" fill="#EAF8FF">02 / 09</text>
+            </svg>
+            <div style="background:#0e1a30;border:1px solid #1c2f4d;border-radius:11px;padding:11px;margin-top:11px"><div class="a-bt"><span class="a-kx" style="color:#8fa7c4">Climb to Insider</span><span class="a-xs" style="color:#9fb2c4">66%</span></div><div class="a-bar" style="background:#1a2c49"><i style="width:66%"></i></div></div>
+            <div class="a-bt" style="margin-top:12px"><span class="a-sm" style="color:#cfd9e6">Watch 3 matches live</span><span class="a-xs" style="color:#7fd0f0">2 / 3</span></div>
+            <div class="a-bt" style="margin-top:9px"><span class="a-sm" style="color:#cfd9e6">Make 5 predictions</span><span class="a-xs" style="color:#7fd0f0">5 / 5</span></div>
+            <div class="a-bt" style="margin-top:9px"><span class="a-sm" style="color:#cfd9e6">Attend a member event</span><span class="a-xs" style="color:#8fa7c4">0 / 1</span></div>
+          </div></div>
+          <div class="a-tabs" style="background:#0a1322;border-color:#1c2f4d"><div class="a-tab"><svg><use href="#i-home"/></svg>Home</div><div class="a-tab"><svg><use href="#i-watch"/></svg>Watch</div><div class="a-tab"><svg><use href="#i-predict"/></svg>Predict</div><div class="a-tab"><svg><use href="#i-comm"/></svg>Community</div><div class="a-tab on"><svg><use href="#i-card"/></svg>Card</div></div>
+        </div></div>
+        <div class="a-cap"><b>Card</b>The live status object</div>
+      </div>
+
+      <div>
+        <div class="a-ph"><div class="a-sc" style="background:#F4F8FB">
+          <div class="a-sb" style="color:#07142B"><span>9:41</span><span><i style="background:#07142B"></i><i style="background:#07142B"></i><i style="background:#07142B"></i></span></div>
+          <div class="a-bd"><div class="a-pad">
+            <div class="a-nav"><div class="a-bk">‹</div><div class="a-nt">Notifications</div></div>
+            <div class="a-lr"><div><div class="a-lt">Moment alerts</div><div class="a-ls">Auto-clips of your players</div></div><span class="a-tg on"></span></div>
+            <div class="a-seg" style="margin:2px 0 10px"><span>All</span><span class="on">Big plays only</span><span>Off</span></div>
+            <div class="a-lr"><div class="a-lt">Match start</div><span class="a-tg on"></span></div>
+            <div class="a-lr"><div class="a-lt">Drops</div><span class="a-tg on"></span></div>
+            <div class="a-lr"><div class="a-lt">Community replies</div><span class="a-tg on"></span></div>
+            <div class="a-lr"><div><div class="a-lt">Quiet hours</div><div class="a-ls">10:00 PM to 8:00 AM</div></div><span class="a-tg on"></span></div>
+            <p class="a-xs" style="margin-top:11px">Calm by default. We only buzz when it matters.</p>
+          </div></div>
+        </div></div>
+        <div class="a-cap"><b>Notifications</b>The calm brand applied to push</div>
+      </div>
+
+    </div>
+    <p class="embcap">Six of fifteen screens. The product also covers profile, settings, manage-membership with one-tap cancel, and an AI-transparency screen.</p>
+  </section>
+
+  <section class="sec">
+    <p class="kick">03 · The AI, built</p>
+    <h2 class="h">A working moment-alert clipper</h2>
+    <p class="lead">Of four AI features, the clipper is the one prototyped and the one the product leads with. It serves the casual fans who do not know when to look up, and it is credible now: real clippers detect plays off kill feeds, objective captures, and audio or chat spikes. Three live signals fuse, the system catches the moment, and an auto-clip rises to the fan the instant it happens. The team still reviews before anything ships. Taste stays human.</p>
+    <div style="margin-top:26px">
+      <div class="d-wrap">
+        <div class="d-phone"><div class="d-screen">
+          <div class="d-sb"><span>9:41</span><span><i></i><i></i><i></i></span></div>
+          <div class="d-body">
+            <div class="d-scene">
+              <span class="d-badge">LIVE · LCS</span><span class="d-score">C9 <b style="color:#7fd0f0">2</b> : 1 TL</span><span class="d-watch">watching with 1,204 members</span>
+              <span class="d-dot d-b" id="d_b1" style="left:20%;top:68%"></span><span class="d-dot d-b" id="d_b2" style="left:34%;top:78%"></span><span class="d-dot d-r" id="d_r1" style="left:62%;top:30%"></span><span class="d-dot d-r" id="d_r2" style="left:74%;top:42%"></span>
+              <div class="d-flash" id="d_flash"></div>
+            </div>
+            <div class="d-feed" id="d_feed"></div>
+            <div class="d-alert" id="d_alert"><div class="d-bt"><div class="d-rw"><div class="d-ix">IX</div><div><div class="d-kx">Moment · auto-clipped</div><div class="d-ti" id="d_alertTitle">Blaber flips the fight</div></div></div><span class="d-go" id="d_openClip">Clip ›</span></div></div>
+            <div class="d-clip" id="d_clip">
+              <div class="d-top"><div class="d-x" id="d_closeClip">‹</div><div class="d-tt">Your clip</div></div>
+              <div class="d-view"><span class="d-stamp">IX AUTO-CLIP</span><span class="d-lp"></span><span class="d-lp d-lp2"></span><span class="d-dur" id="d_clipDur">0:12</span></div>
+              <div class="d-meta"><div class="d-cap" id="d_clipCap">Blaber flips the fight</div><div class="d-sub" id="d_clipSub">Caption auto-written, C9 bias on · edit</div><div id="d_clipTags"><span class="d-opt">kill feed</span><span class="d-opt">audio spike</span><span class="d-opt">chat +320%</span></div><div class="d-rw" style="margin-top:4px"><div class="d-btn" id="d_claimBtn" style="flex:1">Share to Community · +40</div><div class="d-btn d-ghost" style="flex:0 0 78px">Save</div></div></div>
+            </div>
+            <div class="d-toast" id="d_toast">+40 points toward Insider</div>
+          </div>
+        </div></div>
+        <div class="d-panel">
+          <h4>The detection engine</h4>
+          <p class="p">No single signal is enough. The clipper fuses three live streams and only fires when they agree, which is how real auto-highlight systems avoid clipping noise.</p>
+          <div class="d-eng">
+            <div>
+              <div class="d-mtr"><div class="d-lab"><b>Game events</b><span id="d_vGame">6%</span></div><div class="d-track"><i id="d_sGame"></i></div></div>
+              <div class="d-mtr"><div class="d-lab"><b>Crowd audio</b><span id="d_vAudio">8%</span></div><div class="d-track"><i id="d_sAudio"></i></div></div>
+              <div class="d-mtr"><div class="d-lab"><b>Chat velocity</b><span id="d_vChat">5%</span></div><div class="d-track"><i id="d_sChat"></i></div></div>
+            </div>
+            <div>
+              <div class="d-ring"><svg viewBox="0 0 120 120" width="132" height="132"><circle cx="60" cy="60" r="42" fill="none" stroke="#eef3f7" stroke-width="11"/><circle id="d_ring" cx="60" cy="60" r="42" fill="none" stroke="#29ABE2" stroke-width="11" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="263.9" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset 1.5s cubic-bezier(.3,.7,.3,1),stroke .3s"/><line x1="60" y1="9" x2="60" y2="20" stroke="#cdd9e3" stroke-width="2" transform="rotate(72 60 60)"/></svg><div class="pct"><b id="d_ringPct">14</b><span>fusion</span></div></div>
+              <div class="d-stt" id="d_state">Listening</div>
+            </div>
+          </div>
+          <div class="d-ctrls"><div class="d-ctl go" id="d_runBtn">Simulate the moment</div><div class="d-ctl" id="d_resetBtn">Reset</div></div>
+          <p class="d-note"><b>Real now, not magic.</b> 2026 clippers detect plays off game-event signals, broadcast audio spikes, and chat-velocity surges, cutting manual clipping from hours to minutes. The AI does detection and a first-draft caption; taste stays human.</p>
+        </div>
+      </div>
+      <p class="embcap">Interactive. Press Simulate the moment.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <p class="kick">04 · Broadcast and motion</p>
+    <h2 class="h">The membership, on the broadcast</h2>
+    <p class="lead">The overlay package carries the membership onto the broadcast, not just the brand. Alongside the score bug and lower-third, it puts members co-watching on screen, ties the broadcast moment to the same clipper with the same frost IX, and celebrates a member reaching Inner Nine live on air. Rise and ease, no bounce, frost rationed to the two summit moments.</p>
+    <div style="margin-top:26px">
+      <div class="b-stage" id="b_stage">
+        <div class="b-field"></div>
+        <span class="b-u b-ub" id="b_u1" style="left:22%;top:64%"></span><span class="b-u b-ub" id="b_u2" style="left:33%;top:72%"></span><span class="b-u b-ur" id="b_u3" style="left:64%;top:34%"></span><span class="b-u b-ur" id="b_u4" style="left:73%;top:44%"></span>
+        <div class="b-flash" id="b_gflash"></div>
+        <div class="b-bug b-glass"><span class="tm">CLOUD9 <span class="c9 sc">2</span></span><span class="dv"></span><span class="tm"><span class="sc" style="color:#cdd9e3">1</span> TEAM LIQUID</span><span class="dv"></span><span class="mt" id="b_clock">24:18</span><span class="mt">+3.2k</span></div>
+        <div class="b-corner b-glass"><span class="b-ixm">IX</span><span>THE NINTH</span><span class="dv" style="width:1px;height:14px;background:rgba(255,255,255,.18)"></span><span class="b-live"><i></i>LIVE</span></div>
+        <div class="b-cw b-glass"><div class="l">WATCHING WITH THE NINTH</div><div class="n"><span class="b-avs"><i></i><i></i><i></i></span> 1,204 in</div></div>
+        <div class="b-react"><i>&#9650;</i><i>&#9829;</i><i>&#9650;</i></div>
+        <div class="b-l3 b-glass" id="b_l3"><div class="b-ph"></div><div class="b-tx"><div class="b-nm">BLABER</div><div class="b-rl">Jungle · Cloud9</div><div class="b-stt">KDA <b>4 / 1 / 7</b> · 62% KP</div></div></div>
+        <div class="b-sting b-glass" id="b_sting"><div class="im">IX</div><div><div class="l">MOMENT · AUTO-CLIPPED</div><div class="t">Blaber flips the fight</div></div><div class="b-shim"></div></div>
+        <div class="b-shout b-glass" id="b_shout"><div class="im">IX</div><div class="l">INNER NINE</div><div class="t">Welcome @nine_lives</div><div class="s">to the inner circle</div></div>
+      </div>
+      <div class="b-ctrls"><div class="b-ctl go" id="b_runBtn">Run a broadcast moment</div><div class="b-ctl" id="b_resetBtn">Reset</div></div>
+      <p class="embcap">Interactive. Press Run a broadcast moment.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <p class="kick">05 · The social engine</p>
+    <h2 class="h">One match in, a week out</h2>
+    <p class="lead">The last layer closes the loop. One match produces a week of cross-platform output across a managed account portfolio, because that fan-out reaches far more fans than a single official account at the same cost. The clipper is the top of the funnel: each broadcast day yields 10 to 25 moments, the AI drafts platform-native variants per template, a human approves and tunes voice, and the set fans out on an event-driven cadence.</p>
+
+    <div class="s-pipe" style="margin-top:24px">
+      <div class="s-node"><div class="nn">SOURCE</div><div class="nt">One match</div><div class="nd">30 to 100 min of footage.</div></div>
+      <span class="s-arrow">›</span>
+      <div class="s-node ai"><div class="im">IX</div><div class="nt">Clipper detects</div><div class="nd">10 to 25 moments, tagged.</div></div>
+      <span class="s-arrow">›</span>
+      <div class="s-node ai"><div class="im">IX</div><div class="nt">AI drafts variants</div><div class="nd">Per template and platform.</div></div>
+      <span class="s-arrow">›</span>
+      <div class="s-node"><div class="nn">HUMAN</div><div class="nt">Approve and tune</div><div class="nd">Voice, spoiler timing.</div></div>
+      <span class="s-arrow">›</span>
+      <div class="s-node"><div class="nn">OUTPUT</div><div class="nt">Portfolio fan-out</div><div class="nd">Hero, player, content.</div></div>
+    </div>
+
+    <h3 class="h">A managed account portfolio</h3>
+    <div class="s-port">
+      <div class="s-pc"><div class="bar" style="background:var(--c9)"></div><div class="in"><div class="role">Hero accounts</div><div class="cnt">1 to 2 per platform</div><div class="d">The official voice. Highest polish: results, announcements, brand films.</div><div class="cad">1 to 2 posts / day</div></div></div>
+      <div class="s-pc"><div class="bar" style="background:#46C7B8"></div><div class="in"><div class="role">Player-perspective</div><div class="cnt">5 to 10 per platform</div><div class="d">Per-star POV. Where the fan who follows a player, not a league, lives.</div><div class="cad">2 to 4 posts / day</div></div></div>
+      <div class="s-pc"><div class="bar" style="background:#5B6B82"></div><div class="in"><div class="role">Content-type</div><div class="cnt">5 to 8 per platform</div><div class="d">Highlights, lore, behind-the-scenes, and dry-wit banter in voice.</div><div class="cad">2 to 4 posts / day</div></div></div>
+    </div>
+
+    <h3 class="h">Template kit, vertical-first</h3>
+    <div class="s-tpls">
+      <div class="s-tpl" style="background:linear-gradient(180deg,#3FBCEC,#1B6FA8)"><span class="lab">MATCHDAY · LCS</span><div class="big">CLOUD9<br><span style="opacity:.7;font-size:11px">vs Team Liquid</span></div><span class="bot">Sat · 5:00 PM PT</span></div>
+      <div class="s-tpl" style="background:radial-gradient(120% 80% at 50% 0%,#16324b,#070f1d)"><span class="lab" style="color:#9fc3da">MOMENT · AUTO-CLIP</span><div class="big" style="font-size:14px">Blaber flips the fight</div><span class="bot" style="color:#9fb2c4">0:12 · share to the room</span></div>
+      <div class="s-tpl" style="background:radial-gradient(120% 80% at 50% 0%,#0B1A33,#05101F)"><span class="lab" style="color:#8fa7c4">INNER NINE</span><div class="big" style="font-size:14px;text-align:center">@nine_lives</div><span class="bot" style="color:#8fa7c4;text-align:center">to the inner circle</span></div>
+    </div>
+
+    <h3 class="h">A sample week from one match</h3>
+    <div class="s-legend"><span><i style="background:var(--c9)"></i>Hero</span><span><i style="background:#46C7B8"></i>Player</span><span><i style="background:#5B6B82"></i>Content-type</span></div>
+    <div class="s-week">
+      <div class="s-day"><div class="dn">Mon</div><div class="ph">Off-week</div><div class="s-chip" style="background:var(--c9);width:50%"></div><div class="s-chip" style="background:#46C7B8;width:80%"></div><div class="s-chip" style="background:#5B6B82;width:70%"></div><div class="tot"><b>~9</b> posts</div></div>
+      <div class="s-day"><div class="dn">Tue</div><div class="ph">Off-week</div><div class="s-chip" style="background:var(--c9);width:50%"></div><div class="s-chip" style="background:#46C7B8;width:75%"></div><div class="s-chip" style="background:#5B6B82;width:80%"></div><div class="tot"><b>~10</b> posts</div></div>
+      <div class="s-day"><div class="dn">Wed</div><div class="ph hot">Pre-match</div><div class="s-chip" style="background:var(--c9);width:65%"></div><div class="s-chip" style="background:#46C7B8;width:90%"></div><div class="s-chip" style="background:#5B6B82;width:85%"></div><div class="tot"><b>~13</b> posts</div></div>
+      <div class="s-day"><div class="dn">Thu</div><div class="ph hot">Pre-match</div><div class="s-chip" style="background:var(--c9);width:70%"></div><div class="s-chip" style="background:#46C7B8;width:95%"></div><div class="s-chip" style="background:#5B6B82;width:90%"></div><div class="tot"><b>~15</b> posts</div></div>
+      <div class="s-day"><div class="dn">Fri</div><div class="ph hot">Pre-match</div><div class="s-chip" style="background:var(--c9);width:80%"></div><div class="s-chip" style="background:#46C7B8;width:95%"></div><div class="s-chip" style="background:#5B6B82;width:95%"></div><div class="tot"><b>~17</b> posts</div></div>
+      <div class="s-day peak"><div class="dn">Sat</div><div class="ph hot">Match day</div><div class="s-chip" style="background:var(--c9);width:100%"></div><div class="s-chip" style="background:#46C7B8;width:100%"></div><div class="s-chip" style="background:#5B6B82;width:100%"></div><div class="tot"><b>~26</b> posts</div></div>
+      <div class="s-day"><div class="dn">Sun</div><div class="ph hot">Post-match</div><div class="s-chip" style="background:var(--c9);width:70%"></div><div class="s-chip" style="background:#46C7B8;width:100%"></div><div class="s-chip" style="background:#5B6B82;width:95%"></div><div class="tot"><b>~20</b> posts</div></div>
+    </div>
+    <p class="lead" style="margin-top:18px">Saturday peaks with matchday graphics, spoiler-timed live clips, the result, and player POV. Sunday is the fan-out. Mid-week the same footage becomes lore, behind-the-scenes, and the drop teaser. One event, a week of native content, no day left empty. Nothing publishes without a human gate, which is how the calm-premium voice survives at that volume.</p>
+  </section>
+
+  <section class="sec">
+    <p class="kick">Outcome</p>
+    <h2 class="h">What it demonstrates</h2>
+    <p class="lead">One problem solved across brand, product, AI, motion, and social at once, with the decisions visible and defended. The recurring move is strategic restraint: free-to-play not gambling, earned not sold, calm not loud, owned community not outsourced, AI for volume but taste kept human. That restraint is the senior call in every layer, and it is the throughline a creative director is hired to hold.</p>
+    <div class="pull" style="margin-bottom:0">Watching becomes <span class="a">belonging</span>.</div>
+  </section>
+
+</div>
+
+<footer class="foot"><div class="wrap">
+  <div class="big">Next:<br/><a href="wisp.html">Wisp ↗</a></div>
+  <div class="rw">
+    <div>Pratik Mehta · New York · 2026</div>
+    <div><a href="mailto:mehtadpratik@gmail.com">Email</a> · <a href="https://linkedin.com/in/pratikm96" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="https://behance.net/pratikm96" target="_blank" rel="noopener noreferrer">Behance</a></div>
+  </div>
+  <div class="legal">Cloud9 marks referenced for a self-initiated concept. Figures are category benchmarks and projected targets.</div>
+</div></footer>
+
+<script>
+/* AI moment-alert clipper */
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var moments=[
+    {title:"Blaber flips the fight",cap:"Blaber flips the fight",sub:'Caption auto-written, C9 bias on · edit',kill:'C9 <b>Blaber</b> <span class="k">&#9654;</span> TL jungle',tags:["kill feed","audio spike","chat +320%"],dur:"0:12"},
+    {title:"Zven 1v2 in the side lane",cap:"Zven 1v2 in the side lane",sub:'Caption auto-written, C9 bias on · edit',kill:'C9 <b>Zven</b> <span class="k">&#9654;</span> double kill',tags:["kill feed","audio spike","chat +260%"],dur:"0:09"},
+    {title:"Vulcan hook starts the ace",cap:"Vulcan hook starts the ace",sub:'Caption auto-written, C9 bias on · edit',kill:'C9 <b>Vulcan</b> <span class="k">&#9654;</span> ace',tags:["kill feed","audio spike","chat +410%"],dur:"0:14"}
+  ];
+  var idx=0,running=false,timers=[],currentMoment=moments[0];
+  function after(ms,fn){timers.push(setTimeout(fn,ms));}
+  function clearAll(){timers.forEach(clearTimeout);timers=[];}
+  function setSignals(g,a,c){if(!$("d_sGame"))return;$("d_sGame").style.width=g+"%";$("d_vGame").textContent=g+"%";$("d_sAudio").style.width=a+"%";$("d_vAudio").textContent=a+"%";$("d_sChat").style.width=c+"%";$("d_vChat").textContent=c+"%";}
+  function setRing(p){$("d_ring").style.strokeDashoffset=263.9*(1-p/100);$("d_ringPct").textContent=Math.round(p);}
+  function addFeed(html){var d=document.createElement("div");d.className="d-ln";d.innerHTML=html;$("d_feed").appendChild(d);requestAnimationFrame(function(){d.classList.add("on");});}
+  function reset(){clearAll();running=false;$("d_alert").classList.remove("on");$("d_clip").classList.remove("on");$("d_toast").classList.remove("on");$("d_flash").classList.remove("on");$("d_feed").innerHTML="";setSignals(6,8,5);setRing(14);$("d_state").textContent="Listening";$("d_state").classList.remove("hit");$("d_ring").setAttribute("stroke","#29ABE2");$("d_b1").style.transform="";$("d_b2").style.transform="";$("d_r1").style.opacity="1";$("d_r1").style.transform="";$("d_r2").style.transform="";$("d_claimBtn").textContent="Share to Community · +40";$("d_claimBtn").style.opacity="1";$("d_runBtn").removeAttribute("disabled");}
+  function run(){if(running)return;reset();running=true;var m=moments[idx%moments.length];idx++;currentMoment=m;$("d_runBtn").setAttribute("disabled","");
+    after(120,function(){$("d_b1").style.transform="translate(52px,-44px)";$("d_b2").style.transform="translate(34px,-58px)";$("d_r2").style.transform="translate(-10px,8px)";});
+    after(150,function(){setSignals(92,80,parseInt(m.tags[2].replace(/\D/g,""))>300?96:88);setRing(84);});
+    after(200,function(){addFeed('TL outer turret falls');});
+    after(950,function(){addFeed(m.kill);});
+    after(1650,function(){$("d_flash").classList.add("on");$("d_r1").style.opacity="0";$("d_state").textContent="Moment detected";$("d_state").classList.add("hit");after(260,function(){$("d_flash").classList.remove("on");});});
+    after(1950,function(){$("d_alertTitle").textContent=m.title;$("d_alert").classList.add("on");running=false;$("d_runBtn").removeAttribute("disabled");});
+  }
+  function openClip(){var m=currentMoment;$("d_clipCap").textContent=m.cap;$("d_clipSub").innerHTML=m.sub;$("d_clipDur").textContent=m.dur;var t="";m.tags.forEach(function(x){t+='<span class="d-opt">'+x+'</span>';});$("d_clipTags").innerHTML=t;$("d_alert").classList.remove("on");$("d_clip").classList.add("on");}
+  function claim(){$("d_toast").classList.add("on");$("d_claimBtn").textContent="Shared · +40 added";$("d_claimBtn").style.opacity=".7";after(2200,function(){$("d_toast").classList.remove("on");});}
+  function init(){if(!$("d_runBtn"))return;$("d_runBtn").addEventListener("click",run);$("d_resetBtn").addEventListener("click",reset);$("d_openClip").addEventListener("click",openClip);$("d_closeClip").addEventListener("click",function(){$("d_clip").classList.remove("on");$("d_alert").classList.add("on");});$("d_claimBtn").addEventListener("click",claim);reset();after(900,run);}
+  if(document.readyState!=="loading")init();else document.addEventListener("DOMContentLoaded",init);
+})();
+/* broadcast overlay */
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var timers=[],running=false;
+  function after(ms,fn){timers.push(setTimeout(fn,ms));}
+  function clearAll(){timers.forEach(clearTimeout);timers=[];}
+  function reset(){clearAll();running=false;if(!$("b_l3"))return;$("b_l3").classList.remove("on");$("b_sting").classList.remove("on");$("b_shout").classList.remove("on");$("b_gflash").classList.remove("on");$("b_u1").style.transform="";$("b_u2").style.transform="";$("b_u3").style.opacity="1";$("b_u3").style.transform="";$("b_u4").style.transform="";$("b_runBtn").removeAttribute("disabled");}
+  function run(){if(running||!$("b_l3"))return;reset();running=true;$("b_runBtn").setAttribute("disabled","");
+    after(300,function(){$("b_l3").classList.add("on");});
+    after(2300,function(){$("b_l3").classList.remove("on");});
+    after(2500,function(){$("b_u1").style.transform="translate(48px,-40px)";$("b_u2").style.transform="translate(32px,-54px)";$("b_u4").style.transform="translate(-10px,8px)";});
+    after(2950,function(){$("b_gflash").classList.add("on");$("b_u3").style.opacity="0";after(280,function(){$("b_gflash").classList.remove("on");});});
+    after(3050,function(){$("b_sting").classList.add("on");});
+    after(5100,function(){$("b_sting").classList.remove("on");});
+    after(5500,function(){$("b_shout").classList.add("on");});
+    after(7900,function(){$("b_shout").classList.remove("on");running=false;$("b_runBtn").removeAttribute("disabled");});
+  }
+  function init(){if(!$("b_runBtn"))return;var base=24*60+18;setInterval(function(){base++;var m=Math.floor(base/60),s=base%60;$("b_clock").textContent=m+":"+(s<10?"0":"")+s;},1000);$("b_runBtn").addEventListener("click",run);$("b_resetBtn").addEventListener("click",reset);reset();after(1100,run);}
+  if(document.readyState!=="loading")init();else document.addEventListener("DOMContentLoaded",init);
+})();
+</script>
+</body>
+</html>

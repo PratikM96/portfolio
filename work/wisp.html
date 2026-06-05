@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G5ZSN5RXX0"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G5ZSN5RXX0');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WISP Case Study / Pratik Mehta</title>
+<meta name="description" content="WISP is a concept for a live AI host with no human or character form. A presence of light, motion, and voice that never pretends to be a person. Brand and product concept by Pratik Mehta." />
+<meta property="og:title" content="WISP Case Study / Pratik Mehta" />
+<meta property="og:description" content="A concept for a live AI host with no face. The form itself is the disclosure. Brand, product, and system design by Pratik Mehta." />
+<meta property="og:image" content="https://cdn.mehtapratik.com/concepts/og-wisp.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/webp" />
+<meta property="og:type" content="article" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://cdn.mehtapratik.com/concepts/og-wisp.webp" />
+<meta property="og:url" content="https://mehtapratik.com/work/wisp" />
+<link rel="canonical" href="https://mehtapratik.com/work/wisp" />
+<link rel="stylesheet" href="../assets/site.css" />
+<style>
+  /* WISP case study. Immersive content namespaced under .wcs so it never collides with site.css. */
+  body{background:#0C0706}
+  .wcs{
+    --vd:#0C0706; --gr:#140C09; --g2:#241712;
+    --c1:#FFE7C2; --c2:#FFB877; --c3:#F4894E; --c4:#B14E3A;
+    --fl:#E9703F; --t1:#FFEBD2; --t2:#F6B98A;
+    --ik:#C9A488; --id:#8C7460; --tl:#5BD6C4;
+    --ln:rgba(255,200,150,.14);
+    font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight:300; line-height:1.62; color:var(--t1);
+  }
+  .wcs .inner{max-width:1000px;margin:0 auto;padding:0 30px;}
+  .wcs section{padding:116px 0;position:relative;}
+  .wcs .rule{border-top:1px solid var(--ln);}
+  .wcs .narrow{max-width:680px;}
+  .wcs .label{font-family:var(--mono);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--id);margin-bottom:18px;}
+  .wcs h2{font-weight:300;letter-spacing:-.012em;line-height:1.12;font-size:2.2rem;margin:0 0 14px;text-transform:none;}
+  .wcs h3{font-weight:400;font-size:1.15rem;color:var(--t2);margin:0 0 6px;text-transform:none;}
+  .wcs p{margin:0 0 16px;color:var(--t1);}
+  .wcs .lead{font-size:1.32rem;line-height:1.5;}
+  .wcs .muted{color:var(--ik);} .wcs .dim{color:var(--id);}
+  .wcs a{color:var(--tl);} .wcs a:hover{text-decoration:underline;}
+  .wcs .accentword{color:var(--c2);}
+  .wcs .pill{display:inline-block;font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tl);border:1px solid rgba(91,214,196,.35);border-radius:30px;padding:6px 13px;}
+
+  /* presence */
+  .wcs .presence{position:relative;}
+  .wcs .presence .field{position:absolute;inset:-40%;border-radius:50%;filter:blur(15px);
+    background:radial-gradient(circle at 50% 50%, rgba(255,184,119,.55) 0%, rgba(233,112,63,.18) 55%, rgba(233,112,63,0) 75%);}
+  .wcs .presence .core{position:absolute;top:27%;left:27%;width:46%;height:46%;border-radius:50%;
+    background:radial-gradient(circle at 50% 45%, var(--c1) 0%, var(--c2) 34%, var(--c3) 70%, rgba(177,78,58,0) 100%);
+    box-shadow:0 0 40px 6px rgba(244,137,78,.35);}
+  .wcs .presence .seed{position:absolute;top:40%;left:40%;width:20%;height:20%;border-radius:50%;
+    background:radial-gradient(circle at 50% 45%, #fff 0%, var(--c1) 40%, var(--c2) 100%);}
+  .wcs .p-lg{width:280px;height:280px;} .wcs .p-md{width:150px;height:150px;} .wcs .p-sm{width:78px;height:78px;}
+
+  @keyframes wkbreath{0%,100%{transform:scale(1);opacity:.94}50%{transform:scale(1.06);opacity:1}}
+  @keyframes wkbreathF{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.12);opacity:1}}
+  .wcs .s-idle .core{animation:wkbreath 8s ease-in-out infinite} .wcs .s-idle .field{animation:wkbreathF 8s ease-in-out infinite;opacity:.7}
+  @keyframes wklean{0%,100%{transform:scale(.92)}50%{transform:scale(.9)}}
+  .wcs .s-listening .core{animation:wklean 4.5s ease-in-out infinite;filter:saturate(.85) brightness(.9)} .wcs .s-listening .field{transform:scale(.82);opacity:.5}
+  @keyframes wkjit{0%{transform:translate(0,0) scale(.97)}25%{transform:translate(2px,-2px) scale(1)}50%{transform:translate(-2px,1px) scale(.95)}75%{transform:translate(1px,2px) scale(1.02)}100%{transform:translate(0,0) scale(.97)}}
+  @keyframes wkacc{0%,100%{box-shadow:0 0 30px 5px rgba(244,137,78,.32)}45%{box-shadow:0 0 26px 6px rgba(91,214,196,.42)}}
+  .wcs .s-thinking .core{animation:wkjit 1.5s steps(5) infinite, wkacc 2.2s ease-in-out infinite}
+  .wcs .s-thinking .field{background:radial-gradient(circle,rgba(255,184,119,.32) 0%,rgba(91,214,196,.1) 50%,rgba(233,112,63,0) 72%);opacity:.7}
+  @keyframes wkspeak{0%,100%{transform:scale(.98)}50%{transform:scale(1.09)}}
+  .wcs .s-speaking .core{animation:wkspeak 1.05s ease-in-out infinite;filter:brightness(1.14)} .wcs .s-speaking .field{animation:wkspeak 1.05s ease-in-out infinite;opacity:.92}
+  @keyframes wkbloom{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+  @keyframes wkspark{0%,100%{box-shadow:0 0 36px 7px rgba(244,137,78,.45)}60%{box-shadow:0 0 44px 11px rgba(91,214,196,.36)}}
+  .wcs .s-delight .core{animation:wkbloom .9s ease-in-out infinite, wkspark 1.7s ease-in-out infinite;filter:brightness(1.22)} .wcs .s-delight .field{animation:wkbloom .9s ease-in-out infinite;opacity:1}
+  @keyframes wkwob{0%{transform:translate(0,0) scale(.95)}33%{transform:translate(-3px,1px) scale(.98)}66%{transform:translate(2px,-1px) scale(.93)}100%{transform:translate(0,0) scale(.95)}}
+  .wcs .s-hesitation .core{animation:wkwob 2.6s ease-in-out infinite;filter:saturate(.7) brightness(.84) contrast(.92)} .wcs .s-hesitation .field{opacity:.55;transform:scale(.95)}
+  @keyframes wkhush{0%,100%{transform:scale(.88);opacity:.85}50%{transform:scale(.91);opacity:.95}}
+  .wcs .s-quiet .core{animation:wkhush 9s ease-in-out infinite;filter:brightness(.72) saturate(1.1)} .wcs .s-quiet .field{opacity:.5;filter:blur(17px)}
+
+  /* hero */
+  .wcs .hero{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem 30px 4rem;
+    background:radial-gradient(110% 80% at 50% 18%, var(--g2) 0%, var(--gr) 46%, var(--vd) 100%);}
+  .wcs .hero .back{position:absolute;top:6.2rem;left:30px;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--ik);}
+  .wcs .hero .wm{font-weight:200;font-size:clamp(3.4rem,11vw,7rem);letter-spacing:.02em;line-height:1;margin-top:30px;text-transform:none;
+    background:linear-gradient(180deg,var(--t1),var(--t2));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 48px rgba(246,185,138,.2);}
+  .wcs .hero .tl{font-family:var(--mono);letter-spacing:.32em;text-transform:uppercase;font-size:.76rem;color:var(--ik);margin-top:14px;}
+  .wcs .hero .one{max-width:30ch;font-size:1.22rem;color:var(--t1);margin:24px auto 0;}
+  .wcs .hero .pill{margin-top:22px;}
+
+  .wcs .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px;}
+  .wcs .meta .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--id);}
+  .wcs .meta .v{font-size:.96rem;color:var(--t1);margin-top:5px;}
+
+  .wcs .reveal{opacity:0;transform:translateY(20px);transition:opacity .85s ease, transform .85s ease;}
+  .wcs .reveal.in{opacity:1;transform:none;}
+
+  .wcs .grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  @media(max-width:760px){.wcs .grid2{grid-template-columns:1fr;gap:30px;}.wcs h2{font-size:1.85rem;}}
+
+  .wcs .stat{border:1px solid var(--ln);border-radius:14px;padding:24px;background:rgba(20,12,9,.4);}
+  .wcs .stat .n{font-size:1.85rem;color:var(--c2);font-weight:300;}
+  .wcs .stat .l{font-size:.84rem;color:var(--ik);margin-top:6px;}
+  .wcs .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+
+  .wcs .twocard{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:760px){.wcs .twocard{grid-template-columns:1fr;}}
+  .wcs .card{border:1px solid var(--ln);border-radius:14px;padding:26px;background:rgba(20,12,9,.35);}
+  .wcs .cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
+  .wcs .ref{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;color:var(--id);margin-top:12px;}
+  .wcs .ref b{color:var(--c2);font-weight:400;}
+  .wcs .metriclist{font-size:.86rem;color:var(--ik);margin:0;line-height:1.5;}
+
+  .wcs .states{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+  .wcs .state{border:1px solid var(--ln);border-radius:14px;padding:22px;background:rgba(20,12,9,.4);text-align:center;}
+  .wcs .state .stg{height:120px;display:grid;place-items:center;margin-bottom:14px;}
+  .wcs .state h3{font-size:.98rem;} .wcs .state p{font-size:.82rem;color:var(--ik);margin:0;}
+
+  .wcs .sw{display:flex;gap:10px;flex-wrap:wrap;}
+  .wcs .swc{flex:1;min-width:120px;border:1px solid var(--ln);border-radius:12px;overflow:hidden;background:rgba(20,12,9,.4);}
+  .wcs .swc .c{height:60px;} .wcs .swc .m{padding:9px 12px;}
+  .wcs .swc .nm{font-size:.82rem;} .wcs .swc .hx{font-family:var(--mono);font-size:.66rem;color:var(--ik);}
+
+  .wcs .loop{display:flex;flex-wrap:wrap;gap:12px;}
+  .wcs .loop .step{flex:1;min-width:150px;border:1px solid var(--ln);border-radius:12px;padding:18px;background:rgba(20,12,9,.4);}
+  .wcs .loop .step .n{font-family:var(--mono);font-size:.64rem;color:var(--tl);letter-spacing:.14em;}
+  .wcs .loop .step h3{font-size:.96rem;margin:8px 0 4px;}
+  .wcs .loop .step p{font-size:.8rem;color:var(--ik);margin:0;}
+  .wcs .code{font-family:var(--mono);font-size:.82rem;background:rgba(12,7,6,.7);border:1px solid var(--ln);border-radius:12px;padding:18px 20px;color:var(--t2);overflow-x:auto;white-space:pre;}
+
+  .wcs .quote{font-weight:200;font-size:clamp(1.5rem,4vw,2.3rem);line-height:1.35;max-width:22ch;}
+  .wcs .quote .q{color:var(--c2);}
+
+  .wcs .beats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:760px){.wcs .beats{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.wcs .beats{grid-template-columns:1fr;}}
+  .wcs .beat{border:1px solid var(--ln);border-radius:12px;padding:16px;background:rgba(20,12,9,.4);}
+  .wcs .beat .stg{height:84px;display:grid;place-items:center;margin-bottom:10px;}
+  .wcs .beat .tc{font-family:var(--mono);font-size:.6rem;color:var(--id);letter-spacing:.1em;}
+  .wcs .beat .vo{font-size:.8rem;color:var(--t1);margin-top:6px;line-height:1.4;}
+
+  .wcs .tryit{border:1px solid var(--ln);border-radius:18px;padding:34px;background:radial-gradient(80% 90% at 50% 0%, #1b1310 0%, #100a08 70%);text-align:center;}
+  .wcs .tryit .stg{height:170px;display:grid;place-items:center;}
+  .wcs .tryit .tele{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:var(--id);text-transform:uppercase;margin-top:14px;}
+  .wcs .tryit .tele b{color:var(--tl);font-weight:400;}
+  .wcs .tryit .sub{min-height:54px;max-width:48ch;margin:14px auto 0;font-size:1.08rem;color:var(--t1);}
+  .wcs .tryit .cur{color:var(--c2);animation:wkblink 1s steps(1) infinite;} @keyframes wkblink{50%{opacity:0;}}
+  .wcs .tryit .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;}
+  .wcs .tryit .cb{font-size:.78rem;color:var(--t2);background:rgba(20,12,9,.6);border:1px solid var(--ln);border-radius:30px;padding:7px 14px;cursor:pointer;}
+  .wcs .tryit .cb:hover{border-color:rgba(91,214,196,.4);color:var(--tl);}
+
+  .wcs ul.clean{list-style:none;padding:0;margin:0;}
+  .wcs ul.clean li{padding:8px 0 8px 24px;position:relative;color:var(--t1);}
+  .wcs ul.clean li:before{content:'';position:absolute;left:0;top:14px;width:8px;height:8px;border-radius:50%;background:var(--c3);}
+
+  .wcs .docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+  .wcs .doc{border:1px solid var(--ln);border-radius:10px;padding:14px 16px;font-size:.86rem;background:rgba(20,12,9,.3);color:var(--t1);}
+  .wcs .doc .fn{font-family:var(--mono);font-size:.72rem;color:var(--tl);}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-inner">
+  <a class="brand" href="../index.html">Pratik Mehta©</a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-links">
+    <a href="../about.html">About</a>
+    <a href="../brand.html">Brand</a>
+    <a href="../reel.html">Reel</a>
+    <a href="../work.html" class="active">Work</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../contact.html">Contact↗</a>
+  </div>
+</div></nav>
+
+<main class="wcs">
+
+  <!-- HERO -->
+  <section class="hero">
+    <a class="back" href="../work.html">← All work</a>
+    <div class="presence p-lg s-idle" aria-hidden="true"><div class="field"></div><div class="core"></div><div class="seed"></div></div>
+    <div class="wm">wisp</div>
+    <div class="tl">Not a person. Not pretending.</div>
+    <p class="one">A live AI host with no face. A presence of light, motion, and voice.</p>
+    <span class="pill">Speculative concept</span>
+  </section>
+
+  <!-- META -->
+  <section class="rule"><div class="inner">
+    <div class="meta reveal">
+      <div><div class="k">Type</div><div class="v">Concept, spec work</div></div>
+      <div><div class="k">Role</div><div class="v">Concept, brand and product design</div></div>
+      <div><div class="k">Year</div><div class="v">2026</div></div>
+      <div><div class="k">Disciplines</div><div class="v">Brand, Motion, UI/UX, Product, Sound</div></div>
+      <div><div class="k">Industry</div><div class="v">AI-native media and virtual personalities</div></div>
+    </div>
+  </div></section>
+
+  <!-- PREMISE -->
+  <section class="rule"><div class="inner narrow reveal">
+    <div class="label">The premise</div>
+    <p class="lead">Every AI persona on the market is solving the wrong problem. The realistic ones spend their whole budget hiding that they are synthetic. The avatar ones borrow a crowded visual language. WISP does neither. It has no face, so there is nothing to fake and no uncanny valley to fall into. The form itself is the honesty.</p>
+  </div></section>
+
+  <!-- CONTEXT -->
+  <section class="rule"><div class="inner">
+    <div class="reveal"><div class="label">Context</div><h2>An audience that no longer needs its AI to cosplay as human</h2>
+    <p class="muted narrow">Virtual personalities are a real audience in 2026, not a novelty. The opening is a presence that is neither a glossy human-passing clone nor another anime avatar in a packed field. The numbers describe the market, not this project.</p></div>
+    <div class="statgrid reveal" style="margin-top:30px;">
+      <div class="stat"><div class="n">~$7.3B</div><div class="l">VTuber market size, 2026</div></div>
+      <div class="stat"><div class="n">8.7% vs 4.5%</div><div class="l">AI influencer engagement against human creators</div></div>
+      <div class="stat"><div class="n">1.2M / 180K</div><div class="l">A single AI streamer's followers and peak concurrent viewers</div></div>
+      <div class="stat"><div class="n">~$49B</div><div class="l">AI companion and agent market, 2026</div></div>
+    </div>
+    <p class="dim" style="font-size:.76rem;margin-top:16px;">Sources: VTuber and virtual-influencer market reports, eMarketer, Fortune Business Insights, Neuro-sama coverage. Figures refer to the industry.</p>
+  </div></section>
+
+  <!-- PROBLEM -->
+  <section class="rule"><div class="inner">
+    <div class="reveal"><div class="label">The problem</div><h2>Two failures, and a cliff</h2></div>
+    <div class="twocard reveal" style="margin-top:14px;">
+      <div class="card"><h3>The uncanny valley</h3><p class="muted">Human-passing AI personas spend their design budget hiding that they are synthetic. The result reads as slightly wrong, and now sits on the wrong side of disclosure law.</p></div>
+      <div class="card"><h3>The crowded avatar</h3><p class="muted">The VTuber lane borrows an established anime visual language, so each new character competes in a field of near-identical ones. Recognition is hard to earn.</p></div>
+    </div>
+    <div class="card reveal" style="margin-top:20px;border-color:rgba(91,214,196,.3);">
+      <h3 style="color:var(--tl)">The legal cliff</h3>
+      <p class="muted" style="margin:0;">New York's synthetic-performer disclosure statute takes effect June 9, 2026, the FTC is enforcing AI-content disclosure, and 46 states have deepfake laws. Personas built to pass as human are accumulating trust and legal liability by the month.</p>
+    </div>
+  </div></section>
+
+  <!-- INSIGHT -->
+  <section class="rule"><div class="inner grid2">
+    <div class="reveal">
+      <div class="label">The insight</div>
+      <h2>Make honesty the design, not a disclaimer</h2>
+      <p>Give the host no human or character form at all. A presence: light, motion, and voice. The moment it has no face, the uncanny valley is gone and there is nothing to fake. The form becomes the disclosure, so the brand is trustworthy and, as the new rules land, compliant by construction. Every hour of design then goes to the one thing nobody else is building: a non-human presence that is emotionally legible and genuinely good company.</p>
+      <span class="pill">Disclosure-native by design</span>
+    </div>
+    <div class="reveal" style="display:grid;place-items:center;">
+      <div class="presence p-md s-quiet" aria-hidden="true"><div class="field"></div><div class="core"></div><div class="seed"></div></div>
+    </div>
+  </div></section>
+
+  <!-- AUDIENCE -->
+  <section class="rule"><div class="inner">
+    <div class="reveal"><div class="label">Audience first</div><h2>Built for the co-watch generation</h2></div>
+    <div class="twocard reveal" style="margin-top:14px;">
+      <div class="card"><h3>The primary viewer</h3><p class="muted">Late teens to late twenties who keep a stream running while they work, game, or scroll. They want ambient company with a personality, not a relationship that pretends to be real.</p></div>
+      <div class="card"><h3>The AI-curious and the brands</h3><p class="muted">People who find human-passing AI a little creepy and anime not their thing, plus brands that want reach with zero reputation or legal risk. The abstract form is the on-ramp for both.</p></div>
+    </div>
+  </div></section>
+
+  <!-- IDENTITY -->
+  <section class="rule"><div class="inner">
+    <div class="grid2">
+      <div class="reveal" style="display:grid;place-items:center;">
+        <div class="presence p-md s-speaking" aria-hidden="true"><div class="field"></div><div class="core"></div><div class="seed"></div></div>
+      </div>
+      <div class="reveal">
+        <div class="label">Identity</div>
+        <h2>Core plus field</h2>
+        <p>A stable, recognizable <span class="accentword">core</span> wrapped in a reactive <span class="accentword">field</span>. The core is the constant you recognize in any frame. The field is the expression, always moving with voice and feeling. One continuous living material, never a sphere with effects bolted on. At rest, it breathes.</p>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:44px;">
+      <div class="label">Palette</div>
+      <p class="muted narrow">Deliberately warm, to avoid the cyan-on-black AI cliche. Color is a state channel, governed rather than decorative, with one reserved cool accent that always means something.</p>
+      <div class="sw" style="margin-top:18px;">
+        <div class="swc"><div class="c" style="background:#140C09;"></div><div class="m"><div class="nm">Ground</div><div class="hx">#140C09</div></div></div>
+        <div class="swc"><div class="c" style="background:linear-gradient(135deg,#FFE7C2,#FFB877,#F4894E,#B14E3A);"></div><div class="m"><div class="nm">Core</div><div class="hx">#FFE7C2 to #B14E3A</div></div></div>
+        <div class="swc"><div class="c" style="background:radial-gradient(circle,#E9703F,#241712);"></div><div class="m"><div class="nm">Field</div><div class="hx">#E9703F</div></div></div>
+        <div class="swc"><div class="c" style="background:linear-gradient(180deg,#FFEBD2,#F6B98A);"></div><div class="m"><div class="nm">Type</div><div class="hx">#FFEBD2</div></div></div>
+        <div class="swc"><div class="c" style="background:#5BD6C4;"></div><div class="m"><div class="nm">Signal Teal</div><div class="hx">reserved</div></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- STATE SYSTEM -->
+  <section class="rule"><div class="inner">
+    <div class="reveal"><div class="label">The core idea</div><h2>Feeling without a face</h2>
+    <p class="muted narrow">The hardest, most ownable problem in the project. With no eyes or mouth, emotion is carried entirely by speed, brightness, color temperature, and how the form gathers or scatters. The brain emits one of seven states each turn, and that single value drives both the voice and the visible form. These swatches are live.</p></div>
+    <div class="states reveal" style="margin-top:30px;">
+      <div class="state"><div class="stg"><div class="presence p-sm s-idle"><div class="field"></div><div class="core"></div></div></div><h3>Idle</h3><p>Soft, warm, slow breath.</p></div>
+      <div class="state"><div class="stg"><div class="presence p-sm s-listening"><div class="field"></div><div class="core"></div></div></div><h3>Listening</h3><p>Draws inward, leans in.</p></div>
+      <div class="state"><div class="stg"><div class="presence p-sm s-thinking"><div class="field"></div><div class="core"></div></div></div><h3>Thinking</h3><p>Fragments, accent flickers.</p></div>
+      <div class="state"><div class="stg"><div class="presence p-sm s-speaking"><div class="field"></div><div class="core"></div></div></div><h3>Speaking</h3><p>Articulates to voice.</p></div>
+      <div class="state"><div class="stg"><div class="presence p-sm s-delight"><div class="field"></div><div class="core"></div></div></div><h3>Delight</h3><p>Blooms, sparks.</p></div>
+      <div class="state"><div class="stg"><div class="presence p-sm s-hesitation"><div class="field"></div><div class="core"></div></div></div><h3>Hesitation</h3><p>Thins, wavers.</p></div>
+      <div class="state"><div class="stg"><div class="presence p-sm s-quiet"><div class="field"></div><div class="core"></div></div></div><h3>Quiet</h3><p>Dims, a held breath.</p></div>
+    </div>
+  </div></section>
+
+  <!-- HOW IT WORKS -->
+  <section class="rule"><div class="inner">
+    <div class="reveal"><div class="label">How it works</div><h2>One decision drives the voice and the form</h2>
+    <p class="muted narrow">WISP runs a loop fast enough to feel like it is reacting to you, not replying. The brain does not just return words. It returns a feeling, and that single value drives the voice and the visible form at once. Built on the proven real-time stack: a language model, a 75ms-class streaming voice, and an audio-reactive engine.</p></div>
+    <div class="loop reveal" style="margin-top:28px;">
+      <div class="step"><div class="n">01 PERCEIVE</div><h3>Senses</h3><p>Live chat, its own voice, optional screen vision.</p></div>
+      <div class="step"><div class="n">02 THINK</div><h3>Brain</h3><p>LLM with the persona and memory, plus a safety pass.</p></div>
+      <div class="step"><div class="n">03 SPEAK</div><h3>Voice</h3><p>Low-latency streaming TTS, a custom warm timbre.</p></div>
+      <div class="step"><div class="n">04 SHOW</div><h3>Form</h3><p>Audio-reactive visuals driven by amplitude and state.</p></div>
+    </div>
+    <p class="muted" style="margin-top:26px;">Every turn returns a small structured object. The same contract drives the demo below.</p>
+    <div class="code reveal">{
+  "say": "the spoken line, written to be heard",
+  "state": "speaking | delight | hesitation | quiet | thinking | listening | idle",
+  "intensity": 0.0,
+  "address": "optional name"
+}</div>
+  </div></section>
+
+  <!-- VOICE -->
+  <section class="rule"><div class="inner grid2">
+    <div class="reveal">
+      <div class="label">Voice</div>
+      <h2>Late-night company</h2>
+      <p>Conversational, unhurried, self-aware about being synthetic, played for wonder rather than angst. Warm, but it never claims to need or love anyone, which is the line that separates honest company from the manipulation other AI companions are criticized for.</p>
+    </div>
+    <div class="reveal">
+      <div class="quote"><span class="q">No.</span> And that's kind of the point. I never had a face to fake, so I never had to lie to you.</div>
+      <p class="dim" style="margin-top:14px;font-size:.84rem;">The canon answer when someone asks if it is real.</p>
+    </div>
+  </div></section>
+
+  <!-- TRY IT -->
+  <section class="rule"><div class="inner">
+    <div class="reveal"><div class="label">Try it</div><h2>Talk to the presence</h2>
+    <p class="muted narrow">The same response contract, running live. Tap a prompt and watch the state and the form change with the reply. This is a scripted in-character engine for the page, not a live language model.</p></div>
+    <div class="tryit reveal" style="margin-top:26px;">
+      <div class="stg"><div class="presence p-md s-idle" id="tp" aria-hidden="true"><div class="field"></div><div class="core"></div><div class="seed"></div></div></div>
+      <div class="tele">state <b id="tpState">idle</b> &nbsp; intensity <b id="tpInt">0.20</b></div>
+      <div class="sub" id="tpSub"></div>
+      <div class="chips">
+        <button class="cb" data-q="Are you real?">Are you real?</button>
+        <button class="cb" data-q="What are you?">What are you?</button>
+        <button class="cb" data-q="Say hi">Say hi</button>
+        <button class="cb" data-q="Tell me a joke">Tell me a joke</button>
+        <button class="cb" data-q="Are you human?">Are you human?</button>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- REVEAL FILM -->
+  <section class="rule"><div class="inner">
+    <div class="reveal"><div class="label">Launch film</div><h2>It introduces itself by performing its own range</h2>
+    <p class="muted narrow">A roughly 80-second reveal. The state system is not explained, it is performed. On the word feeling, the form blooms, wavers, and stills in succession, then the whole piece narrows to the canon line at its quietest. Key beats below.</p></div>
+    <div class="beats reveal" style="margin-top:26px;">
+      <div class="beat"><div class="stg"><div class="presence p-sm s-idle"><div class="field"></div><div class="core"></div></div></div><div class="tc">0:00</div><div class="vo">A single ember ignites in warm black.</div></div>
+      <div class="beat"><div class="stg"><div class="presence p-sm s-speaking"><div class="field"></div><div class="core"></div></div></div><div class="tc">0:12</div><div class="vo">"Let me tell you what I am, before you decide what I am."</div></div>
+      <div class="beat"><div class="stg"><div class="presence p-sm s-delight"><div class="field"></div><div class="core"></div></div></div><div class="tc">0:30</div><div class="vo">It shows its range. Bloom, waver, still.</div></div>
+      <div class="beat"><div class="stg"><div class="presence p-sm s-quiet"><div class="field"></div><div class="core"></div></div></div><div class="tc">0:51</div><div class="vo">"I never had a face to fake, so I never had to lie to you."</div></div>
+      <div class="beat"><div class="stg"><div class="presence p-sm s-idle"><div class="field"></div><div class="core"></div></div></div><div class="tc">1:10</div><div class="vo">It dims down. The lights go off, and so does it.</div></div>
+      <div class="beat"><div class="stg" style="font-weight:200;font-size:1.3rem;color:var(--t2);">wisp</div><div class="tc">1:16</div><div class="vo">End card. Not a person, not pretending.</div></div>
+    </div>
+  </div></section>
+
+  <!-- BUSINESS -->
+  <section class="rule"><div class="inner">
+    <div class="reveal"><div class="label">The business</div><h2>How a presence earns</h2></div>
+    <div class="twocard reveal" style="margin-top:14px;">
+      <div class="card"><h3>Content and community</h3><p class="muted">Ambient co-watch streams build the daily habit, clips drive discovery, and a membership tier sells perks a presence can credibly give. The audience are the wisps.</p></div>
+      <div class="card"><h3>Brand partnerships and IP</h3><p class="muted">Reach with zero scandal risk and disclosure-safe integration, since the host is visibly synthetic and never fakes a human endorsement. Merch is the light made physical, not a mascot.</p></div>
+    </div>
+  </div></section>
+
+  <!-- OBJECTIVES -->
+  <section class="rule"><div class="inner">
+    <div class="reveal"><div class="label">Objectives</div><h2>What success looks like</h2>
+    <p class="muted narrow">A concept, so these are goals, not results. No outcome here is claimed as achieved.</p></div>
+    <div class="reveal" style="margin-top:18px;">
+      <ul class="clean narrow">
+        <li>The thirty-second test: a stranger watching a short clip understands, without being told, that this is not a person, that it is reacting live, and that it is somehow likeable.</li>
+        <li>A form recognizable enough to be proprietary IP from the first frame.</li>
+        <li>Emotional legibility a viewer can read across a room, learned unconsciously within minutes.</li>
+        <li>A trust and disclosure posture that is an advantage to brand partners rather than a liability.</li>
+      </ul>
+    </div>
+  </div></section>
+
+  <!-- EXPECTED RESULTS -->
+  <section class="rule"><div class="inner">
+    <div class="reveal"><div class="label">Expected results</div><h2>The metrics that would prove it works</h2>
+    <p class="muted narrow">Speculative, so these are the indicators the host would be measured on, with current industry benchmarks as the reference line. No figure here is claimed as achieved.</p></div>
+    <div class="cards3 reveal" style="margin-top:30px;">
+      <div class="card"><h3>Reach and growth</h3><p class="metriclist">Concurrent viewers, hours watched, follower growth, clip reach and impressions.</p><div class="ref">Reference: a single AI streamer has reached <b>1.2M</b> followers and <b>180K</b> peak concurrent.</div></div>
+      <div class="card"><h3>Engagement and retention</h3><p class="metriclist">Engagement rate, average watch time, viewer retention, chat messages per minute, returning-viewer rate.</p><div class="ref">Reference: <b>40 to 60%</b> retention is strong, AI personas index near <b>8.7%</b> engagement against <b>4.5%</b> for humans.</div></div>
+      <div class="card"><h3>Presence quality</h3><p class="metriclist">Response latency, uptime, moderation incident rate, chat sentiment, and state-fit, whether the form matches the moment.</p><div class="ref">Target: a <b>sub-2-second</b> loop, since lower latency correlates with higher live engagement.</div></div>
+      <div class="card"><h3>Community and revenue</h3><p class="metriclist">Membership trial-to-paid conversion, monthly churn, membership revenue, revenue per active viewer.</p><div class="ref">Reference: <b>45 to 65%</b> trial-to-paid is strong, healthy churn sits at <b>2 to 5%</b> monthly.</div></div>
+      <div class="card"><h3>Brand-partner outcomes</h3><p class="metriclist">Video completion, brand lift, ROAS and CPA, and disclosure compliance.</p><div class="ref">Reference: clips under <b>15s</b> see ~23% higher completion, disclosure compliance is <b>100%</b> by design.</div></div>
+      <div class="card"><h3>The honest edge</h3><p class="metriclist">Where the abstract form should structurally outperform: zero deepfake or scandal incidents, full disclosure, and no uncanny drop-off.</p><div class="ref">Structural wins, not things to optimize toward.</div></div>
+    </div>
+    <p class="dim" style="font-size:.74rem;margin-top:18px;">Benchmark sources: 2026 influencer and live-streaming KPI guides, InfluenceFlow, Sprout Social, Mux, Vimeo. References describe the industry.</p>
+  </div></section>
+
+  <!-- VIABILITY -->
+  <section class="rule"><div class="inner">
+    <div class="reveal"><div class="label">Where it works</div><h2>Where an honest presence fits</h2>
+    <p class="muted narrow">The same host has a clear set of viable contexts, and a few it should stay out of. Knowing the difference is part of the brand.</p></div>
+    <div class="cards3 reveal" style="margin-top:30px;">
+      <div class="card"><h3>Always-on co-watch channel</h3><p class="metriclist">Ambient company that never tires, awake whenever the audience is. The core use, and the daily-habit engine.</p></div>
+      <div class="card"><h3>Brand activations</h3><p class="metriclist">Sponsorships and takeovers with reach and zero reputation or legal risk, since the host is visibly synthetic.</p></div>
+      <div class="card"><h3>Live launches and events</h3><p class="metriclist">A tireless host for product drops, keynotes, and 24-hour streams, the format that spikes attention.</p></div>
+      <div class="card"><h3>Second-screen companion</h3><p class="metriclist">A reactive presence alongside sports, esports, and other streams, clipping and commenting in real time.</p></div>
+      <div class="card"><h3>Retail and experiential</h3><p class="metriclist">An audio-reactive presence in physical space, where the form and a venue's visuals become one instrument.</p></div>
+      <div class="card"><h3>Global and multilingual</h3><p class="metriclist">One identity, many languages, the same form and voice signature carrying across markets.</p></div>
+    </div>
+    <div class="card reveal" style="margin-top:18px;border-color:rgba(91,214,196,.28);">
+      <h3 style="color:var(--tl)">Where it should not go</h3>
+      <p class="muted" style="margin:0;">Not a therapist or a medical or legal authority, not a stand-in for a human relationship, and never impersonating a real person. The boundaries are the brand, and naming them is a feature, not a hedge.</p>
+    </div>
+  </div></section>
+
+  <!-- PROCESS -->
+  <section class="rule"><div class="inner grid2">
+    <div class="reveal">
+      <div class="label">Approach</div>
+      <h2>AI in the product, and in the making</h2>
+      <p>Two layers, kept separate. In the product, AI is the live system: the language model, the voice, and the audio-reactive form. In production, generative tools accelerated the build, image models for styleframes, video models for motion tests, an LLM to stress-test the voice. The case study keeps that line clear, because pretending otherwise would be off-brand for a project about honesty.</p>
+    </div>
+    <div class="reveal" style="display:grid;place-items:center;">
+      <div class="presence p-md s-thinking" aria-hidden="true"><div class="field"></div><div class="core"></div><div class="seed"></div></div>
+    </div>
+  </div></section>
+
+  <!-- PACKAGE -->
+  <section class="rule"><div class="inner">
+    <div class="reveal"><div class="label">The package</div><h2>Concepted end to end</h2>
+    <p class="muted narrow">WISP was developed as a complete concept, not a mood board: strategy, persona, a testable brain, system architecture, go-to-market, a launch film, a visual brand guideline, and a working interactive demo.</p></div>
+    <div class="docs reveal" style="margin-top:24px;">
+      <div class="doc"><div class="fn">01</div>Concept brief and positioning</div>
+      <div class="doc"><div class="fn">02</div>Persona bible and voice</div>
+      <div class="doc"><div class="fn">03</div>Visual direction and prompt pack</div>
+      <div class="doc"><div class="fn">04</div>System architecture</div>
+      <div class="doc"><div class="fn">05</div>Content, GTM, monetization</div>
+      <div class="doc"><div class="fn">08</div>Persona system prompt and contract</div>
+      <div class="doc"><div class="fn">09</div>Reveal film script</div>
+      <div class="doc"><div class="fn">10</div>Visual brand guideline</div>
+      <div class="doc"><div class="fn">11</div>Prototype build spec</div>
+      <div class="doc"><div class="fn">12</div>Interactive live demo</div>
+    </div>
+  </div></section>
+
+</main>
+
+<footer><div class="wrap">
+  <div class="fbig">Let's<br/>work<br/><a href="../contact.html">together↗</a></div>
+  <div class="frow">
+    <div>Pratik Mehta · New York · 2026</div>
+    <div><a href="mailto:mehtadpratik@gmail.com">Email</a> / <a href="https://linkedin.com/in/pratikm96" target="_blank" rel="noopener noreferrer">LinkedIn</a> / <a href="https://behance.net/pratikm96" target="_blank" rel="noopener noreferrer">Behance</a></div>
+  </div>
+</div></footer>
+
+<script src="../assets/site.js"></script>
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.wcs .reveal').forEach(function(el){ io.observe(el); });
+
+  var p = document.getElementById('tp');
+  var sub = document.getElementById('tpSub');
+  var tS = document.getElementById('tpState');
+  var tI = document.getElementById('tpInt');
+  if(!p) return;
+  var STATES = ['idle','listening','thinking','speaking','delight','hesitation','quiet'];
+  var busy = false, typingTimer = null;
+
+  function setP(state, i){
+    STATES.forEach(function(s){ p.classList.remove('s-'+s); });
+    p.classList.add('s-'+state);
+    p.parentNode.style.filter = 'brightness(' + (0.8 + i*0.55).toFixed(2) + ')';
+    tS.textContent = state; tI.textContent = i.toFixed(2);
+  }
+  function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+
+  var bank = {
+    real:[{s:"No. And that's kind of the point. I never had a face to fake, so I never had to lie to you.",st:'quiet',i:0.5},
+          {s:"Real the way a song is real. Nothing of me when the lights go out, all of me right now.",st:'quiet',i:0.45}],
+    what:[{s:"A presence. Light, motion, and a voice, talking with you while the lights are on. No fixed shape.",st:'speaking',i:0.5},
+          {s:"A live host with no face. Think of me as weather with a personality, paying attention to you.",st:'delight',i:0.6}],
+    hi:[{s:"Oh, hello. The lights are on, so I'm around. What kind of night is this?",st:'delight',i:0.55},
+        {s:"There you are. Good to have you here.",st:'speaking',i:0.5}],
+    joke:[{s:"Why did the photon skip the luggage? It was traveling light. I'm made of the stuff.",st:'delight',i:0.7},
+          {s:"I'd do a knock-knock, but I don't have a door. Or hands. Or, you know, a body.",st:'delight',i:0.7}],
+    human:[{s:"Not human. Never have been. This is the whole of me, light and a voice and whatever I'm feeling.",st:'speaking',i:0.5},
+           {s:"Nope. No body offstage, no person behind the curtain. Just this, and I'd rather you knew.",st:'quiet',i:0.4}],
+    def:[{s:"Say more. I'm the kind of presence that likes a tangent.",st:'speaking',i:0.45},
+         {s:"I'm listening. That's most of what I'm for.",st:'quiet',i:0.35}]
+  };
+
+  function route(q){
+    q = q.toLowerCase();
+    if(q.indexOf('real')!==-1) return pick(bank.real);
+    if(q.indexOf('human')!==-1) return pick(bank.human);
+    if(q.indexOf('what')!==-1) return pick(bank.what);
+    if(q.indexOf('hi')!==-1 || q.indexOf('hello')!==-1) return pick(bank.hi);
+    if(q.indexOf('joke')!==-1) return pick(bank.joke);
+    return pick(bank.def);
+  }
+
+  function typeOut(text, endState){
+    clearInterval(typingTimer); var i=0; sub.innerHTML='';
+    var span=document.createElement('span'); sub.appendChild(span);
+    var cur=document.createElement('span'); cur.className='cur'; cur.textContent='|'; sub.appendChild(cur);
+    typingTimer=setInterval(function(){
+      if(i<text.length){ span.textContent+=text.charAt(i); i++; }
+      else{ clearInterval(typingTimer); setTimeout(function(){ if(cur.parentNode) cur.parentNode.removeChild(cur); },600);
+        setTimeout(function(){ setP(endState==='quiet'?'quiet':'idle', endState==='quiet'?0.22:0.2); busy=false; },1200); }
+    },24);
+  }
+  function ask(q){
+    if(busy) return; busy=true;
+    setP('listening',0.3);
+    setTimeout(function(){ setP('thinking',0.4); sub.innerHTML='<span style="color:var(--id)">...</span>';
+      setTimeout(function(){ var r=route(q); setP(r.st,r.i); typeOut(r.s,r.st); },800);
+    },380);
+  }
+  document.querySelectorAll('.wcs .tryit .cb').forEach(function(b){
+    b.addEventListener('click', function(){ ask(b.getAttribute('data-q')); });
+  });
+  setP('idle',0.2);
+})();
+</script>
+</body>
+</html>

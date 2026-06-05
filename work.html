@@ -25,6 +25,16 @@
 <meta property="og:url" content="https://mehtapratik.com/work" />
 <link rel="canonical" href="https://mehtapratik.com/work" />
 <link rel="stylesheet" href="assets/site.css" />
+<style>
+  /* Work index: uniform, evenly distributed gallery. Cards are equal width and pack into
+     full rows; any hanging project lands on the last row at the bottom, never mid-grid.
+     Scoped to this page so the home feature layout is unaffected. */
+  .proj{grid-template-columns:repeat(3,1fr)}
+  .proj .p{grid-column:auto}
+  .proj .p .img{aspect-ratio:3/2}
+  @media(max-width:880px){.proj{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.proj{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 

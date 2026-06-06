@@ -146,6 +146,19 @@ h1.mega .a{color:var(--accent)}
 .c7 .img{aspect-ratio:16/10}.c5 .img{aspect-ratio:16/10}.c6 .img{aspect-ratio:3/2}.c4 .img{aspect-ratio:1/1}
 @media(max-width:880px){.c7,.c5,.c6,.c4{grid-column:span 12}}
 
+/* ---------- home feature: editorial split rows (random 4 pulled from work.html via JS) ---------- */
+.proj--rows{display:block;gap:0}
+.proj--rows .p{grid-column:auto;display:grid;grid-template-columns:300px 1fr;align-items:center;gap:2.2rem;background:transparent;border-radius:0;overflow:visible;border-top:1px solid var(--bg-2);padding:1.7rem 0}
+.proj--rows .p:last-child{border-bottom:1px solid var(--bg-2)}
+.proj--rows .p .img{border-radius:4px;aspect-ratio:16/10}
+.proj--rows .p .lab{padding:0}
+.proj--rows .p .lab p{max-width:46ch}
+@media(max-width:880px){
+  .proj--rows .p{grid-template-columns:1fr;gap:1.1rem;padding:1.4rem 0}
+  .proj--rows .p .lab{flex-direction:column;gap:.7rem}
+  .proj--rows .p .lab .t{text-align:left}
+}
+
 /* ---------- filters ---------- */
 .filters{display:flex;gap:.55rem;flex-wrap:wrap;margin-bottom:2.6rem}
 .filters button{font-family:var(--mono);font-size:.8rem;border:1px solid var(--line-2);background:none;color:var(--muted);padding:.5rem 1.05rem;border-radius:40px;cursor:pointer;transition:all .2s var(--ease)}

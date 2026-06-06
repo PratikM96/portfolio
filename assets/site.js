@@ -50,6 +50,36 @@
     }
   }
 
+  // Home feature: pull the full project list from work.html and show a random 4
+  // as editorial split rows. This keeps the home page in sync with the work index
+  // automatically. Nothing is hard-coded here, so new projects added to work.html
+  // become eligible on the home page with no edits to index.html.
+  var homeRows = document.querySelector('.proj--rows');
+  if (homeRows) {
+    fetch('work.html', { credentials: 'same-origin' })
+      .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var pool = Array.prototype.slice.call(doc.querySelectorAll('.proj .p'));
+        if (!pool.length) return;
+        for (var i = pool.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+        }
+        pool.slice(0, 4).forEach(function (node, idx) {
+          var a = document.importNode(node, true);
+          var num = a.querySelector('.num');
+          var img = a.querySelector('.img');
+          if (num) { num.textContent = '0' + (idx + 1); if (img) img.appendChild(num); }
+          homeRows.appendChild(a);
+          requestAnimationFrame(function () {
+            setTimeout(function () { a.classList.add('in'); }, idx * 90);
+          });
+        });
+      })
+      .catch(function () { /* offline or file://; the View all work link stays as fallback */ });
+  }
+
   // Scroll reveal for project cards
   var cards = document.querySelectorAll('.p');
   if ('IntersectionObserver' in window && cards.length) {

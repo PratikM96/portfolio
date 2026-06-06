@@ -15,6 +15,8 @@
 <link rel="preconnect" href="https://cdn.mehtapratik.com" crossorigin />
 <link rel="preload" href="../assets/fonts/Archivo-Expanded-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="../assets/site.css" />
+<!-- hero-cover-preload: pick + preload the hero texture in <head> so it is discoverable early, not injected by deferred JS. LCP fix. Keep this list in sync if textures change. -->
+<script>(function(){if(innerWidth<=880)return;var t=["texture-dealnews","texture-fiveeighty","texture-frc","texture-pipeline","texture-raa","texture-sportime","texture-srlc","texture-gold-particles","texture-blue-wood","texture-blue-black","texture-space-shimmer","texture-blue-swirls","texture-feather","texture-teal-swirls","texture-teal-leaves","texture-ocean","texture-grunge","texture-green"];var u="https://cdn.mehtapratik.com/cover%20images/"+t[Math.floor(Math.random()*t.length)]+".webp";var l=document.createElement("link");l.rel="preload";l.as="image";l.fetchPriority="high";l.href=u;document.head.appendChild(l);document.documentElement.style.setProperty("--cover","url('"+u+"')");})();</script>
 </head>
 <body>
 

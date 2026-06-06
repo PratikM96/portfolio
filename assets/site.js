@@ -29,26 +29,11 @@
     window.addEventListener('load', retryBrokenImages);
   }
 
-  // Random hero texture background. Skips the resume header (kept clean for print).
-  var TEXTURES = [
-    'texture-dealnews', 'texture-fiveeighty', 'texture-frc', 'texture-pipeline',
-    'texture-raa', 'texture-sportime', 'texture-srlc',
-    'texture-gold-particles', 'texture-blue-wood', 'texture-blue-black',
-    'texture-space-shimmer', 'texture-blue-swirls', 'texture-feather',
-    'texture-teal-swirls', 'texture-teal-leaves', 'texture-ocean',
-    'texture-grunge', 'texture-green'
-  ];
-  var hero = document.querySelector('header');
-  if (hero && !hero.querySelector('.rsum')) {
-    // Gradient shows immediately via the --cover:none default in CSS. Only fetch
-    // the decorative texture on larger screens, so phones skip the big download.
-    hero.classList.add('cs-hero', 'has-cover');
-    if (window.innerWidth > 880) {
-      var pick = TEXTURES[Math.floor(Math.random() * TEXTURES.length)];
-      var url = 'https://cdn.mehtapratik.com/cover%20images/' + pick + '.webp';
-      hero.style.setProperty('--cover', "url('" + url + "')");
-    }
-  }
+  // Hero texture now handled by a synchronous snippet in each page's <head>
+  // (search "hero-cover-preload"). It picks a random texture, preloads it with
+  // high priority, and sets --cover before the body parses, so the LCP image is
+  // discoverable early instead of being injected here by this deferred script.
+  // The cs-hero/has-cover classes live in page markup. Resume stays clean (no snippet).
 
   // Home feature: pull the full project list from work.html and show a random 4
   // as editorial split rows. This keeps the home page in sync with the work index

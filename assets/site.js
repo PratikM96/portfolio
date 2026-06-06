@@ -80,6 +80,30 @@
       .catch(function () { /* offline or file://; the View all work link stays as fallback */ });
   }
 
+  // Home feature: pull a random 3 posts from blog.html (real posts only, no
+  // "coming soon" placeholders). Keeps the home blog in sync with the blog index
+  // automatically; nothing is hard-coded, so new posts become eligible with no
+  // edits to index.html.
+  var blogRows = document.querySelector('.blog-rows');
+  if (blogRows) {
+    fetch('blog.html', { credentials: 'same-origin' })
+      .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var pool = Array.prototype.slice.call(doc.querySelectorAll('.post-row:not(.soon)'))
+          .filter(function (a) { var h = a.getAttribute('href') || ''; return h && h.charAt(0) !== '#'; });
+        if (!pool.length) return;
+        for (var i = pool.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+        }
+        pool.slice(0, 3).forEach(function (node) {
+          blogRows.appendChild(document.importNode(node, true));
+        });
+      })
+      .catch(function () { /* offline or file://; the Read all posts link stays as fallback */ });
+  }
+
   // Scroll reveal for project cards
   var cards = document.querySelectorAll('.p');
   if ('IntersectionObserver' in window && cards.length) {

@@ -73,10 +73,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:60;mix-blend-mode:difference}
 .brand{font-family:var(--disp);font-weight:800;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase}
 .nav-links{display:flex;gap:1.8rem;font-family:var(--mono);font-size:.82rem}
 .nav-links a{transition:color .2s var(--ease)}
-.nav-links a:hover,.nav-links a.active{color:var(--accent)}
-/* Reel is not live yet: grey out the nav link and disable it site-wide */
-.nav-links a[href$="reel.html"]{color:var(--muted);opacity:.45;pointer-events:none;cursor:default}
-/* hamburger button: hidden on desktop */
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}/* hamburger button: hidden on desktop */
 .nav-toggle{display:none;background:none;border:0;cursor:pointer;width:30px;height:22px;position:relative;z-index:62;padding:0}
 .nav-toggle span{display:block;position:absolute;left:0;right:0;height:2px;background:var(--fg);transition:transform .3s var(--ease),opacity .2s var(--ease)}
 .nav-toggle span:nth-child(1){top:2px}
@@ -106,7 +103,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:60;mix-blend-mode:difference}
 .tagline .blink{width:8px;height:8px;background:var(--accent-2);border-radius:50%;animation:bl 2s ease-in-out infinite}
 @keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
 
-h1.mega{font-family:var(--disp);font-weight:900;font-size:clamp(3rem,13.5vw,13rem);line-height:.84;letter-spacing:-.03em;text-transform:uppercase}
+h1.mega{font-family:var(--disp);font-weight:900;font-size:clamp(2.6rem,10vw,11rem);line-height:.84;letter-spacing:-.03em;text-transform:uppercase}
 h1.mega .o{-webkit-text-stroke:2px var(--fg);color:transparent}
 h1.mega .a{color:var(--accent)}
 
@@ -229,6 +226,7 @@ h1.mega .a{color:var(--accent)}
 .cs-hero.has-cover{padding-top:9.5rem}
 .cs-hero.has-cover::before{content:"";position:absolute;inset:0;z-index:0;background-image:linear-gradient(to bottom,rgba(10,10,10,.72),rgba(10,10,10,.92) 65%,var(--bg) 100%),var(--cover);background-size:cover;background-position:center;background-repeat:no-repeat}
 .cs-hero.has-cover .wrap{position:relative;z-index:1}
+.cs-hero.has-cover .marq{position:relative;z-index:1}  /* keep the hero marquee above the cover overlay */
 .cs-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.8rem 0;margin-top:2.4rem}
 .cs-meta .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
 .cs-meta .v{font-family:var(--mono);font-size:.86rem;color:#e4e4e4;line-height:1.5}
@@ -300,7 +298,7 @@ h1.mega .a{color:var(--accent)}
 
 /* ---------- footer ---------- */
 footer{border-top:2px solid var(--fg);padding:5rem 0 3rem;margin-top:5rem}
-.fbig{font-family:var(--disp);font-weight:900;font-size:clamp(2.4rem,9vw,8rem);text-transform:uppercase;line-height:.9;letter-spacing:-.03em}
+.fbig{font-family:var(--disp);font-weight:900;font-size:clamp(1.9rem,6.5vw,5.5rem);text-transform:uppercase;line-height:.95;letter-spacing:-.03em}
 .fbig a{color:var(--accent);transition:color .2s var(--ease)}
 .fbig a:hover{color:var(--accent-2)}
 .frow{margin-top:3rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:var(--mono);font-size:.82rem;color:var(--muted)}
@@ -322,6 +320,21 @@ footer{border-top:2px solid var(--fg);padding:5rem 0 3rem;margin-top:5rem}
 /* ---------- accent links: teal by default, coral on hover (site-wide) ---------- */
 a[style*="color:var(--accent)"]{transition:color .2s var(--ease),border-color .2s var(--ease)}
 a[style*="color:var(--accent)"]:hover{color:var(--accent-2)!important;border-color:var(--accent-2)!important}
+
+/* ---------- brand strip (muted social-proof marquee, reuses .marq/.track) ---------- */
+.brand-marq{margin:0;background:transparent;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.brand-marq .track{animation-duration:64s;font-family:var(--mono);font-weight:400;font-size:.82rem;text-transform:uppercase;letter-spacing:.2em;padding:1.15rem 0}
+.brand-marq .track span{padding:0 1.3rem;color:#5c5c5c}
+.brand-marq .track span.sep{color:#3a3a3a;padding:0}
+.brand-marq:hover .track{animation-play-state:paused}
+
+/* ---------- testimonials ---------- */
+.tcards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1rem}
+.tcard{background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:1.7rem 1.6rem;display:flex;flex-direction:column;gap:1.15rem}
+.tcard .mk{font-family:var(--disp);font-weight:800;color:var(--accent);font-size:1.5rem;line-height:.7}
+.tcard p{font-family:var(--sans);font-size:1rem;line-height:1.55;margin:0;color:var(--fg)}
+.tcard .by{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:1rem;margin-top:auto}
+@media(max-width:880px){.tcards{grid-template-columns:1fr}}
 
 /* ---------- reduced motion ---------- */
 @media(prefers-reduced-motion:reduce){

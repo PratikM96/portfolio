@@ -112,7 +112,7 @@ h1.mega .a{color:var(--accent)}
 .page-intro{font-family:var(--mono);font-size:clamp(1rem,1.5vw,1.15rem);color:#cfcfcf;max-width:46ch;line-height:1.65;margin-top:1.6rem}
 
 /* ---------- section scaffolding ---------- */
-.sec{padding:clamp(2.5rem,5vw,4rem) 0}
+.sec{padding:clamp(3rem,8vw,5rem) 0}
 .sec-top{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.8rem}
 .sec-top .idx{font-family:var(--mono);font-size:.85rem;color:var(--accent-2)}
 .sec-top h2{font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;letter-spacing:-.02em}
@@ -297,7 +297,7 @@ h1.mega .a{color:var(--accent)}
 .post-share a{color:var(--accent)}
 
 /* ---------- footer ---------- */
-footer{border-top:2px solid var(--fg);padding:clamp(2.5rem,5vw,4rem) 0 3rem;margin-top:0}
+footer{border-top:2px solid var(--fg);padding:clamp(3rem,8vw,5rem) 0 3rem;margin-top:0}
 .fbig{font-family:var(--disp);font-weight:900;font-size:clamp(1.9rem,6.5vw,5.5rem);text-transform:uppercase;line-height:.95;letter-spacing:-.03em}
 .fbig a{color:var(--accent);transition:color .2s var(--ease)}
 .fbig a:hover{color:var(--accent-2)}

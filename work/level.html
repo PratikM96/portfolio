@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.addEventListener('load',function(){gtag('js',new Date());gtag('config','G-G5ZSN5RXX0');var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=G-G5ZSN5RXX0';document.head.appendChild(s);});</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Level Case Study / Pratik Mehta</title>
+<meta name="description" content="Level: a sports-forward prediction market that wins on responsibility and legibility, with plain-language odds, an in-app explainer, and protection built in. Brand, product UI, motion, and applied AI, built as one cross-channel system." />
+<meta property="og:title" content="Level Case Study / Pratik Mehta" />
+<meta property="og:description" content="A responsible prediction market: brand, app, live motion, and a working explain-this-market assistant, built as one cross-channel system." />
+<meta property="og:image" content="https://cdn.mehtapratik.com/concepts/og-level.webp" />
+<meta property="og:type" content="article" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Lexend:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#16181C; --ink-900:#0E0F12; --ink-700:#23262D; --ink-600:#2E323A;
+    --bone:#EBE6DB; --bone-100:#F5F1E8; --bone-200:#E2DCCF;
+    --signal:#F2A436; --ember:#C9742A;
+    --slate:#8C8E96; --slate-d:#6A6C73; --stop:#C0463E;
+    --line:rgba(235,230,219,0.13); --line-d:rgba(22,24,28,0.14);
+    --disp:"Fraunces", Georgia, serif;
+    --text:"Lexend", system-ui, sans-serif;
+    --data:"IBM Plex Mono", ui-monospace, monospace;
+    --settle:cubic-bezier(.22,.7,.2,1);
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink-900); color:var(--bone); font-family:var(--text); font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px; margin:0 auto; padding:0 28px}
+  .narrow{max-width:760px}
+  h1,h2,h3,h4{font-family:var(--disp); font-weight:500; letter-spacing:-0.005em; line-height:1.08}
+  h2{font-size:34px; margin-bottom:14px}
+  h3{font-size:20px; margin-bottom:8px}
+  p{color:var(--bone); opacity:0.86; max-width:64ch}
+  p.lead{opacity:0.95; font-size:18px; line-height:1.6}
+  .muted{color:var(--slate); opacity:1}
+  .eyebrow{font-family:var(--data); font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--signal); margin-bottom:16px}
+  section{padding:78px 0; border-top:1px solid var(--line)}
+  .grid{display:grid; gap:20px}
+  .cols-2{grid-template-columns:repeat(2,1fr)} .cols-3{grid-template-columns:repeat(3,1fr)} .cols-4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:820px){.cols-2,.cols-3,.cols-4{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.cols-2,.cols-3,.cols-4{grid-template-columns:1fr}}
+  .card{background:var(--ink-700); border:1px solid var(--line); border-radius:14px; padding:20px}
+
+  .top{position:sticky; top:0; z-index:8; background:rgba(14,15,18,0.86); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex; align-items:center; justify-content:space-between; height:58px}
+  .top .name{font-family:var(--disp); font-weight:500; font-size:16px; color:var(--bone); text-decoration:none}
+  .top .name:hover{color:var(--signal)}
+  .top a{font-family:var(--data); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate); text-decoration:none}
+  .top a:hover{color:var(--signal)}
+
+  /* hero */
+  .hero{padding:104px 0 70px; border-top:none; text-align:center}
+  .hero .lockup{display:inline-flex; flex-direction:column; align-items:center; gap:16px; margin-bottom:26px}
+  .hero .word{font-family:var(--disp); font-weight:500; font-size:104px; letter-spacing:-0.01em; color:var(--bone); line-height:0.9}
+  .hero .datum{height:6px; width:320px; max-width:80vw; background:var(--bone); border-radius:3px; position:relative}
+  .hero .datum::after{content:""; position:absolute; left:50%; transform:translateX(-50%); top:-4px; width:16px; height:14px; background:var(--signal); border-radius:3px}
+  .hero h1{font-size:27px; font-weight:400; opacity:0.94; margin:0 auto 22px; max-width:24ch}
+  .tags{display:flex; gap:8px; justify-content:center; flex-wrap:wrap}
+  .tags span{font-family:var(--data); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--slate); border:1px solid var(--line); border-radius:999px; padding:6px 12px}
+
+  .meta{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; border-top:1px solid var(--line); margin-top:48px; padding-top:26px; text-align:left}
+  @media(max-width:680px){.meta{grid-template-columns:1fr 1fr}}
+  .meta .k{font-family:var(--data); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--slate); margin-bottom:6px}
+  .meta .v{font-size:14.5px; color:var(--bone)}
+
+  .statbar{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .statbar .s{background:var(--ink-700); border:1px solid var(--line); border-radius:14px; padding:20px}
+  .statbar .s .n{font-family:var(--data); font-weight:600; font-size:30px; color:var(--signal); letter-spacing:-0.01em}
+  .statbar .s .l{font-size:13px; color:var(--slate); margin-top:6px; line-height:1.45}
+
+  ul.clean{list-style:none; max-width:64ch}
+  ul.clean li{padding:9px 0 9px 26px; position:relative; opacity:0.88; border-bottom:1px solid var(--line)}
+  ul.clean li::before{content:""; position:absolute; left:0; top:17px; width:11px; height:3px; border-radius:2px; background:var(--signal)}
+
+  /* identity light band */
+  .invert{background:var(--bone); color:var(--ink)}
+  .invert .eyebrow{color:var(--ember)}
+  .invert h2,.invert h3,.invert h4{color:var(--ink)}
+  .invert p{color:var(--ink); opacity:0.78}
+  .invert .muted{color:var(--slate-d)}
+  .invert .card{background:var(--bone-100); border-color:var(--line-d)}
+  .stage{border:1px solid var(--line-d); border-radius:14px; padding:40px; display:flex; align-items:center; justify-content:center; min-height:150px}
+  .stage.ink{background:var(--ink)} .stage.bn{background:var(--bone-100)} .stage.sg{background:var(--signal)}
+  .lk{display:inline-flex; flex-direction:column; align-items:center; gap:10px}
+  .lk .word{font-family:var(--disp); font-weight:500; font-size:42px; letter-spacing:-0.01em; line-height:0.9}
+  .lk .datum{height:4px; width:130px; border-radius:2px; position:relative}
+  .lk .datum::after{content:""; position:absolute; left:50%; transform:translateX(-50%); top:-3px; width:10px; height:9px; background:var(--signal); border-radius:2px}
+  .on-ink .word{color:var(--bone)} .on-ink .datum{background:var(--bone)}
+  .on-bone .word{color:var(--ink)} .on-bone .datum{background:var(--ink)}
+  .on-signal .word{color:var(--ink)} .on-signal .datum{background:var(--ink)} .on-signal .datum::after{background:var(--ink)}
+  .sw{border-radius:11px; overflow:hidden; border:1px solid var(--line-d)}
+  .sw .chip{height:66px; display:block; width:100%; padding:0; border:none; border-radius:0}
+  .sw .info{padding:10px 12px; background:var(--bone-100)}
+  .sw .nm{font-family:var(--disp); font-weight:500; font-size:14px}
+  .sw .hx{font-family:var(--data); font-size:11px; color:var(--slate-d); margin-top:1px}
+  .typerow{display:flex; align-items:baseline; gap:18px; padding:12px 0; border-bottom:1px solid var(--line-d)}
+  .typerow .tg{font-family:var(--data); font-size:11px; color:var(--slate-d); width:130px; flex:none}
+  .vs{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line-d); border-radius:13px; overflow:hidden; margin-top:6px}
+  .vs .col{padding:18px} .vs .col:first-child{border-right:1px solid var(--line-d)}
+  .vs .lab{font-family:var(--data); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:11px}
+  .vs .are .lab{color:var(--ember)} .vs .arent .lab{color:var(--slate-d)}
+  .tagchip{font-family:var(--text); font-size:13.5px; padding:5px 11px; border-radius:8px; border:1px solid var(--line-d); color:var(--ink); display:inline-block; margin:0 6px 6px 0}
+  .tagchip.off{color:var(--slate-d); text-decoration:line-through}
+
+  /* phones */
+  .phones{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px 22px}
+  .phone{width:262px; margin:0 auto; background:#000; border:1px solid var(--line); border-radius:34px; padding:8px}
+  .screen{background:var(--ink); border-radius:27px; height:548px; overflow:hidden; display:flex; flex-direction:column}
+  .sbar{display:flex; justify-content:space-between; padding:12px 16px 4px; font-family:var(--data); font-size:10.5px; color:var(--slate)}
+  .sbar .sig{width:6px;height:6px;border-radius:50%;background:var(--signal);display:inline-block;margin-right:4px;vertical-align:1px}
+  .app{flex:1; padding:7px 14px 12px; display:flex; flex-direction:column; gap:11px; overflow:hidden}
+  .ah{display:flex; justify-content:space-between; align-items:center}
+  .ah .t{font-family:var(--disp); font-weight:500; font-size:19px; color:var(--bone)}
+  .ah .back{font-family:var(--data); font-size:11px; color:var(--slate)}
+  .chip{font-family:var(--data); font-size:10px; color:var(--slate); border:1px solid var(--line); border-radius:999px; padding:4px 8px; white-space:nowrap}
+  .chip.amber{color:var(--signal); border-color:rgba(242,164,54,0.42)}
+  .chip.dot::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--signal);margin-right:5px;vertical-align:1px}
+  .mk{background:var(--ink-700); border:1px solid var(--line); border-radius:12px; padding:11px 12px}
+  .mk .q{font-family:var(--disp); font-size:14px; color:var(--bone); line-height:1.2; margin-bottom:7px}
+  .mk .r{display:flex; justify-content:space-between; align-items:flex-end}
+  .mk .p{font-family:var(--data); font-weight:600; font-size:17px; color:var(--signal)}
+  .mk .me{font-family:var(--data); font-size:9.5px; color:var(--slate)}
+  .barm{height:5px; background:var(--ink-600); border-radius:3px; margin-top:7px; overflow:hidden}
+  .barm > span{display:block; height:100%; background:var(--signal); border-radius:3px}
+  .heroq{font-family:var(--disp); font-size:18px; color:var(--bone); line-height:1.15}
+  .hs{font-family:var(--data); font-size:10.5px; color:var(--slate)}
+  .prob{display:flex; align-items:baseline; gap:8px}
+  .prob .big{font-family:var(--data); font-weight:600; font-size:44px; color:var(--signal)}
+  .prob .lb{font-size:11px; color:var(--slate)}
+  .yn{display:grid; grid-template-columns:1fr 1fr; gap:9px}
+  .opt{border:1px solid var(--line); border-radius:10px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center}
+  .opt .k{font-family:var(--disp); font-weight:500; font-size:15px; color:var(--bone)} .opt .v{font-family:var(--data); font-size:12px; color:var(--slate)}
+  .opt.sel{border-color:var(--signal); box-shadow:inset 0 0 0 1px var(--signal)} .opt.sel .v{color:var(--signal)}
+  .lrow{display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--line)}
+  .lrow:last-child{border-bottom:none}
+  .lrow .k{font-size:13px; color:var(--bone); opacity:0.9} .lrow .k small{display:block; color:var(--slate); font-size:10.5px}
+  .lrow .v{font-family:var(--data); font-size:12.5px; color:var(--slate)} .lrow .v.amber{color:var(--signal)} .lrow .v.stop{color:#E08079}
+  .stakeamt{font-family:var(--data); font-weight:600; font-size:36px; color:var(--bone); text-align:center}
+  .pbtn{display:block; text-align:center; font-family:var(--text); font-weight:500; font-size:14px; padding:12px; border-radius:11px}
+  .pbtn.amber{background:var(--signal); color:#2A1B05} .pbtn.bone{background:var(--bone); color:var(--ink)} .pbtn.ghost{border:1px solid var(--line); color:var(--bone)} .pbtn.stop{border:1px solid rgba(192,70,62,0.5); color:#E08079}
+  .seg{display:flex; gap:6px} .seg span{font-family:var(--text); font-size:11px; padding:5px 10px; border-radius:999px; border:1px solid var(--line); color:var(--slate)}
+  .center{display:flex; flex-direction:column; align-items:center; text-align:center; justify-content:center; flex:1; gap:12px}
+  .badge{font-family:var(--data); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--signal); border:1px solid rgba(242,164,54,0.42); border-radius:999px; padding:5px 10px}
+  .bign{font-family:var(--data); font-weight:600; font-size:30px} .note{font-size:11px; color:var(--slate); line-height:1.4}
+  .spacer{margin-top:auto}
+  .cap{margin-top:13px} .cap .n{font-family:var(--disp); font-weight:500; font-size:15px} .cap .d{font-size:12.5px; color:var(--slate); margin-top:4px; line-height:1.45}
+
+  /* motion */
+  .mloops{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+  @media(max-width:760px){.mloops{grid-template-columns:1fr}}
+  .demo{border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--ink)}
+  .mstage{height:210px; padding:24px; display:flex; flex-direction:column; justify-content:center; gap:13px}
+  .mcap{padding:15px 20px 18px; border-top:1px solid var(--line)}
+  .mcap .n{font-family:var(--disp); font-weight:500; font-size:16px} .mcap .d{font-size:13px; color:var(--slate); margin-top:4px}
+  .ptag{font-family:var(--data); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--signal); margin-top:9px; display:inline-block}
+  .mq{font-family:var(--disp); font-size:16px; color:var(--bone)}
+  .mbig{font-family:var(--data); font-weight:600; font-size:50px; color:var(--signal); line-height:1}
+  .mtrack{height:8px; border-radius:5px; background:var(--ink-600); overflow:hidden}
+  .mtrack > span{display:block; height:100%; width:0%; background:var(--signal); border-radius:5px; transition:width 1.15s var(--settle)}
+  .vial{width:200px; height:28px; border:1px solid var(--line); border-radius:999px; background:var(--ink-700); position:relative; margin:0 auto}
+  .vial .mid{position:absolute; left:50%; top:5px; bottom:5px; width:1px; background:var(--line)}
+  .vbub{position:absolute; top:4px; width:18px; height:18px; border-radius:50%; background:var(--signal); left:calc(50% - 9px)}
+  @keyframes settleLoop{0%{left:calc(50% - 9px)}8%{left:24%}26%{left:66%}44%{left:40%}60%{left:calc(50% - 9px)}100%{left:calc(50% - 9px)}}
+  .vbub{animation:settleLoop 6s var(--settle) infinite}
+  .lvlw{display:inline-flex; flex-direction:column; align-items:center; gap:6px; margin-top:14px}
+  .lvlw .w{font-family:var(--disp); font-weight:500; font-size:20px; color:var(--bone)}
+  .lvlw .d{height:3px; width:100%; background:var(--bone); border-radius:2px; position:relative}
+  .lvlw .d::after{content:"";position:absolute;left:50%;transform:translateX(-50%);top:-2px;width:7px;height:6px;background:var(--signal);border-radius:2px}
+
+  /* ai demo */
+  .ai{display:grid; grid-template-columns:400px 1fr; gap:30px; align-items:start}
+  @media(max-width:820px){.ai{grid-template-columns:1fr; max-width:420px}}
+  .panel{border:1px solid var(--line); border-radius:22px; background:var(--ink); overflow:hidden; display:flex; flex-direction:column; height:600px}
+  .ph{display:flex; align-items:center; justify-content:space-between; padding:14px 16px 12px; border-bottom:1px solid var(--line)}
+  .ph .t{font-family:var(--disp); font-weight:500; font-size:16px}
+  .ctxr{padding:12px 16px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:10px}
+  .ctxr .q{font-family:var(--disp); font-size:14px; color:var(--bone); line-height:1.2}
+  .ctxr .p{font-family:var(--data); font-weight:600; font-size:22px; color:var(--signal); flex:none}
+  .selr{display:flex; gap:6px; padding:10px 16px 3px}
+  .selr span{font-family:var(--text); font-size:11.5px; padding:5px 10px; border-radius:999px; border:1px solid var(--line); color:var(--slate); cursor:pointer}
+  .selr span.on{color:var(--ink); background:var(--bone); border-color:var(--bone)}
+  .feed{flex:1; overflow-y:auto; padding:13px 16px; display:flex; flex-direction:column; gap:9px}
+  .msg{font-size:13px; line-height:1.5; max-width:88%}
+  .msg.bot{background:var(--ink-700); border:1px solid var(--line); border-radius:12px; border-top-left-radius:4px; padding:10px 12px; align-self:flex-start; opacity:0.95}
+  .msg.you{border:1px solid var(--line); border-radius:12px; border-top-right-radius:4px; padding:8px 12px; color:var(--slate); align-self:flex-end}
+  .msg .ev{display:block; font-family:var(--data); font-size:11px; color:var(--slate); border-left:2px solid var(--signal); padding-left:8px; margin-top:7px}
+  .typing{align-self:flex-start; color:var(--slate); font-family:var(--data); font-size:13px; letter-spacing:0.1em}
+  .qchips{display:flex; gap:6px; flex-wrap:wrap; padding:9px 16px 4px; border-top:1px solid var(--line)}
+  .qchips span{font-family:var(--text); font-size:11.5px; padding:5px 10px; border-radius:999px; border:1px solid var(--line); color:var(--bone); cursor:pointer}
+  .qchips span:hover{border-color:var(--signal); color:var(--signal)}
+  .inrow{display:flex; gap:7px; padding:7px 16px 9px}
+  .inrow input{flex:1; font-family:var(--text); font-size:13px; color:var(--bone); background:var(--ink-700); border:1px solid var(--line); border-radius:10px; padding:9px 11px}
+  .inrow button{font-family:var(--text); font-weight:500; font-size:12.5px; color:var(--bone); background:transparent; border:1px solid var(--line); border-radius:10px; padding:0 13px; cursor:pointer}
+  .gate{padding:10px 16px 14px; border-top:1px solid var(--line)}
+  .ghint{display:flex; gap:13px; font-family:var(--data); font-size:10.5px; color:var(--slate); margin-bottom:10px}
+  .ghint .c{display:inline-flex; align-items:center; gap:6px}
+  .ghint .c .b{width:12px; height:12px; border-radius:4px; border:1px solid var(--slate-d); display:inline-block; position:relative}
+  .ghint .c.done{color:var(--bone)} .ghint .c.done .b{background:var(--signal); border-color:var(--signal)}
+  .ghint .c.done .b::after{content:"";position:absolute;left:3.5px;top:1px;width:4px;height:6px;border:solid var(--ink);border-width:0 2px 2px 0;transform:rotate(40deg)}
+  .stakeb{display:block; width:100%; text-align:center; font-family:var(--text); font-weight:500; font-size:14px; padding:12px; border-radius:11px; border:1px solid var(--line); background:transparent; color:var(--slate-d); cursor:not-allowed; transition:all .3s var(--settle)}
+  .stakeb.on{background:var(--signal); color:#2A1B05; border-color:var(--signal); cursor:pointer}
+
+  footer{padding:60px 0 84px; border-top:1px solid var(--line)}
+  footer .big{font-family:var(--disp); font-weight:500; font-size:46px; line-height:1.05; letter-spacing:-0.01em; color:var(--bone)}
+  footer .big a{color:var(--signal); text-decoration:none; transition:color .2s var(--settle)}
+  footer .big a:hover{color:var(--ember)}
+  footer .rw{display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-top:42px; padding-top:24px; border-top:1px solid var(--line); font-family:var(--data); font-size:12px; letter-spacing:0.03em; color:var(--slate)}
+  footer .rw a{color:var(--bone); text-decoration:none}
+  footer .rw a:hover{color:var(--signal)}
+  footer .legal{font-family:var(--data); font-size:11.5px; letter-spacing:0.02em; color:var(--slate-d); margin-top:20px; max-width:74ch; line-height:1.6}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <a class="name" href="../index.html">Pratik Mehta©</a>
+  <a href="../work.html">← All work</a>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="lockup"><span class="word">Level</span><span class="datum"></span></div>
+  <h1>A prediction market that wins by leveling with you, in the category racing the other way.</h1>
+  <div class="tags"><span>Brand identity</span><span>Product UI</span><span>Motion</span><span>AI in the product</span><span>Launching 2026</span></div>
+  <div class="meta">
+    <div><div class="k">Role</div><div class="v">Brand, UI/UX, motion, AI direction</div></div>
+    <div><div class="k">Type</div><div class="v">End-to-end product, brand to app</div></div>
+    <div><div class="k">Year</div><div class="v">2026</div></div>
+    <div><div class="k">Category</div><div class="v">Fintech, prediction markets</div></div>
+  </div>
+</div></header>
+
+<section><div class="wrap narrow">
+  <div class="eyebrow">The opening</div>
+  <h2>A booming category, racing into a harm problem.</h2>
+  <p class="lead">Prediction markets exploded in 2026, and the field is sprinting toward a trillion-dollar future while a documented youth-gambling problem builds underneath it. Sportsbooks are flooding in, optimizing for engagement, and the people most at risk are the easiest to reach. Level is the responsible one, built to still be the one people actually want: plain-language odds, an explainer in front of every market, and protection on by default, in the corner of the category where it matters most.</p>
+  <div class="statbar" style="margin-top:30px">
+    <div class="s"><div class="n">~$21B</div><div class="l">monthly trading volume marker, spring 2026</div></div>
+    <div class="s"><div class="n">~$1T</div><div class="l">projected annual volume by 2030, Bernstein</div></div>
+    <div class="s"><div class="n">18 to 21</div><div class="l">the access loophole the category quietly runs on</div></div>
+  </div>
+  <p class="muted" style="font-size:13px; margin-top:14px">Industry figures, sourced in the research file. None describe this project.</p>
+</div></section>
+
+<section><div class="wrap narrow">
+  <div class="eyebrow">The approach</div>
+  <h2>Lead with responsibility, in the corner where it is hardest.</h2>
+  <p class="lead">The easy read was wrong. The premise that every rival looks like crypto-gambling no longer holds, the market leader is already clean. So Level does not win on calmer visuals. It wins on a designed system of protection and legibility, and it plants that flag in sports, the most lucrative and most harmful corner, where the rest of the field is gamifying hardest.</p>
+  <div class="grid cols-3" style="margin-top:26px">
+    <div class="card"><h3>Responsible by default</h3><p class="muted" style="font-size:14px">Friction that protects, not exploits. Limits on by default, an honest Starter mode for the 18 to 20 cohort, no engagement bait.</p></div>
+    <div class="card"><h3>Legible by default</h3><p class="muted" style="font-size:14px">Plain-language odds and an assistant that explains a market before you stake. You cannot decide responsibly about something you do not understand.</p></div>
+    <div class="card"><h3>Built to grow up</h3><p class="muted" style="font-size:14px">Sports now, the wider world later. The whole system is category-agnostic, so it extends into economics and politics without a relaunch.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap narrow">
+  <div class="eyebrow">Who it is for</div>
+  <h2>Design for the curious, protect the at-risk.</h2>
+  <div class="grid cols-3">
+    <div class="card"><h3>The curious fan</h3><p class="muted" style="font-size:13.5px">Follows the game, wants to back a read, does not want a terminal or a slot machine. Served by legibility.</p></div>
+    <div class="card"><h3>The at-risk user</h3><p class="muted" style="font-size:13.5px">The young cohort reachable a rung below the sportsbook wall. Served by protection, on by default.</p></div>
+    <div class="card"><h3>The trust halo</h3><p class="muted" style="font-size:13.5px">Parents, regulators, the press. They never stake, but they decide whether Level reads as the credible one.</p></div>
+  </div>
+</div></section>
+
+<section class="invert"><div class="wrap">
+  <div class="narrow"><div class="eyebrow">The identity</div>
+  <h2>Level with you. Level-headed. A level playing field.</h2>
+  <p class="lead">One word holds the whole stance. The mark is the name resting on a datum line, the reference a level is measured against, with a single amber index point that always sits true. Honesty made visual.</p></div>
+  <div class="grid cols-3" style="margin-top:30px">
+    <div class="stage ink"><span class="lk on-ink"><span class="word">Level</span><span class="datum"></span></span></div>
+    <div class="stage bn"><span class="lk on-bone"><span class="word">Level</span><span class="datum"></span></span></div>
+    <div class="stage sg"><span class="lk on-signal"><span class="word">Level</span><span class="datum"></span></span></div>
+  </div>
+  <div class="grid cols-2" style="margin-top:34px; align-items:start">
+    <div>
+      <h3>Color, with one disciplined signal</h3>
+      <div class="grid cols-4" style="margin-top:12px; gap:12px">
+        <div class="sw"><div class="chip" style="background:#16181C"></div><div class="info"><div class="nm">Ink</div><div class="hx">#16181C</div></div></div>
+        <div class="sw"><div class="chip" style="background:#EBE6DB"></div><div class="info"><div class="nm">Bone</div><div class="hx">#EBE6DB</div></div></div>
+        <div class="sw"><div class="chip" style="background:#F2A436"></div><div class="info"><div class="nm">Signal</div><div class="hx">#F2A436</div></div></div>
+        <div class="sw"><div class="chip" style="background:#C9742A"></div><div class="info"><div class="nm">Ember</div><div class="hx">#C9742A</div></div></div>
+      </div>
+      <p class="muted" style="font-size:13.5px; margin-top:12px">Amber covers no more than a tenth of any screen, reserved for the live, the selected, and the true. The restraint is the brand: a product that hoards its accent for what matters is one you can trust to not be playing you.</p>
+    </div>
+    <div>
+      <h3>Type, three divided voices</h3>
+      <div class="typerow"><span class="tg">Display, Fraunces</span><span style="font-family:var(--disp); font-size:30px; font-weight:500; color:var(--ink)">Level</span></div>
+      <div class="typerow"><span class="tg">Body, Lexend</span><span style="font-family:var(--text); font-size:15px; color:var(--ink); opacity:0.8">Understand the market first.</span></div>
+      <div class="typerow"><span class="tg">Data, Plex Mono</span><span style="font-family:var(--data); font-size:22px; font-weight:600; color:var(--ink)">62%&nbsp;&nbsp;+120</span></div>
+      <p class="muted" style="font-size:13.5px; margin-top:12px">A warm serif for credibility, a plain sans for reading, and a monospace for every number, so the data reads like measured truth, not a scoreboard.</p>
+    </div>
+  </div>
+  <div style="margin-top:34px">
+    <h3>The words enact the position</h3>
+    <div class="vs">
+      <div class="col are"><div class="lab">We use</div>
+        <span class="tagchip">stake</span><span class="tagchip">market</span><span class="tagchip">read</span><span class="tagchip">position</span><span class="tagchip">probability</span><span class="tagchip">resolve</span><span class="tagchip">limit</span><span class="tagchip">in control</span>
+      </div>
+      <div class="col arent"><div class="lab">We avoid</div>
+        <span class="tagchip off">bet</span><span class="tagchip off">gamble</span><span class="tagchip off">action</span><span class="tagchip off">lock</span><span class="tagchip off">streak</span><span class="tagchip off">can't lose</span><span class="tagchip off">don't miss out</span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap narrow">
+  <div class="eyebrow">The differentiator</div>
+  <h2>Protection, designed as a system.</h2>
+  <p class="lead">The responsible-use layer is not a disclaimer, it is the product, designed first and built into every screen. It is also the senior-judgment proof: the part that shows restraint and a point of view, not just craft.</p>
+  <div class="grid cols-2" style="margin-top:26px">
+    <div class="card"><h3>Friction that protects</h3><p class="muted" style="font-size:14px">Limits on by default, raising one takes a day, lowering is instant. Cooldowns after a losing run. An understand-before-you-stake gate on unfamiliar markets.</p></div>
+    <div class="card"><h3>The inverse of an engagement model</h3><p class="muted" style="font-size:14px">The same behavioral model the category uses to maximize time-on-app, pointed the other way: it watches for problem patterns and intervenes with a check-in and resources, never an upsell.</p></div>
+    <div class="card"><h3>Honest by construction</h3><p class="muted" style="font-size:14px">Fees and the house position shown up front. The real net, not just the potential win, is the number on the stake screen. No streaks, no urgency theater.</p></div>
+    <div class="card"><h3>Designed to be used</h3><p class="muted" style="font-size:14px">Self-exclusion is one tap, with real cooling-off options and no friction to leave. Red is reserved for stop, never for an ordinary loss.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="narrow"><div class="eyebrow">The product</div>
+  <h2>The position, in your hand.</h2>
+  <p class="lead">Phone-first. The responsible-use system is built into the flow, not bolted on after. The limit travels with the user, outcomes stay neutral, and amber marks only what is live or chosen.</p></div>
+  <div class="phones" style="margin-top:34px">
+
+    <div>
+      <div class="phone"><div class="screen">
+        <div class="sbar"><span>9:41</span><span><span class="sig"></span>Level</span></div>
+        <div class="app">
+          <div class="ah"><span class="back">&lt; Today</span><span class="chip dot">Live</span></div>
+          <div class="heroq">Will the home side win tonight?</div>
+          <div class="hs">resolves full time, 8:00pm &middot; fee 1.5%</div>
+          <div class="prob"><span class="big">62%</span><span class="lb">implied chance, Yes</span></div>
+          <div class="barm" style="height:7px"><span style="width:62%"></span></div>
+          <div class="yn"><div class="opt sel"><span class="k">Yes</span><span class="v">62%</span></div><div class="opt"><span class="k">No</span><span class="v">38%</span></div></div>
+          <div class="mk" style="display:flex; gap:9px; align-items:center; padding:10px 12px"><span class="sig" style="flex:none"></span><span style="font-size:12px">New here? Let me explain this market first.</span></div>
+          <div class="spacer"></div>
+          <span class="pbtn bone">Continue to stake</span>
+        </div>
+      </div></div>
+      <div class="cap"><div class="n">Market detail</div><div class="d">Probability leads, Yes and No stay neutral, the explainer is offered before the stake.</div></div>
+    </div>
+
+    <div>
+      <div class="phone"><div class="screen">
+        <div class="sbar"><span>9:41</span><span><span class="sig"></span>Level</span></div>
+        <div class="app">
+          <div class="ah"><span class="back">&lt; Market</span><span class="chip">Yes &middot; 62%</span></div>
+          <div style="text-align:center; margin-top:4px"><span class="hs">Your stake</span></div>
+          <div class="stakeamt">$5.00</div>
+          <div class="mk" style="padding:9px 12px">
+            <div class="lrow"><span class="k">To win if Yes</span><span class="v">$8.06</span></div>
+            <div class="lrow"><span class="k">Fee, 1.5%</span><span class="v">$0.08</span></div>
+            <div class="lrow"><span class="k">Your net today<small>all markets</small></span><span class="v stop">-$12.40</span></div>
+            <div class="lrow"><span class="k">Loss limit left</span><span class="v amber">$7.60</span></div>
+          </div>
+          <div class="spacer"></div>
+          <span class="pbtn amber">Confirm $5 on Yes</span>
+        </div>
+      </div></div>
+      <div class="cap"><div class="n">Stake, with friction</div><div class="d">The honest number is in view: your real net today, not just the potential win. One amber action.</div></div>
+    </div>
+
+    <div>
+      <div class="phone"><div class="screen">
+        <div class="sbar"><span>9:41</span><span><span class="sig"></span>Level</span></div>
+        <div class="app">
+          <div class="center">
+            <span class="badge">A quick check-in</span>
+            <h3 style="font-size:21px; max-width:15ch; color:var(--bone)">You are near your limit for today.</h3>
+            <div><div class="bign stop" style="color:#E08079">-$12.40</div><div class="note">net today, $7.60 left</div></div>
+            <p style="font-size:12.5px; opacity:0.82; max-width:23ch">No pressure. A lot of people find this a good place to stop.</p>
+          </div>
+          <span class="pbtn bone">Stop for today</span>
+          <span class="pbtn ghost" style="margin-top:8px">Keep going, $7.60 left</span>
+        </div>
+      </div></div>
+      <div class="cap"><div class="n">Nearing-limit check-in</div><div class="d">Friction at the dangerous moment, framed as the user's own control. Stopping is the prominent option.</div></div>
+    </div>
+
+    <div>
+      <div class="phone"><div class="screen">
+        <div class="sbar"><span>9:41</span><span><span class="sig"></span>Level</span></div>
+        <div class="app">
+          <div class="ah"><span class="t">Control</span><span class="chip">Starter</span></div>
+          <div class="mk" style="padding:4px 12px">
+            <div class="lrow"><span class="k">Daily deposit limit</span><span class="v amber">$25</span></div>
+            <div class="lrow"><span class="k">Daily loss limit</span><span class="v amber">$20</span></div>
+            <div class="lrow"><span class="k">Time on app today</span><span class="v">22 min</span></div>
+          </div>
+          <h3 style="font-size:14px; color:var(--bone); margin-top:2px">Take a break</h3>
+          <div class="seg"><span>24 hours</span><span>7 days</span><span>30 days</span></div>
+          <div class="spacer"></div>
+          <span class="pbtn stop">Get support</span>
+          <p class="note" style="text-align:center">One tap to pause. No retention offer, no friction to leave.</p>
+        </div>
+      </div></div>
+      <div class="cap"><div class="n">Control center</div><div class="d">Limits, session time, and self-exclusion together, plainly. Red appears only where it means stop.</div></div>
+    </div>
+
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="narrow"><div class="eyebrow">Motion</div>
+  <h2>It teaches, and it settles.</h2>
+  <p class="lead">Motion does the legibility work and carries the brand's feel: easing to rest, never flashing, the index moving last. Live, and reduced-motion aware.</p></div>
+  <div class="mloops" style="margin-top:30px">
+    <div class="demo">
+      <div class="mstage">
+        <div class="mq">Will the home side win?</div>
+        <div class="mbig" id="mo-num">0%</div>
+        <div class="mtrack"><span id="mo-bar"></span></div>
+        <div class="hs">implied chance, Yes</div>
+      </div>
+      <div class="mcap"><div class="n">Reading a probability</div><div class="d">62 in 100, a chance, not a promise. The bar fills and holds, it does not race.</div><span class="ptag">Decelerate to rest</span></div>
+    </div>
+    <div class="demo">
+      <div class="mstage" style="align-items:center; justify-content:center">
+        <div class="vial"><span class="mid"></span><span class="vbub"></span></div>
+        <div class="lvlw"><span class="w">Level</span><span class="d"></span></div>
+      </div>
+      <div class="mcap"><div class="n">It settles to level</div><div class="d">Nudged off true, the index always eases back and comes to rest dead level. The motion DNA of the whole product.</div><span class="ptag">Settle to level</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="narrow"><div class="eyebrow">AI in the product</div>
+  <h2>Understand it first. Then stake.</h2>
+  <p class="lead">The assistant sits in front of every market in Level. Ask it anything in plain language. It is also the gate: the stake button stays locked until you have the basics, what the number means and what it resolves on. Try it.</p></div>
+  <div class="ai" style="margin-top:32px">
+    <div class="panel">
+      <div class="ph"><span class="t">Explain this market</span><span class="chip amber" id="x-limit">$20 left today</span></div>
+      <div class="ctxr"><span class="q" id="x-q"></span><span class="p" id="x-p"></span></div>
+      <div class="selr" id="x-sel"></div>
+      <div class="feed" id="x-feed" aria-live="polite"></div>
+      <div class="qchips" id="x-chips"></div>
+      <div class="inrow"><input id="x-input" type="text" placeholder="Ask anything, plainly" aria-label="Ask the assistant" autocomplete="off" /><button id="x-send">Ask</button></div>
+      <div class="gate">
+        <div class="ghint"><span class="c" id="x-gm"><span class="b"></span> what the number means</span><span class="c" id="x-gr"><span class="b"></span> what it resolves on</span></div>
+        <button class="stakeb" id="x-stake">Understand the market to continue</button>
+      </div>
+    </div>
+    <aside>
+      <h3>Why the gate matters</h3>
+      <p style="font-size:14.5px">Legibility as harm reduction, made interactive. In a category that hides the odds behind a slick interface, Level puts a teacher in front of the stake. You cannot stake on a market you have not understood, which is the whole concept in one interaction.</p>
+      <ul class="clean" style="margin-top:14px">
+        <li>Plain language, never jargon or hype.</li>
+        <li>Names the risk honestly, never sells a sure thing.</li>
+        <li>Shows the evidence, with the fee up front.</li>
+      </ul>
+      <p class="muted" style="font-size:13px; margin-top:14px">Interactive, in Level's voice. Every market, every first-time user.</p>
+    </aside>
+  </div>
+</div></section>
+
+<section><div class="wrap narrow">
+  <div class="eyebrow">Projected outcomes</div>
+  <h2>Where this goes.</h2>
+  <p class="lead">Level launches into a category projected to grow several times over by 2030, carrying a trust deficit no incumbent is addressing. The numbers below are the trajectory it is built for. Category figures are sourced; Level's own targets are projections to validate after launch, not results.</p>
+  <div class="statbar" style="margin-top:28px">
+    <div class="s"><div class="n">~$1T</div><div class="l">projected category volume by 2030, Bernstein, roughly an 80% CAGR</div></div>
+    <div class="s"><div class="n">~$10B</div><div class="l">projected category revenue by 2030, Citizens, up from about $2B today</div></div>
+    <div class="s"><div class="n">~79%</div><div class="l">of Americans rate gambling addiction as serious as alcohol or drugs, the trust opening</div></div>
+  </div>
+  <p class="muted" style="font-size:13px; margin-top:14px">Sourced industry projections, see the research file. The sports share of volume is forecast to fall from over 60% to about 30% by 2030, which is why Level is built to extend past sports.</p>
+  <h3 style="margin-top:38px; font-size:20px">What Level is positioned to capture</h3>
+  <div class="grid cols-3" style="margin-top:16px">
+    <div class="card"><div class="eyebrow" style="margin-bottom:8px">Target</div><h3 style="font-size:17px">The responsible segment</h3><p class="muted" style="font-size:13.5px">The share of users who want in but distrust the field, the audience every incumbent is leaving on the table.</p></div>
+    <div class="card"><div class="eyebrow" style="margin-bottom:8px">Target</div><h3 style="font-size:17px">Understanding before staking</h3><p class="muted" style="font-size:13.5px">A high rate of users who clear the explainer gate before their first stake on a market type, the legibility promise, measured.</p></div>
+    <div class="card"><div class="eyebrow" style="margin-bottom:8px">Target</div><h3 style="font-size:17px">The trust halo as a moat</h3><p class="muted" style="font-size:13.5px">Regulatory goodwill and a parent-and-press reputation that compounds as scrutiny on the category grows.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="big">Next:<br/><a href="cloud9-the-ninth.html">The Ninth &#8599;</a></div>
+  <div class="rw">
+    <div>Pratik Mehta &middot; New York &middot; 2026</div>
+    <div><a href="mailto:mehtadpratik@gmail.com">Email</a> &middot; <a href="https://linkedin.com/in/pratikm96" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="https://behance.net/pratikm96" target="_blank" rel="noopener noreferrer">Behance</a> / <a href="/privacy.html">Privacy</a></div>
+  </div>
+  <div class="legal">Independent brand by Pratik Mehta, not affiliated with the exchanges referenced. Figures are category benchmarks and projected targets, not results. Name pending trademark.</div>
+</div></footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function easeOut(k){ return 1 - Math.pow(1-k,3); }
+  var num = document.getElementById('mo-num'), bar = document.getElementById('mo-bar');
+  function tween(from,to,dur){
+    if(reduce){ num.textContent = to+'%'; return; }
+    var t0 = performance.now();
+    function f(t){ var k=Math.min(1,(t-t0)/dur); num.textContent = Math.round(from+(to-from)*easeOut(k))+'%'; if(k<1) requestAnimationFrame(f); }
+    requestAnimationFrame(f);
+  }
+  function loop(){
+    tween(0,62,1000); bar.style.transition=''; bar.style.opacity='1'; bar.style.width='62%';
+    if(reduce){ num.textContent='62%'; return; }
+    setTimeout(function(){ bar.style.opacity='0'; setTimeout(function(){ bar.style.transition='none'; bar.style.width='0%'; num.textContent='0%'; requestAnimationFrame(function(){ bar.style.transition=''; }); }, 500); }, 3200);
+  }
+  loop(); if(!reduce) setInterval(loop, 4600);
+})();
+
+(function(){
+  var markets = [
+    {tab:"Match", q:"Will the home side win tonight?", p:62, yes:"the home win", fee:"1.5%",
+      resolve:"the final score at full time tonight, 8:00pm. A draw or an away win both count as No.",
+      no:"a draw or an away win, currently 38%",
+      evidence:"Home unbeaten in their last 6, the key striker passed fit this morning, and the away side is on a back-to-back with travel."},
+    {tab:"Goals", q:"Over 2.5 goals in the derby?", p:44, yes:"3 or more goals", fee:"1.5%",
+      resolve:"the total goals by both teams at full time. 3 or more is Yes, 2 or fewer is No. Extra time does not count.",
+      no:"2 goals or fewer, currently 56%",
+      evidence:"These two average 2.8 goals combined this season, but derbies tend to tighten up, and rain is forecast at kickoff."},
+    {tab:"Series", q:"Will the series go to a game 7?", p:38, yes:"a game 7", fee:"1.5%",
+      resolve:"whether the playoff series reaches a seventh game. It is Yes only if the series goes the full distance.",
+      no:"the series ending in 6 games or fewer, currently 62%",
+      evidence:"The series is tied 2-2 and home teams have held serve so far, but the favorite can still close it out in game 6."}
+  ];
+  var cur=0, asked={mean:false,res:false}, busy=false;
+  var feed=document.getElementById('x-feed'), chipsEl=document.getElementById('x-chips'), selEl=document.getElementById('x-sel');
+  var ctxQ=document.getElementById('x-q'), ctxP=document.getElementById('x-p');
+  var gM=document.getElementById('x-gm'), gR=document.getElementById('x-gr'), stake=document.getElementById('x-stake');
+  var input=document.getElementById('x-input'), send=document.getElementById('x-send');
+  function m(){ return markets[cur]; }
+  function answer(i){ var k=m();
+    switch(i){
+      case 'meaning': return {t:"<b>"+k.p+"%</b> means the market, the people staking right now, put "+k.yes+" at a "+k.p+" in 100 chance. It is a live read, not a promise, and it moves as money and news come in."};
+      case 'resolve': return {t:"It resolves on "+k.resolve+" The fee is "+k.fee+", taken from winnings and shown before you confirm."};
+      case 'evidence': return {t:"Here is the read behind the number: "+k.evidence, ev:"None of that is a guarantee. It is why the number sits where it does."};
+      case 'fee': return {t:"The fee is "+k.fee+" on winnings, shown before you confirm. No hidden spread, no surprise at settlement."};
+      case 'risk': return {t:"Nothing here is a sure thing, and most people lose over time. At "+k.p+"%, this still misses about "+(100-k.p)+" times in 100. Only stake what you would be fine losing."};
+      case 'no': return {t:"No is everything that is not "+k.yes+": "+k.no+". You can stake either side."};
+      default: return {t:"I can explain what the number means, what it resolves on, the evidence behind it, or the fees. Which one?"};
+    }
+  }
+  function parse(s){ s=' '+s.toLowerCase()+' ';
+    if(/(mean|percent|%|chance|probab|odds|\b\d\d\b)/.test(s)) return 'meaning';
+    if(/(resolve|settle|count|decide|when|full time|finish|end\b)/.test(s)) return 'resolve';
+    if(/(evidence|why|reason|because|behind|read\b|stat)/.test(s)) return 'evidence';
+    if(/(fee|cost|charge|cut|spread|price|commission)/.test(s)) return 'fee';
+    if(/(sure|guarantee|safe|risk|lose|loss|certain|worth)/.test(s)) return 'risk';
+    if(/( no | draw |other side|against|opposite)/.test(s)) return 'no';
+    return 'fallback';
+  }
+  function bubble(text,who,ev){ var d=document.createElement('div'); d.className='msg '+who; d.innerHTML=text+(ev?'<span class="ev">'+ev+'</span>':''); feed.appendChild(d); feed.scrollTop=feed.scrollHeight; }
+  function reply(i){ if(busy) return; busy=true; var a=answer(i);
+    var t=document.createElement('div'); t.className='typing'; t.textContent='. . .'; feed.appendChild(t); feed.scrollTop=feed.scrollHeight;
+    setTimeout(function(){ feed.removeChild(t); bubble(a.t,'bot',a.ev); if(i==='meaning') asked.mean=true; if(i==='resolve') asked.res=true; gate(); busy=false; }, 460);
+  }
+  function ask(i,label){ bubble(label,'you'); reply(i); }
+  function gate(){ gM.classList.toggle('done',asked.mean); gR.classList.toggle('done',asked.res);
+    if(asked.mean&&asked.res){ stake.classList.add('on'); stake.textContent='You have the basics. Continue to stake $5'; stake.disabled=false; }
+    else { stake.classList.remove('on'); stake.textContent='Understand the market to continue'; stake.disabled=true; }
+  }
+  var defs=[{i:'meaning',l:function(){return "What does "+m().p+"% mean?";}},{i:'resolve',l:function(){return "What does it resolve on?";}},{i:'evidence',l:function(){return "What's the evidence?";}},{i:'risk',l:function(){return "Is this a sure thing?";}},{i:'fee',l:function(){return "What are the fees?";}}];
+  function renderChips(){ chipsEl.innerHTML=''; defs.forEach(function(c){ var s=document.createElement('span'); s.textContent=c.l(); s.onclick=function(){ ask(c.i,c.l()); }; chipsEl.appendChild(s); }); }
+  function load(i){ cur=i; asked={mean:false,res:false}; busy=false; feed.innerHTML='';
+    ctxQ.textContent=m().q; ctxP.textContent=m().p+'%';
+    Array.prototype.forEach.call(selEl.children,function(c,idx){ c.classList.toggle('on',idx===i); });
+    renderChips(); gate();
+    bubble("Before you stake on this one, ask me anything. What the number means, what it resolves on, the evidence, the fees. No rush.",'bot');
+  }
+  markets.forEach(function(mk,i){ var s=document.createElement('span'); s.textContent=mk.tab; s.onclick=function(){ load(i); }; selEl.appendChild(s); });
+  function submit(){ var v=input.value.trim(); if(!v||busy) return; input.value=''; bubble(v,'you'); reply(parse(v)); }
+  send.onclick=submit; input.addEventListener('keydown',function(e){ if(e.key==='Enter') submit(); });
+  stake.onclick=function(){ if(stake.disabled) return; bubble("Nice. You understood the market before staking, which is the whole point. Opening the stake flow.",'bot'); stake.textContent='Opening stake flow'; };
+  load(0);
+})();
+</script>
+
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

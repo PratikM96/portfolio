@@ -29,6 +29,86 @@
     window.addEventListener('load', retryBrokenImages);
   }
 
+  // ---- Single-source site chrome ------------------------------------------
+  // Nav and footer are injected from here so they live in ONE place and stay
+  // consistent across every page. To add or change a link, edit this block and
+  // it updates site-wide. Nav is position:fixed and the footer is the last
+  // element on the page, so injecting them shifts no content (no layout shift).
+  // Pages opt in with an empty <nav id="site-nav"></nav> and a
+  // <footer data-foot="cta|work|blog|bare"></footer>. Bespoke pages (resume,
+  // concept case studies) carry their own chrome and have no mounts here.
+  function buildNav() {
+    var mount = document.getElementById('site-nav');
+    if (!mount) return;
+    mount.innerHTML =
+      '<div class="nav-inner">' +
+        '<a class="brand" href="/index.html">Pratik Mehta<span class="brand-c">©</span></a>' +
+        '<button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>' +
+        '<div class="nav-links">' +
+          '<a href="/about.html">About</a>' +
+          '<a href="/brand.html">Brand</a>' +
+          '<a href="/work.html">Work</a>' +
+          '<a href="/blog.html">Blog</a>' +
+          '<a href="/contact.html">Contact↗</a>' +
+        '</div>' +
+      '</div>';
+  }
+  function buildFooter() {
+    var f = document.querySelector('footer[data-foot]');
+    if (!f) return;
+    var type = f.getAttribute('data-foot');
+    var top = '';
+    if (type === 'cta')
+      top = '<div class="fbig">Let\'s work<br/><a href="/contact.html">together↗</a></div>';
+    else if (type === 'work')
+      top = '<div class="fbig">Next:<br/><a class="js-next-project" href="/work.html">More work ↗</a></div>';
+    else if (type === 'blog')
+      top = '<div class="fbig">Next:<br/><a class="js-next-post" href="/blog.html">More writing ↗</a></div>';
+    var credit = '<div>Pratik Mehta <span class="brand-c">©</span> · New York · 2026</div>';
+    var social = '<div>' +
+      '<a href="mailto:mehtadpratik@gmail.com">Email</a> / ' +
+      '<a href="https://linkedin.com/in/pratikm96" target="_blank" rel="noopener noreferrer">LinkedIn</a> / ' +
+      '<a href="https://behance.net/pratikm96" target="_blank" rel="noopener noreferrer">Behance</a> / ' +
+      '<a href="https://instagram.com/pratikm96" target="_blank" rel="noopener noreferrer">Instagram</a> / ' +
+      '<a href="/privacy.html">Privacy</a></div>';
+    f.innerHTML = '<div class="wrap">' + top +
+      '<div class="frow"' + (type === 'bare' ? ' style="margin-top:0"' : '') + '>' +
+      credit + social + '</div></div>';
+  }
+  buildNav();
+  buildFooter();
+
+  // Fill any "next" link with a random project/post pulled live from the index,
+  // excluding the current page, so footers never need editing when work is added.
+  // Used by the injected work/blog footers AND by the bespoke concept-page
+  // footers (which tag their link with .js-next-project). Falls back to the
+  // static href (work.html / blog.html) if offline or opened from file://.
+  function fillNext(sel, src, cardSel, titleSel) {
+    var links = document.querySelectorAll(sel);
+    if (!links.length) return;
+    fetch(src, { credentials: 'same-origin' })
+      .then(function (r) { return r.ok ? r.text() : Promise.reject(); })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var here = location.pathname.split('/').pop();
+        var pool = Array.prototype.slice.call(doc.querySelectorAll(cardSel)).filter(function (a) {
+          var h = a.getAttribute('href') || '';
+          return h && h.charAt(0) !== '#' && h.split('/').pop() !== here;
+        });
+        if (!pool.length) return;
+        Array.prototype.forEach.call(links, function (link) {
+          var pick = pool[Math.floor(Math.random() * pool.length)];
+          var t = pick.querySelector(titleSel);
+          var href = pick.getAttribute('href').replace(/^(\.\.\/)+/, '').replace(/^\//, '');
+          link.setAttribute('href', '/' + href);
+          link.textContent = (t ? t.textContent.trim() : 'Next') + ' ↗';
+        });
+      })
+      .catch(function () { /* keep the static fallback link */ });
+  }
+  fillNext('.js-next-project', '/work.html', '.proj .p', 'h3');
+  fillNext('.js-next-post', '/blog.html', '.post-row:not(.soon)', '.pt');
+
   // Hero texture now handled by a synchronous snippet in each page's <head>
   // (search "hero-cover-preload"). It picks a random texture, preloads it with
   // high priority, and sets --cover before the body parses, so the LCP image is
@@ -163,16 +243,6 @@
       var nm = c.querySelector('.num');
       if (nm) nm.textContent = ('0' + (idx + 1)).slice(-2);
     });
-  }
-
-  // Footer privacy link, injected site-wide so the policy is always one click away.
-  var bl = document.querySelector('footer a[href*="behance.net"]');
-  if (bl && !bl.parentNode.querySelector('a[href="/privacy.html"]')) {
-    bl.parentNode.appendChild(document.createTextNode(' / '));
-    var pl = document.createElement('a');
-    pl.href = '/privacy.html';
-    pl.textContent = 'Privacy';
-    bl.parentNode.appendChild(pl);
   }
 
   // ---- GA4 portfolio events: contact intent + engagement (see ga4-event-tracking-plan) ----

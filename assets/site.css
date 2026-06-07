@@ -315,6 +315,16 @@ h1.mega .a{color:var(--accent)}
 .post-share{max-width:680px;margin:2rem auto clamp(2.5rem,6vw,4rem);border-top:1px solid var(--line);padding-top:1.6rem;font-family:var(--mono);font-size:.82rem;color:var(--muted)}
 .post-share a{color:var(--accent);transition:color .2s var(--ease)}
 .post-share a:hover{color:var(--accent-2)}
+.post-faq{margin-top:3rem}
+.post-faq .faq-eyebrow{font-family:var(--mono);font-weight:400;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);margin:0 0 .5rem}
+.post-faq .faq-item{border-bottom:1px solid var(--line)}
+.post-faq .faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.05rem 0;font-family:var(--sans);font-weight:500;font-size:1.06rem;color:var(--fg);transition:color .2s var(--ease)}
+.post-faq .faq-item summary::-webkit-details-marker{display:none}
+.post-faq .faq-item summary:hover{color:var(--accent)}
+.post-faq .faq-toggle{font-family:var(--mono);color:var(--accent-2);font-size:1.35rem;line-height:1;flex-shrink:0;transition:transform .25s var(--ease),color .2s var(--ease)}
+.post-faq .faq-item[open] summary{color:var(--accent)}
+.post-faq .faq-item[open] .faq-toggle{transform:rotate(45deg);color:var(--accent)}
+.post-faq .faq-a{font-family:var(--sans);font-size:1.05rem;line-height:1.75;color:#dcdcdc;padding:0 0 1.2rem;max-width:62ch}
 
 /* ---------- footer ---------- */
 footer{border-top:2px solid var(--fg);padding:clamp(3rem,8vw,5rem) 0 3rem;margin-top:0}

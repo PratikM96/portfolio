@@ -72,35 +72,6 @@
   .edu .co{font-family:var(--mono);font-size:.86rem;color:var(--accent);margin-top:.3rem}
   .edu .yr{font-family:var(--mono);font-size:.78rem;color:var(--accent-2);margin-top:.3rem}
   .edu p{font-family:var(--sans);font-size:1rem;color:#333;line-height:1.65;margin-top:.6rem;max-width:74ch}
-
-  /* hidden on screen, revealed in print/PDF only (phone number) */
-  .print-only{display:none}
-
-  /* ---------- print / PDF: light, two-page layout ---------- */
-  @media print{
-    @page{ size:Letter; margin:9mm 12mm; }
-    html,body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-    nav, footer, .rsum-actions, .nav-scrim{ display:none !important; }
-    header{ padding:0 !important; }
-    .wrap{ padding:0 !important; max-width:none !important; }
-    .print-only{ display:inline !important; }
-    .sec{ padding:0 !important; }
-    h1.page-title{ font-size:20pt !important; }
-    .rsum-head{ padding-bottom:.3rem !important; }
-    .rsum-head .role{ font-size:.74rem !important; }
-    .rsum-summary{ font-size:8pt !important; margin:.3rem 0 .15rem !important; line-height:1.3 !important; }
-    .rsum-grid{ gap:.55rem !important; padding-top:.3rem !important; margin-top:.3rem !important; grid-template-columns:112px 1fr !important; }
-    .xp .row{ break-inside:avoid; padding-bottom:.22rem !important; margin-bottom:.22rem !important; }
-    .xp .rh h3{ font-size:9.6pt !important; }
-    .xp .co{ font-size:7.2pt !important; }
-    .xp .meta{ font-size:6.6pt !important; margin:.05rem 0 .15rem !important; }
-    .xp .row p{ font-size:8pt !important; line-height:1.3 !important; }
-    .skl{ gap:.4rem !important; }
-    .skl .grp .k{ margin-bottom:.15rem !important; }
-    .skl .grp .v{ font-size:8pt !important; line-height:1.35 !important; }
-    .edu h3{ font-size:9.6pt !important; }
-    .edu p{ font-size:8pt !important; margin-top:.15rem !important; }
-  }
 </style>
 </head>
 <body>

@@ -20,7 +20,7 @@
   }
   *{box-sizing:border-box; margin:0; padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--ink-900); color:var(--bone); font-family:var(--text); font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased}
+  body{padding-top:28px;background:var(--ink-900); color:var(--bone); font-family:var(--text); font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased}
   .num{font-family:var(--data); font-feature-settings:"tnum" 1; letter-spacing:0}
   .wrap{max-width:1040px; margin:0 auto; padding:0 28px}
   section{padding:80px 0; border-top:1px solid var(--line)}
@@ -41,7 +41,7 @@
   @media(max-width:560px){.cols-2,.cols-3,.cols-4{grid-template-columns:1fr}}
   .card{background:var(--ink-700); border:1px solid var(--line); border-radius:14px; padding:22px}
 
-  .top{position:sticky; top:0; z-index:5; background:rgba(14,15,18,0.86); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  .top{position:sticky; top:28px; z-index:5; background:rgba(14,15,18,0.86); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
   .top .wrap{display:flex; align-items:center; justify-content:space-between; height:60px}
   .mark{display:inline-flex; flex-direction:column; gap:5px}
   .mark .word{font-family:var(--disp); font-weight:500; font-size:21px; color:var(--bone); line-height:1}

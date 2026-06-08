@@ -156,6 +156,18 @@
   .toc{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:2.4rem}
   .toc a{font-family:var(--mono);font-size:.76rem;border:1px solid var(--line-2);color:var(--muted);padding:.45rem .9rem;border-radius:40px;transition:all .2s var(--ease)}
   .toc a:hover{background:var(--accent);color:#0a0a0a;border-color:var(--accent)}
+  /* --- v1.3 hybrid overhaul: indexed-rail intros + wider prose --- */
+  .lead{max-width:74ch}
+  .sub{max-width:72ch}
+  .irail{display:grid;grid-template-columns:182px 1fr;gap:clamp(1.4rem,3vw,2.8rem);align-items:start;margin-top:.2rem}
+  .irail .rk{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.8;padding-top:.25rem}
+  .irail .rk b{color:var(--accent-2);font-weight:400}
+  .irail .rb > :first-child{margin-top:0}
+  @media(max-width:760px){.irail{grid-template-columns:1fr;gap:.7rem}.irail .rk{padding-top:0}}
+  .bcols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.8rem,4vw,3.2rem);margin-top:1rem}
+  .bcols .h3b{margin-top:0}
+  .bcols .sub{max-width:none}
+  @media(max-width:760px){.bcols{grid-template-columns:1fr;gap:1.6rem}}
 </style>
 <!-- hero-cover-preload: pick + preload the hero texture in <head> so it is discoverable early, not injected by deferred JS. LCP fix. Keep this list in sync if textures change. -->
 <script>(function(){if(innerWidth<=880)return;var t=["texture-blue-swirls","texture-blue-wood","texture-feather","texture-gold-particles","texture-green","texture-grunge","texture-ocean","texture-space-shimmer","texture-sportime","texture-teal-leaves","texture-teal-swirls"];var u="https://cdn.mehtapratik.com/textures/"+t[Math.floor(Math.random()*t.length)]+".webp";var l=document.createElement("link");l.rel="preload";l.as="image";l.fetchPriority="high";l.href=u;document.head.appendChild(l);document.documentElement.style.setProperty("--cover","url('"+u+"')");})();</script>
@@ -165,7 +177,7 @@
 <nav id="site-nav"></nav>
 
 <header class="cs-hero has-cover" style="padding:9rem 0 2rem"><div class="wrap">
-  <div class="tagline"><span class="blink"></span> Brand guide · v1.2 · June 2026</div>
+  <div class="tagline"><span class="blink"></span> Brand guide · v1.3 · June 2026</div>
   <h1 class="page-title">The Brand<br/><span class="a">System</span></h1>
   <p class="page-intro">The full system behind mehtapratik.com. A working brand guide and a live case study in one.</p>
   <div class="toc">
@@ -187,10 +199,12 @@
 
 <section class="bsec" id="brief"><div class="wrap">
   <div class="sec-top"><span class="idx">(00)</span><h2>The Brief</h2></div>
+  <div class="irail"><div class="rk"><b>Why this exists</b></div><div class="rb">
   <p class="lead">One person, two audiences. Hiring managers and brand leadership scanning fast for range and seniority, and design-literate viewers judging taste and craft. The system had to land a strong first impression and hold up on the second and third look.</p>
   <p class="sub">Most people keep three things apart: design taste, systems thinking, and marketing accountability. I don't. I started in code and moved to design, so I think in systems first, but the system I care about most is the person on the other end. The job of the brand is simple: make one connected practice read as one thing, not a stack of separate skills. This page is the proof, not the claim, a reference you could build against and a case study of the thinking it documents.</p>
   <h3 class="h3b">Where it comes from</h3>
-  <p class="sub" style="color:#dcdcdc;font-size:1rem;max-width:64ch">I grew up in coding camps and assumed I'd follow my dad into programming. In 2016 I started volunteering on a nonprofit's design and social team, and that turned the career around. The engineering never left. It became how I build brands: once, properly, so every run after takes less effort.</p>
+  <p class="sub" style="color:#dcdcdc;font-size:1rem">I grew up in coding camps and assumed I'd follow my dad into programming. In 2016 I started volunteering on a nonprofit's design and social team, and that turned the career around. The engineering never left. It became how I build brands: once, properly, so every run after takes less effort.</p>
+  </div></div>
   <div class="principles">
     <div class="p-card"><div class="pn">01</div><h4>Systems-minded</h4><p>Structured and built to scale. Nothing one-off that should have been a system. One stylesheet drives every page.</p></div>
     <div class="p-card"><div class="pn">02</div><h4>Cross-channel</h4><p>Brand, motion, UI/UX, social, and performance read as one connected practice, never separate tracks.</p></div>
@@ -202,10 +216,12 @@
 
 <section class="bsec" id="positioning"><div class="wrap">
   <div class="sec-top"><span class="idx">(01)</span><h2>Positioning &amp; Messaging</h2></div>
-  <p class="lead">One line for what this brand is, three pillars for what it says, and a tagline that travels. Everything written about Pratik draws from here so the story stays consistent across the site, the reel, and every application.</p>
+  <div class="irail"><div class="rk"><b>What we say</b></div><div class="rb"><p class="lead">One line for what this brand is, three pillars for what it says, and a tagline that travels. Everything written about Pratik draws from here so the story stays consistent across the site, the reel, and every application.</p></div></div>
 
   <h3 class="h3b">Positioning statement</h3>
-  <p class="sub" style="color:#dcdcdc;font-size:1.05rem;max-width:64ch">A creative director who works across brand, motion, UI/UX, and growth, building brand systems that scale and the campaigns that run on them. Designs like a systems engineer and measures like a marketer.</p>
+  <div class="spec" style="text-align:center;padding:2.4rem 2rem">
+    <p style="font-family:var(--sans);font-size:clamp(1.1rem,1.7vw,1.35rem);line-height:1.5;color:#e8e8e8;max-width:62ch;margin:0 auto">A creative director who works across brand, motion, UI/UX, and growth, building brand systems that scale and the campaigns that run on them. Designs like a systems engineer and measures like a marketer.</p>
+  </div>
 
   <h3 class="h3b">Tagline</h3>
   <div class="spec" style="text-align:center;padding:2.6rem 2rem">
@@ -221,7 +237,7 @@
   </div>
 
   <h3 class="h3b">Boilerplate bios</h3>
-  <p class="sub">Three lengths, all built from verified facts only. Drop in specific clients, titles, and metrics from the resume before publishing; never invent them to fill a gap.</p>
+  <p class="sub">Three lengths, all built from verified facts only. Drop in specific clients, titles, and metrics before publishing; never invent them to fill a gap.</p>
   <div class="bio"><div class="bt">One line</div><p>Pratik Mehta is a New York creative director and brand strategist building brand systems that scale and the campaigns that run on them.</p></div>
   <div class="bio"><div class="bt">Short · about 55 words</div><p>Pratik Mehta is a New York creative director and brand strategist with 10+ years across design, development, and marketing. He started in code and moved to design, so the work thinks in systems first, leads with the audience, and ties back to outcomes. He runs brand identity, UI/UX, motion, and growth as one connected practice.</p></div>
   <div class="bio"><div class="bt">Long · about 95 words</div><p>Pratik Mehta is a creative director and brand strategist based in New York, working independently and open to creative-director and brand-or-marketing-leadership roles. He started in code and moved to design, which is why the work thinks in systems first and measures like a marketer. His practice spans brand identity, UI/UX, motion graphics, and growth marketing across fintech, sports and entertainment, e-commerce, global events, technology and digital media, advertising, gaming and animation, and nonprofits, with generative AI built in as a production layer rather than a novelty. He runs them as one connected practice rather than separate tracks: brand systems that scale, and the campaigns that run on them.</p></div>
@@ -229,7 +245,7 @@
 
 <section class="bsec" id="color"><div class="wrap">
   <div class="sec-top"><span class="idx">(02)</span><h2>Color</h2></div>
-  <p class="lead">I kept the near-black and warm off-white from the old site on purpose, so the rebuild reads as a continuation, not a reset. Two accents sit on top: electric teal leads, coral annotates.</p>
+  <div class="irail"><div class="rk"><b>The palette</b></div><div class="rb"><p class="lead">I kept the near-black and warm off-white from the old site on purpose, so the rebuild reads as a continuation, not a reset. Two accents sit on top: electric teal leads, coral annotates.</p></div></div>
   <div class="swatches">
     <div class="sw"><div class="chip" style="background:#0a0a0a;border-bottom:1px solid var(--line)"></div><div class="meta"><div class="nm">Ink</div><div class="hx">#0A0A0A</div><div class="role">Primary background</div></div></div>
     <div class="sw"><div class="chip" style="background:#fafafa"></div><div class="meta"><div class="nm">Bone</div><div class="hx">#FAFAFA</div><div class="role">Primary text, warm not clinical</div></div></div>
@@ -276,16 +292,21 @@
   </table>
   <p class="sub">One real constraint: Slate on Graphite lands at 4.48:1, just under the 4.5 AA line for normal text. On cards, set normal-size secondary text in Mono #CFCFCF, and reserve Slate for labels at 19px bold and up, where AA Large applies.</p>
 
-  <h3 class="h3b">Cover &amp; gradient treatment</h3>
-  <p class="sub">Hero and card covers use abstract teal-on-ink backgrounds when no single still earns the space. Over any cover, titles sit on a fixed legibility wash: a top-to-bottom gradient from rgba(10,10,10,.72) to .92 at 65% and into solid Ink, so type stays readable no matter the image behind it.</p>
-
-  <h3 class="h3b">Light contexts</h3>
-  <p class="sub">The brand is dark-native. Where a surface must be light, like the resume PDF, print, or a logo card, the system inverts cleanly: Ink #0A0A0A text on Bone #FAFAFA, both accents holding AA or better on the light ground (teal and coral pass against Ink, which becomes the text). Keep the same three typefaces and the two-accent rule. Never introduce a third accent to compensate for the lighter field.</p>
+  <div class="bcols">
+    <div>
+      <h3 class="h3b">Cover &amp; gradient treatment</h3>
+      <p class="sub">Hero and card covers use abstract teal-on-ink backgrounds when no single still earns the space. Over any cover, titles sit on a fixed legibility wash: a top-to-bottom gradient from rgba(10,10,10,.72) to .92 at 65% and into solid Ink, so type stays readable no matter the image behind it.</p>
+    </div>
+    <div>
+      <h3 class="h3b">Light contexts</h3>
+      <p class="sub">The brand is dark-native. Where a surface must be light, like the resume PDF, print, or a logo card, the system inverts cleanly: Ink #0A0A0A text on Bone #FAFAFA, both accents holding AA or better on the light ground (teal and coral pass against Ink, which becomes the text). Keep the same three typefaces and the two-accent rule. Never introduce a third accent to compensate for the lighter field.</p>
+    </div>
+  </div>
 </div></section>
 
 <section class="bsec" id="type"><div class="wrap">
   <div class="sec-top"><span class="idx">(03)</span><h2>Typography</h2></div>
-  <p class="lead">Type is the primary visual identity. A wide, heavy display face for personality; a clean workhorse for everything readable; a mono for the data and labels.</p>
+  <div class="irail"><div class="rk"><b>The voice in type</b></div><div class="rb"><p class="lead">Type is the primary visual identity. A wide, heavy display face for personality; a clean workhorse for everything readable; a mono for the data and labels.</p></div></div>
   <div class="spec">
     <div class="tag">Display · Archivo Expanded · 700 to 900</div>
     <div class="disp">Brand systems<br/>that <span style="color:var(--accent)">scale.</span></div>
@@ -321,7 +342,7 @@
 
 <section class="bsec" id="logo"><div class="wrap">
   <div class="sec-top"><span class="idx">(04)</span><h2>Logo &amp; Wordmark</h2></div>
-  <p class="lead">The identity is typographic first: the name set in the display face, heavy and uppercase, with a small © as a signature. There is one graphic mark, the aperture, scoped to the places a wordmark is too small to read.</p>
+  <div class="irail"><div class="rk"><b>The mark</b></div><div class="rb"><p class="lead">The identity is typographic first: the name set in the display face, heavy and uppercase, with a small © as a signature. There is one graphic mark, the aperture, scoped to the places a wordmark is too small to read.</p></div></div>
 
   <div class="spec" style="text-align:center;padding:3.2rem 2rem">
     <div style="font-family:var(--disp);font-weight:800;font-size:clamp(1.6rem,5vw,3rem);text-transform:uppercase;letter-spacing:.02em">Pratik Mehta<span style="color:var(--accent)">©</span></div>
@@ -363,7 +384,7 @@
 
 <section class="bsec" id="motion"><div class="wrap">
   <div class="sec-top"><span class="idx">(05)</span><h2>Motion</h2></div>
-  <p class="lead">I think video should be the default, not the upgrade, so the site moves. With intent: motion supports hierarchy and rewards attention, and it never blocks reading.</p>
+  <div class="irail"><div class="rk"><b>How it moves</b></div><div class="rb"><p class="lead">I think video should be the default, not the upgrade, so the site moves. With intent: motion supports hierarchy and rewards attention, and it never blocks reading.</p></div></div>
   <div class="mdemo">
     <a class="m"><div class="vis"><img src="https://cdn.mehtapratik.com/fiveeighty/fiveeighty-fisll-photo-04.webp" width="2000" height="1333" srcset="https://cdn.mehtapratik.com/fiveeighty/fiveeighty-fisll-photo-04-480.webp 480w, https://cdn.mehtapratik.com/fiveeighty/fiveeighty-fisll-photo-04-960.webp 960w, https://cdn.mehtapratik.com/fiveeighty/fiveeighty-fisll-photo-04-1600.webp 1600w, https://cdn.mehtapratik.com/fiveeighty/fiveeighty-fisll-photo-04.webp 2000w" sizes="(max-width: 760px) 92vw, 760px" alt="Hover scale demo" decoding="async" loading="lazy"/></div><div class="cap"><b>Hover · scale 1.05</b>Images scale and clear from grayscale to color over 0.8s. Hover this card.</div></a>
     <a class="m"><div class="vis"><img src="https://cdn.mehtapratik.com/dealnews/dealnews-app-screens-31.webp" width="2000" height="1333" srcset="https://cdn.mehtapratik.com/dealnews/dealnews-app-screens-31-480.webp 480w, https://cdn.mehtapratik.com/dealnews/dealnews-app-screens-31-960.webp 960w, https://cdn.mehtapratik.com/dealnews/dealnews-app-screens-31-1600.webp 1600w, https://cdn.mehtapratik.com/dealnews/dealnews-app-screens-31.webp 2000w" sizes="(max-width: 760px) 92vw, 760px" alt="Grayscale clear demo" decoding="async" loading="lazy"/></div><div class="cap"><b>Reward attention</b>The grid reads graphic at rest; color is the payoff for engaging.</div></a>
@@ -380,14 +401,19 @@
     <tr><td>Reduced motion</td><td>prefers-reduced-motion disables all animation and reveal</td></tr>
   </table>
   <p class="sub">The reel in production is built on the same vocabulary as the site: the same easing curve and the grayscale-to-color reveal will carry across its four chapters, Brand and Identity, Motion and Animation, Campaign and Social, UX and Digital, so the moving work and the static site read as one system.</p>
+  <h3 class="h3b">Marquee, two treatments</h3>
+  <p class="sub">One scrolling band, two registers. The loud version fills teal with Ink text and runs a 26s loop, the deliberate exception to the rule that accents never fill large areas. The muted version carries the client roll in mono on a hairline, so the names read as quiet social proof, not decoration. Both run one per page and stop under reduced-motion.</p>
 </div></section>
 <div class="marq"><div class="track">
   <span>ease cubic-bezier(.2,.7,.2,1)</span><span>✦</span><span>hover 0.8s</span><span>✦</span><span>reveal translateY 28px</span><span>✦</span><span>respects reduced-motion</span><span>✦</span><span>one marquee per page</span><span>✦</span><span>ease cubic-bezier(.2,.7,.2,1)</span><span>✦</span><span>hover 0.8s</span><span>✦</span><span>reveal translateY 28px</span><span>✦</span><span>respects reduced-motion</span><span>✦</span><span>one marquee per page</span><span>✦</span>
 </div></div>
+<div class="marq brand-marq" style="margin-top:1.7rem"><div class="track">
+  <span>client roll</span><span class="sep">✦</span><span>muted social proof</span><span class="sep">✦</span><span>mono on a hairline</span><span class="sep">✦</span><span>names, not logos</span><span class="sep">✦</span><span>64s linear loop</span><span class="sep">✦</span><span>one per page</span><span class="sep">✦</span><span>client roll</span><span class="sep">✦</span><span>muted social proof</span><span class="sep">✦</span><span>mono on a hairline</span><span class="sep">✦</span><span>names, not logos</span><span class="sep">✦</span><span>64s linear loop</span><span class="sep">✦</span><span>one per page</span><span class="sep">✦</span>
+</div></div>
 
 <section class="bsec" id="layout"><div class="wrap">
   <div class="sec-top"><span class="idx">(06)</span><h2>Layout &amp; Imagery</h2></div>
-  <p class="lead">A 12-column grid, generous vertical rhythm, hairline dividers, and asymmetry that lets type break the grid. Whitespace is structural, never filler.</p>
+  <div class="irail"><div class="rk"><b>The grid</b></div><div class="rb"><p class="lead">A 12-column grid, generous vertical rhythm, hairline dividers, and asymmetry that lets type break the grid. Whitespace is structural, never filler.</p></div></div>
   <table class="qref">
     <tr><td>Grid</td><td>12-column, ~1380px max width, 4vw gutters</td></tr>
     <tr><td>Section rhythm</td><td>5 to 6rem vertical space between sections</td></tr>
@@ -411,7 +437,7 @@
 
 <section class="bsec" id="components"><div class="wrap">
   <div class="sec-top"><span class="idx">(07)</span><h2>Components</h2></div>
-  <p class="lead">One stylesheet drives every page. These are the actual components it produces, rendered live in the same classes the site ships. This is the system behind the claim.</p>
+  <div class="irail"><div class="rk"><b>Live parts</b></div><div class="rb"><p class="lead">One stylesheet drives every page. These are the actual components it produces, rendered live in the same classes the site ships. This is the system behind the claim.</p></div></div>
 
   <div class="comp">
     <div class="ct">Section header</div>
@@ -420,16 +446,16 @@
   </div>
 
   <div class="comp">
-    <div class="ct">Project card</div>
+    <div class="ct">Work card</div>
     <div class="cb">
       <div class="proj" style="display:block">
-        <div class="p in" style="max-width:420px">
-          <div class="img gen" style="aspect-ratio:16/10;background:linear-gradient(135deg,#0a0a0a,#0f3b38 60%,#1fe0c8)"><span class="num">01</span></div>
-          <div class="lab"><div><h3>Example Project</h3><span class="yr">2024</span><p>One line on the problem and what shipped.</p></div><div class="t">Brand<br/>Motion<br/>UX</div></div>
-        </div>
+        <a class="p c6" href="#components" style="max-width:460px;display:block">
+          <div class="img gen"><img src="https://cdn.mehtapratik.com/covers/sportime-clubs-cover.webp" width="1600" height="1000" srcset="https://cdn.mehtapratik.com/covers/sportime-clubs-cover-480.webp 480w, https://cdn.mehtapratik.com/covers/sportime-clubs-cover-960.webp 960w, https://cdn.mehtapratik.com/covers/sportime-clubs-cover.webp 1600w" sizes="(max-width:680px) 92vw, 460px" alt="Work card cover specimen" decoding="async" loading="lazy"/></div>
+          <div class="lab"><div><h3>Example Project</h3><span class="yr">2024</span><p>One line on the problem and what shipped.</p></div><div class="t">Brand /<br/>Motion /<br/>UX</div></div>
+        </a>
       </div>
     </div>
-    <div class="cn">Cover, then name, year, outcome line, discipline tags, in that order. Pattern: <b>.p &gt; .img.gen + .lab</b>. Year in coral, tags in teal, grayscale cover clears on hover.</div>
+    <div class="cn">A real cover image in full color, then name, year, outcome line, and discipline tags. Pattern: <b>.p &gt; .img + .lab</b>. Year in coral, tags in teal, the cover scales gently on hover. No gradient wash and no number burned into the cover; the work index renders these as a featured pair up top and a filterable, numbered list below.</div>
   </div>
 
   <div class="comp">
@@ -446,7 +472,7 @@
       <div class="cs-statbar" style="margin:0">
         <div><div class="n">12</div><div class="l">Case studies</div></div>
         <div><div class="n">10+</div><div class="l">Years in practice</div></div>
-        <div><div class="n">4</div><div class="l">Disciplines, one practice</div></div>
+        <div><div class="n">5</div><div class="l">Disciplines, one practice</div></div>
         <div><div class="n">1</div><div class="l">Stylesheet</div></div>
       </div>
     </div>
@@ -457,9 +483,9 @@
     <div class="ct">Filters and button</div>
     <div class="cb">
       <div class="filters" style="margin:0 0 1.4rem"><button class="on">All</button><button>Brand</button><button>Motion</button><button>UX</button><button>Campaign</button></div>
-      <button class="btn">Send it</button>
+      <div style="display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap"><a class="hbtn p" href="#components">Let&#8217;s work together</a><a class="hbtn" href="#components">See the work</a></div>
     </div>
-    <div class="cn">Pill filters fill teal when active or hovered. Primary button is a teal pill that lifts and goes Bone on hover. Patterns: <b>.filters button.on</b>, <b>.btn</b>.</div>
+    <div class="cn">Pill filters fill teal when active or hovered. Buttons are flat: the primary is a teal-outline pill that fills teal on hover, the secondary is a text link with a teal underline on hover. No lift, no fill-to-Bone. Patterns: <b>.filters button.on</b>, <b>.hbtn.p</b>, <b>.hbtn</b>.</div>
   </div>
 
   <div class="comp">
@@ -486,7 +512,7 @@
 
 <section class="bsec" id="voice"><div class="wrap">
   <div class="sec-top"><span class="idx">(08)</span><h2>Voice</h2></div>
-  <p class="lead">The writing carries as much of the brand as the visuals. Concise, technically fluent, outcome first, no preamble. Lead with the problem and the result, then show how it was made, and if a sentence is not adding information, cut it.</p>
+  <div class="irail"><div class="rk"><b>How it reads</b></div><div class="rb"><p class="lead">The writing carries as much of the brand as the visuals. Concise, technically fluent, outcome first, no preamble. Lead with the problem and the result, then show how it was made, and if a sentence is not adding information, cut it.</p></div></div>
   <div class="dd">
     <div class="col do">
       <h4>Do</h4>
@@ -522,7 +548,7 @@
 
 <section class="bsec" id="applications"><div class="wrap">
   <div class="sec-top"><span class="idx">(09)</span><h2>Applications</h2></div>
-  <p class="lead">The system off the homepage. Cross-channel is the positioning, so the brand has to hold on a social card, an inbox, a deck, and a printed page. Specs below; each doubles as a working asset.</p>
+  <div class="irail"><div class="rk"><b>Off the homepage</b></div><div class="rb"><p class="lead">The system off the homepage. Cross-channel is the positioning, so the brand has to hold on a social card, an inbox, a deck, and a printed page. Specs below; each doubles as a working asset.</p></div></div>
   <table class="qref">
     <tr><td>Open Graph card</td><td>1200 x 630 webp, Ink ground, wordmark plus page title in display face, one accent. Square 1200 x 1200 headshot for the search and profile thumbnail</td></tr>
     <tr><td>Email signature</td><td>Name in display face, role descriptor in mono Slate, then email / LinkedIn / Behance / Instagram. Teal links. No image, so it renders everywhere</td></tr>
@@ -537,13 +563,15 @@
 
 <section class="bsec" id="method"><div class="wrap">
   <div class="sec-top"><span class="idx">(10)</span><h2>Method</h2></div>
+  <div class="irail"><div class="rk"><b>How it is made</b></div><div class="rb">
   <p class="lead">How the work is made, because the process is part of the brand. The order is deliberate: audience first, organization second, channel never in isolation.</p>
-  <p class="sub" style="color:#dcdcdc;font-size:1rem;max-width:64ch">I start every project at the audience level: what the person on the other end already knows and responds to. The organization's needs come in after that, never before. You can usually tell when work was built inside-out. I concept cross-channel from the first sketch, brand, motion, UI/UX, social, and performance considered together, not bolted on. Generative AI is built into the workflow as a layer, for rapid concepting, variation, and production acceleration, the same way I use a grid or a comp. It is methodology, not a feature to list next to Figma or After Effects. And nothing ships with a number I have not verified. Honest framing beats an inflated result, every time.</p>
+  <p class="sub" style="color:#dcdcdc;font-size:1rem">I start every project at the audience level: what the person on the other end already knows and responds to. The organization's needs come in after that, never before. You can usually tell when work was built inside-out. I concept cross-channel from the first sketch, brand, motion, UI/UX, social, and performance considered together, not bolted on. Generative AI is built into the workflow as a layer, for rapid concepting, variation, and production acceleration, the same way I use a grid or a comp. It is methodology, not a feature to list next to Figma or After Effects. And nothing ships with a number I have not verified. Honest framing beats an inflated result, every time.</p>
+  </div></div>
 </div></section>
 
 <section class="bsec" id="access"><div class="wrap">
   <div class="sec-top"><span class="idx">(11)</span><h2>Accessibility</h2></div>
-  <p class="lead">Accessibility is the engineering rigor the brand claims, made checkable. Not an afterthought, a constraint the system is built inside.</p>
+  <div class="irail"><div class="rk"><b>Built in</b></div><div class="rb"><p class="lead">Accessibility is the engineering rigor the brand claims, made checkable. Not an afterthought, a constraint the system is built inside.</p></div></div>
   <table class="qref">
     <tr><td>Contrast</td><td>All body and label text meets WCAG AA or better, verified, not assumed. See the matrix in Color</td></tr>
     <tr><td>Focus states</td><td>Visible teal border on every focusable field and control. Focus is never removed</td></tr>
@@ -578,6 +606,7 @@
     <div class="lr"><div class="lv">v1.0 · Jun 2026</div><div class="ld">Initial system documented alongside the site launch: brief, color, type, wordmark, motion, layout, voice, quick reference.</div></div>
     <div class="lr"><div class="lv">v1.1 · Jun 2026</div><div class="ld">Built out to a full guide: positioning and messaging, verified contrast matrix, type scale, aperture mark and lockups, motion tokens, component library, voice registers, applications, method, and accessibility.</div></div>
     <div class="lr"><div class="lv">v1.2 · Jun 2026</div><div class="ld">Voice pass: first-person framing across the section leads, an origin note and a plain statement of what the brand is for in the brief, and the method rewritten in the same voice. Aligned the email-signature spec and the version number with the live site.</div></div>
+    <div class="lr"><div class="lv">v1.3 · Jun 2026</div><div class="ld">Layout overhaul: section intros set as an indexed rail with the prose widened out of the old half-column, reference sections kept as spec tables. Component library updated to the flat button system, a teal-outline primary that fills on hover and an underline secondary, replacing the old lifting pill. Minor copy alignment to the current masters.</div></div>
   </div>
 </div></section>
 

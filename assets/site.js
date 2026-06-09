@@ -230,7 +230,7 @@
     var grid0 = document.querySelector('.proj:not(.proj--rows)');
     var cards0 = grid0 ? Array.prototype.slice.call(grid0.querySelectorAll('.p')) : [];
     if (cards0.length) {
-      var FEAT = ['work/sportime-clubs.html', 'work/cloud9-the-ninth.html'];
+      var FEAT = ['work/sportime-clubs.html', 'work/the-ninth.html'];
       var parse = function (c) {
         var im = c.querySelector('.img img');
         var src = im ? (im.getAttribute('src') || '') : '';

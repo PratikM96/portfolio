@@ -68,7 +68,6 @@
     var social = '<div>' +
       '<a href="mailto:mehtadpratik@gmail.com">Email</a> / ' +
       '<a href="https://linkedin.com/in/pratikm96" target="_blank" rel="noopener noreferrer">LinkedIn</a> / ' +
-      '<a href="https://behance.net/pratikm96" target="_blank" rel="noopener noreferrer">Behance</a> / ' +
       '<a href="https://instagram.com/pratikm96" target="_blank" rel="noopener noreferrer">Instagram</a> / ' +
       '<a href="/privacy.html">Privacy</a></div>';
     f.innerHTML = '<div class="wrap">' + top +
@@ -367,8 +366,6 @@
       track('resume_download', { file_name: href.split('/').pop().split('?')[0] });
     } else if (/linkedin\.com/i.test(href)) {
       track('social_click', { network: 'linkedin' });
-    } else if (/behance\.net/i.test(href)) {
-      track('social_click', { network: 'behance' });
     } else if (el.textContent.indexOf('↗') !== -1 && !el.closest('nav') && href.indexOf('http') !== 0) {
       track('cta_click', { cta_text: el.textContent.replace(/\s+/g, ' ').trim(), destination: href });
     }

@@ -24,6 +24,7 @@
 /work/dealnews-marketplace   /work/dealnews          301
 /work/jmtp-proam             /work/jmtp              301
 /work/frc-history            /work/frc               301
+/work/raa-fii		     /work/raa		     301
 
 # --- Old blog posts -> current posts (best-guess matches, verify slugs) ---
 /blog/ux-business        /blog/ux-starts-with-the-business-problem   301

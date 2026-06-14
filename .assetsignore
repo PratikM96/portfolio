@@ -1,0 +1,10 @@
+# Files kept in the repo but NOT uploaded/served as public static assets.
+# https://developers.cloudflare.com/workers/static-assets/binding/#ignoring-assets
+**/.git
+**/.DS_Store
+**/node_modules
+CLAUDE.md
+.assetsignore
+# Optional — uncomment to stop these from being publicly served too:
+# README.md
+# wrangler.jsonc

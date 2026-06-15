@@ -1,4 +1,4 @@
-# CLAUDE.md — mehtapratik.com (live-site)
+# CLAUDE.md — mehtapratik.com (site-files)
 
 Operating guide for editing this site with Claude. Read this before changing any page.
 
@@ -7,7 +7,7 @@ Operating guide for editing this site with Claude. Read this before changing any
 Hand-built static site for **mehtapratik.com** — plain HTML/CSS/JS, **no framework, no build step**.
 Files are served exactly as written. Deployed on Cloudflare (Workers static assets) via Git push.
 
-- Repo: `PratikM96/mehtapratik-site` (this folder, `live-site/`, is the git root)
+- Repo: `PratikM96/portfolio` (this folder, `site-files/`, is the git root; the Cloudflare Worker is separately named `mehtapratik-site`)
 - Production branch: `main` → push to `main` = live in production
 - Content source-of-truth lives one level up: `../copy-master.md`, `../about-me-master.md`, `../metrics-master.md`. **Pull real copy and metrics from these — do not invent numbers.**
 - Page templates: there is no separate templates folder. Copy an existing page of the same type and replace its content, the live pages are the template so they never drift. Good bases: `work/sportime-clubs.html` (case study), `blog/trust-is-the-interface.html` (post).
@@ -17,8 +17,8 @@ Files are served exactly as written. Deployed on Cloudflare (Workers static asse
 1. **Never hardcode the nav or footer.** They are injected by `assets/site.js`. Pages opt in with empty elements (see below). If you paste nav/footer markup into a page, you've created drift — don't.
 2. **One CSS file, one JS file.** All styling is in `assets/site.css`; all behavior in `assets/site.js`. Prefer existing classes over new inline styles. Add a new class to `site.css` rather than repeating inline styles across pages.
 3. **The home page's featured sections are static (hardcoded in `index.html`).** `#home-work` shows a pinned hero (SPORTIME Clubs) + the 3 most-recent other work; `#home-blog` shows the newest 3 posts. These were previously fetched from `work.html`/`blog.html` at runtime — that was removed for performance. **When the featured set changes, you must update `index.html` by hand** (see the recipes below). The markup mirrors what `work.html`/`blog.html` use (`.hw-hero`/`.hw-sup`, `.hb-lead`/`.hb-row`).
-4. **Every new page needs a `<head>` block.** Per-page `<title>`, meta description, OG/Twitter tags, canonical, and JSON-LD are unique SEO content and must be filled in. Start from a template; don't ship placeholder copy.
-5. **Verify locally before pushing** (see Local preview). There are no tests — a broken page deploys straight to production.
+4. **Every new page needs a `<head>` block.** Per-page `<title>`, meta description, OG/Twitter tags, canonical, and JSON-LD are unique SEO content and must be filled in. Start from an existing page; don't ship placeholder copy.
+5. **Verify before merging.** Preview locally or on the Cloudflare preview URL (see Local preview). The CI check (see Automated checks) gates every pull request and `main` is protected, so a broken page does not deploy straight to production, but the check does not catch everything, so still look at the page.
 6. **Work on the `draft` branch, not `main`** (see Workflow). `main` is production.
 7. **Internal links use clean URLs** (`/work/sportime-clubs`, `/about`), never `.html`. Cloudflare serves the pretty URL, so an `.html` link just adds a redirect hop.
 8. **Bump the asset stamp when you change CSS or JS.** Run `.github/scripts/bump-assets.ps1` after editing `site.css`/`site.js` (see "Recipe: update CSS or JS"). They are cached for a year, so the change stays invisible until the stamp updates.
@@ -32,13 +32,13 @@ Files are served exactly as written. Deployed on Cloudflare (Workers static asse
   - `work` — used on work/case-study pages; shows next-project link
   - `blog` — used on blog posts
   - `bare` — minimal (used on home and utility pages)
-- **Scripts:** every page ends with `<script src="assets/site.js" defer></script>` (root pages) or `../assets/site.js` (pages in `work/` and `blog/`).
+- **Scripts:** every page ends with `<script src="assets/site.js" defer></script>` (root pages) or `../assets/site.js` (pages in `work/` and `blog/`). The `site.css` and `site.js` references carry a `?v=` cache stamp maintained by `bump-assets.ps1` (see "Recipe: update CSS or JS"); copying an existing page keeps it correct.
 
 Bespoke pages (`resume.html`, the `concepts/` micro-sites) may build their own footer; they tag the next-project link with `.js-next-project` so site.js can still populate it.
 
 ### Path depth matters
 - **Root pages** (`about.html`, `work.html`, etc.) reference assets as `assets/site.css`, fonts as `assets/fonts/...`, and use absolute `/favicon...` paths.
-- **Pages in `work/` or `blog/`** reference assets as `../assets/site.css`, `../assets/fonts/...`, and link back to indexes as `../work.html` / `../blog.html`. Favicons stay absolute (`/favicon...`).
+- **Pages in `work/` or `blog/`** reference assets as `../assets/site.css`, `../assets/fonts/...`, with favicons absolute (`/favicon...`). Page links (nav, body, back-links) use clean root-relative URLs like `/work` and `/blog/<slug>`, never `../work.html` (see Rule 7).
 
 When creating a sub-page, double-check every relative path resolves from its folder.
 
@@ -47,13 +47,14 @@ When creating a sub-page, double-check every relative path resolves from its fol
 - `blog/` — one HTML file per post
 - `concepts/` — interactive concept micro-sites (level, the-ninth, wisp), each its own world
 - `assets/` — `site.css`, `site.js`, `fonts/`
+- `.github/` holds the CI workflow and scripts (the checks and the asset stamper), kept in the repo but not served (excluded via `.assetsignore`)
 - Images are **not** in the repo — they're served from `https://cdn.mehtapratik.com/...` (separate CDN; local staging copies live in `../cdn/`)
 
 ### Cloudflare / deploy config (edit with care)
 - `wrangler.jsonc` — Workers static-assets config; `not_found_handling: 404-page`
 - `_headers` — HTTP headers (caching, security)
 - `_redirects` — 301s, first match wins; targets use pretty URLs (no `.html`)
-- `404.html`, `robots.txt`, `sitemap.xml`, `site.webmanifest`
+- `404.html`, `robots.txt`, `sitemap.xml`, `site.webmanifest`, `llms.txt`
 - Pretty URLs and trailing-slash handling are automatic — `/about` serves `/about.html`. Don't add redirects for those.
 
 ## Recipe: add a new WORK page
@@ -63,11 +64,11 @@ When creating a sub-page, double-check every relative path resolves from its fol
    - OG image: `https://cdn.mehtapratik.com/og/og-<slug>.jpg` (confirm the asset exists on the CDN, or note it as TODO)
    - Hero meta (Type / Role / Year / Disciplines), snapshot, body sections
 2. **Add a card to the index** `work.html` — copy an existing `<a class="p ...">` inside `<div class="proj">`. This makes it appear on `/work` and in the interactive filter.
-   - Set `href="work/<slug>.html"`, the `<h3>` title, year, one-line description, and the `.t` disciplines.
+   - Set `href="/work/<slug>"` (clean URL, no `.html`), the `<h3>` title, year, one-line description, and the `.t` disciplines.
    - Set `data-tags="..."` using the filter vocabulary: `concept ai uiux brand motion campaign photo`. The `/work` filter relies on these tags.
    - Update the `<span class="num">NN</span>` ordering if needed.
    - The `c5/c6/c7` class controls grid sizing — match a neighbor.
-   - **If the new project should be featured on the home page** (it's the newest, or replaces a featured one), also update `#home-work` in `index.html`: the hero is pinned to SPORTIME Clubs; the 3 `.hw-sup` cards are the next-most-recent. Mirror an existing `.hw-sup` `<a>` (image uses the `-960.webp` mid src + same srcset; `.disc` is the disciplines on one line).
+   - **If the new project should be featured on the home page** (it's the newest, or replaces a featured one), also update `#home-work` in `index.html`: the hero is pinned to SPORTIME Clubs; the 3 `.hw-sup` cards are the next-most-recent. Mirror an existing `.hw-sup` `<a>` (image uses the `-960.webp` mid src + same srcset; `.disc` is the disciplines on one line). If you change the featured pair itself, also update the `FEAT` list in `site.js` (see "Featured projects on /work").
 3. **Add to `sitemap.xml`** — a `<url>` line with `<loc>https://mehtapratik.com/work/<slug></loc>`, today's `<lastmod>`, `monthly`, priority `0.7`.
 4. **Redirects** — only if you renamed/replaced an old URL: add a `301` line to `_redirects`.
 5. **Preview, then commit to `draft`.**
@@ -79,7 +80,7 @@ When creating a sub-page, double-check every relative path resolves from its fol
    - JSON-LD: `BlogPosting` (set `datePublished`/`dateModified`), `BreadcrumbList`, and optional `FAQPage` if the post has an FAQ block
    - Hero: category tag, `<h1>`, post-meta line (`<b>section</b>`, tags, date, read time)
    - Body in `.post-body`; lead paragraph uses `class="standfirst"`; callouts use `class="pull"`
-2. **Add a row to the index** `blog.html` — copy an existing `<a class="post-row" ...>` into the right `.blog-group`. Set `href`, `.pt` title, `.pd` description, `.pm` meta line. Update the group's `<span class="ct">N posts</span>` count.
+2. **Add a row to the index** `blog.html` — copy an existing `<a class="post-row" ...>` into the right `.blog-group`. Set `href` (clean URL, `/blog/<slug>`), `.pt` title, `.pd` description, `.pm` meta line. Update the group's `<span class="ct">N posts</span>` count.
    - **If this is now one of the 3 newest posts**, also update `#home-blog` in `index.html`: the newest is the `.hb-lead` (with `.cat` tags, `<h4>`, dek `<p>`, and `.m` date · read-time); the next two are `.hb-row` (title + full meta line). Drop the oldest of the three.
 3. **Add to `sitemap.xml`** — `<loc>https://mehtapratik.com/blog/<slug></loc>`, `yearly`, priority `0.6`.
 4. **Preview, then commit to `draft`.**
@@ -131,7 +132,7 @@ Every pull request into `main` runs `.github/workflows/ci.yml`, which calls `.gi
 
 It also prints warnings (does not fail) for a page missing from `sitemap.xml`, or missing a title, meta description, or canonical.
 
-To make the check mandatory (recommended once you have seen it pass once): repo **Settings > Rules > Rulesets**, edit the `main` ruleset, turn on **Require status checks to pass**, and select the "Links, assets, cache stamps" check.
+This check is **required**: a red X blocks the merge until it is green. (It is enforced under repo **Settings > Rules > Rulesets** on the `main` ruleset, via **Require status checks to pass** with the "Links, assets, cache stamps" check selected.)
 
 ## Gotchas
 
@@ -157,6 +158,6 @@ Before merging `draft` into `main`:
 2. Make changes, preview locally.
 3. `git add -A && git commit -m "..."` then `git push -u origin draft`.
 4. Cloudflare builds a **preview URL** for the `draft` branch. Review the live rendered site there.
-5. When it looks right, merge `draft` → `main` (PR or fast-forward) and push `main` → production deploys.
+5. When it looks right and **Site checks** is green, merge `draft` → `main` via the pull request, and production deploys.
 
-Keep commits scoped to one change so previews and rollbacks stay clean.
+Keep commits scoped to one change so previews and rollbacks stay clean. In practice you do these steps in GitHub Desktop; the plain-language version is the update-and-deploy guide in `../_archive/reference-docs/`.

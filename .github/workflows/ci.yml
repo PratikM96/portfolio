@@ -1,0 +1,29 @@
+name: Site checks
+
+# Runs on every pull request into main (your draft -> main step), and can be
+# run manually from the Actions tab. It does not touch production; it only
+# reports pass/fail on the PR.
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  checks:
+    name: Links, assets, cache stamps
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Blocking: broken internal links/assets, and stale CSS/JS cache stamps.
+      - name: Resolve internal links, assets, and CSS/JS cache stamps
+        run: python3 .github/scripts/check_site.py
+
+      # Informational only: HTML validity. Won't fail the build (continue-on-error),
+      # so it never blocks a merge on a style nit. Promote to blocking later if it
+      # stays clean by removing continue-on-error.
+      - name: HTML validation (informational)
+        continue-on-error: true
+        uses: Cyb3r-Jak3/html5validator-action@v7
+        with:
+          root: .

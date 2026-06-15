@@ -1,7 +1,7 @@
 # Cloudflare Pages headers (https://developers.cloudflare.com/pages/configuration/headers/)
-# Long-cache true static media (filenames rarely change), but revalidate code and
-# HTML every load so deploys take effect immediately. site.css / site.js are NOT
-# content-hashed, so they must never be cached immutable or fixes won't reach users.
+# Long-cache true static media and the version-stamped CSS/JS (their references
+# carry a ?v=<hash> set by .github/scripts/bump-assets.ps1, so any change is a new
+# URL), but revalidate HTML every load so new deploys take effect immediately.
 /assets/*.webp
   Cache-Control: public, max-age=31536000, immutable
 /assets/*.mp4
@@ -12,9 +12,9 @@
   Cache-Control: public, max-age=86400, must-revalidate
 
 /assets/*.css
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, max-age=31536000, immutable
 /assets/*.js
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate

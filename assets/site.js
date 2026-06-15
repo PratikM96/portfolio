@@ -171,6 +171,11 @@
     var cards0 = grid0 ? Array.prototype.slice.call(grid0.querySelectorAll('.p')) : [];
     if (cards0.length) {
       var FEAT = ['work/sportime-clubs.html', 'work/the-ninth.html'];
+      // Compare by slug so featured matching works whether card links use pretty
+      // URLs (/work/x) or .html (work/x.html). Prevents Featured from going empty
+      // when internal links are switched to clean URLs.
+      var slug = function (h) { return (h || '').replace(/^(\.\.\/)+/, '').replace(/^\//, '').replace(/\.html$/, ''); };
+      var FEATS = FEAT.map(slug);
       var parse = function (c) {
         var im = c.querySelector('.img img');
         var src = im ? (im.getAttribute('src') || '') : '';
@@ -189,8 +194,8 @@
         };
       };
       var all = cards0.map(parse);
-      var feat = FEAT.map(function (h) { var m = all.filter(function (p) { return p.href === h; }); return m[0]; }).filter(Boolean);
-      var rest = all.filter(function (p) { return FEAT.indexOf(p.href) === -1; }).sort(function (a, b) { return b.sort - a.sort; });
+      var feat = FEATS.map(function (h) { var m = all.filter(function (p) { return slug(p.href) === h; }); return m[0]; }).filter(Boolean);
+      var rest = all.filter(function (p) { return FEATS.indexOf(slug(p.href)) === -1; }).sort(function (a, b) { return b.sort - a.sort; });
 
       var featHtml = '<div class="wk-lab" style="padding-bottom:1.2rem;border-bottom:1px solid var(--line);margin-bottom:1.4rem">Featured</div><div class="wk-feat">' +
         feat.map(function (p) {

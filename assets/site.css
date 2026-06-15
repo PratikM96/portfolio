@@ -373,6 +373,10 @@ a[style*="color:var(--accent)"]:hover,a.backlink:hover,a.cs-link:hover{color:var
 .wk-chip{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:none;border:1px solid var(--line-2);border-radius:40px;padding:.45rem 1rem;cursor:pointer;transition:all .2s var(--ease)}
 .wk-chip:hover{color:var(--fg)}
 .wk-chip.on{color:#0a0a0a;background:var(--accent);border-color:var(--accent)}
+/* Filter pills (brand-system pattern, documented on brand.html). Mirrors .wk-chip geometry; fills teal on hover and when active, per the brand spec caption. */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap}
+.filters button{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:none;border:1px solid var(--line-2);border-radius:40px;padding:.45rem 1rem;cursor:pointer;transition:all .2s var(--ease)}
+.filters button:hover,.filters button.on{color:#0a0a0a;background:var(--accent);border-color:var(--accent)}
 .wk-index{position:relative}
 .wk-li{display:flex;align-items:center;gap:1.4rem;padding:1.25rem .2rem;border-bottom:1px solid var(--line);overflow:hidden;color:inherit;transition:opacity .4s var(--ease),max-height .5s var(--ease),padding .4s var(--ease);max-height:240px}
 .wk-li:focus-visible{outline:2px solid var(--accent);outline-offset:3px}

@@ -16,7 +16,7 @@ Files are served exactly as written. Deployed on Cloudflare (Workers static asse
 
 1. **Never hardcode the nav or footer.** They are injected by `assets/site.js`. Pages opt in with empty elements (see below). If you paste nav/footer markup into a page, you've created drift — don't.
 2. **One CSS file, one JS file.** All styling is in `assets/site.css`; all behavior in `assets/site.js`. Prefer existing classes over new inline styles. Add a new class to `site.css` rather than repeating inline styles across pages.
-3. **The home page is automatic.** `index.html` builds its featured work and journal sections by fetching `work.html` and `blog.html` at runtime. You almost never edit `index.html` to surface a new page — you edit the index files.
+3. **The home page's featured sections are static (hardcoded in `index.html`).** `#home-work` shows a pinned hero (SPORTIME Clubs) + the 3 most-recent other work; `#home-blog` shows the newest 3 posts. These were previously fetched from `work.html`/`blog.html` at runtime — that was removed for performance. **When the featured set changes, you must update `index.html` by hand** (see the recipes below). The markup mirrors what `work.html`/`blog.html` use (`.hw-hero`/`.hw-sup`, `.hb-lead`/`.hb-row`).
 4. **Every new page needs a `<head>` block.** Per-page `<title>`, meta description, OG/Twitter tags, canonical, and JSON-LD are unique SEO content and must be filled in. Start from a template; don't ship placeholder copy.
 5. **Verify locally before pushing** (see Local preview). There are no tests — a broken page deploys straight to production.
 6. **Work on the `draft` branch, not `main`** (see Workflow). `main` is production.
@@ -60,11 +60,12 @@ When creating a sub-page, double-check every relative path resolves from its fol
    - `<title>`, meta description, OG/Twitter title+description+image, canonical URL, JSON-LD (`CreativeWork` + `BreadcrumbList`)
    - OG image: `https://cdn.mehtapratik.com/og/og-<slug>.jpg` (confirm the asset exists on the CDN, or note it as TODO)
    - Hero meta (Type / Role / Year / Disciplines), snapshot, body sections
-2. **Add a card to the index** `work.html` — copy an existing `<a class="p ...">` inside `<div class="proj">`. This is what makes it appear on `/work`, in the interactive filter, AND on the home page.
+2. **Add a card to the index** `work.html` — copy an existing `<a class="p ...">` inside `<div class="proj">`. This makes it appear on `/work` and in the interactive filter.
    - Set `href="work/<slug>.html"`, the `<h3>` title, year, one-line description, and the `.t` disciplines.
-   - Set `data-tags="..."` using the filter vocabulary: `concept ai uiux brand motion campaign photo`. The home page and `/work` filter both rely on these tags.
+   - Set `data-tags="..."` using the filter vocabulary: `concept ai uiux brand motion campaign photo`. The `/work` filter relies on these tags.
    - Update the `<span class="num">NN</span>` ordering if needed.
    - The `c5/c6/c7` class controls grid sizing — match a neighbor.
+   - **If the new project should be featured on the home page** (it's the newest, or replaces a featured one), also update `#home-work` in `index.html`: the hero is pinned to SPORTIME Clubs; the 3 `.hw-sup` cards are the next-most-recent. Mirror an existing `.hw-sup` `<a>` (image uses the `-960.webp` mid src + same srcset; `.disc` is the disciplines on one line).
 3. **Add to `sitemap.xml`** — a `<url>` line with `<loc>https://mehtapratik.com/work/<slug></loc>`, today's `<lastmod>`, `monthly`, priority `0.7`.
 4. **Redirects** — only if you renamed/replaced an old URL: add a `301` line to `_redirects`.
 5. **Preview, then commit to `draft`.**
@@ -76,7 +77,8 @@ When creating a sub-page, double-check every relative path resolves from its fol
    - JSON-LD: `BlogPosting` (set `datePublished`/`dateModified`), `BreadcrumbList`, and optional `FAQPage` if the post has an FAQ block
    - Hero: category tag, `<h1>`, post-meta line (`<b>section</b>`, tags, date, read time)
    - Body in `.post-body`; lead paragraph uses `class="standfirst"`; callouts use `class="pull"`
-2. **Add a row to the index** `blog.html` — copy an existing `<a class="post-row" ...>` into the right `.blog-group`. Set `href`, `.pt` title, `.pd` description, `.pm` meta line. Update the group's `<span class="ct">N posts</span>` count. The home page pulls the latest 3 from here automatically.
+2. **Add a row to the index** `blog.html` — copy an existing `<a class="post-row" ...>` into the right `.blog-group`. Set `href`, `.pt` title, `.pd` description, `.pm` meta line. Update the group's `<span class="ct">N posts</span>` count.
+   - **If this is now one of the 3 newest posts**, also update `#home-blog` in `index.html`: the newest is the `.hb-lead` (with `.cat` tags, `<h4>`, dek `<p>`, and `.m` date · read-time); the next two are `.hb-row` (title + full meta line). Drop the oldest of the three.
 3. **Add to `sitemap.xml`** — `<loc>https://mehtapratik.com/blog/<slug></loc>`, `yearly`, priority `0.6`.
 4. **Preview, then commit to `draft`.**
 

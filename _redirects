@@ -26,9 +26,9 @@
 /work/frc-history            /work/frc               301
 /work/raa-fii		     /work/raa		     301
 
-# --- Old blog posts -> current posts (best-guess matches, verify slugs) ---
-/blog/ux-business        /blog/ux-starts-with-the-business-problem   301
-/blog/creative-science   /blog/cs-degree-taught-me-about-design      301
+# --- Old blog posts -> current posts ---
+/blog/creative-science   /blog/cs-degree-creative-director-secret-weapon   301
+/blog/ux-business        /blog                                              301
 
 # --- Old blog posts with no clear 1:1 -> blog index ---
 /blog/ai-workflow          /blog   301

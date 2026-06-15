@@ -114,71 +114,12 @@
   // discoverable early instead of being injected here by this deferred script.
   // The cs-hero/has-cover classes live in page markup. Resume stays clean (no snippet).
 
-  // Home: featured Selected Work (SPORTIME pinned hero + the rest by recency).
-  var homeWork = document.getElementById('home-work');
-  if (homeWork) {
-    fetch('work.html', { credentials: 'same-origin' })
-      .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
-      .then(function (html) {
-        var doc = new DOMParser().parseFromString(html, 'text/html');
-        var cards = Array.prototype.slice.call(doc.querySelectorAll('.proj .p'));
-        if (!cards.length) return;
-        var parse = function (c) {
-          var im = c.querySelector('.img img'); var src = im ? (im.getAttribute('src') || '') : '';
-          var tEl = c.querySelector('.t');
-          var disc = tEl ? tEl.innerHTML.replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim() : '';
-          var h3 = c.querySelector('h3'), pEl = c.querySelector('.lab p'), yrEl = c.querySelector('.yr');
-          var yr = yrEl ? yrEl.textContent : ''; var yrs = (yr.match(/\d{4}/g) || []).map(Number);
-          return { href: c.getAttribute('href') || '#', title: h3 ? h3.textContent : '', yr: yr, disc: disc,
-            desc: pEl ? pEl.textContent : '', srcset: im ? (im.getAttribute('srcset') || '') : '',
-            mid: src.replace('.webp', '-960.webp'), sort: yrs.length ? Math.max.apply(null, yrs) : 0 };
-        };
-        var all = cards.map(parse);
-        var HERO = 'work/sportime-clubs.html';
-        var hero = all.filter(function (p) { return p.href === HERO; })[0] || all[0];
-        var sup = all.filter(function (p) { return p.href !== hero.href; })
-                     .sort(function (a, b) { return b.sort - a.sort; }).slice(0, 3);
-        var img = function (p, w) { return '<img src="' + p.mid + '" srcset="' + p.srcset + '" sizes="' + w + '" alt="' + p.title + '" loading="lazy" decoding="async"/>'; };
-        var heroHtml = '<div class="hw-hero"><a class="hw-cov" href="' + hero.href + '"><div class="cov">' + img(hero, '(max-width:760px) 92vw, 900px') + '</div></a>'
-          + '<div class="hw-meta"><div class="num">Featured</div><h4>' + hero.title + '</h4><div class="disc">' + hero.disc + '</div> <span class="yr">' + hero.yr + '</span><p>' + hero.desc + '</p></div></div>';
-        var supHtml = '<div class="hw-sup">' + sup.map(function (p) {
-          return '<a href="' + p.href + '"><div class="cov">' + img(p, '(max-width:760px) 92vw, 600px') + '</div><h5>' + p.title + '</h5><div class="disc">' + p.disc + '</div></a>';
-        }).join('') + '</div>';
-        homeWork.innerHTML = heroHtml + supHtml;
-      })
-      .catch(function () { /* offline; the View all work link is the fallback */ });
-  }
-
-  // Home: Journal teaser (featured lead = most recent, then two rows). blog.html is newest-first.
-  var homeBlog = document.getElementById('home-blog');
-  if (homeBlog) {
-    fetch('blog.html', { credentials: 'same-origin' })
-      .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
-      .then(function (html) {
-        var doc = new DOMParser().parseFromString(html, 'text/html');
-        var posts = Array.prototype.slice.call(doc.querySelectorAll('.post-row:not(.soon)'))
-          .filter(function (a) { var h = a.getAttribute('href') || ''; return h && h.charAt(0) !== '#'; });
-        if (!posts.length) return;
-        var parseP = function (a) {
-          var pt = a.querySelector('.pt'), pd = a.querySelector('.pd'), pm = a.querySelector('.pm');
-          var meta = pm ? pm.textContent.trim() : '';
-          var parts = meta.split('·').map(function (s) { return s.trim(); }).filter(Boolean);
-          var read = parts.length ? parts[parts.length - 1] : '';
-          var date = parts.length > 1 ? parts[parts.length - 2] : '';
-          var tags = parts.slice(0, Math.max(0, parts.length - 2)).join(' · ');
-          return { href: a.getAttribute('href'), title: pt ? pt.textContent : '', dek: pd ? pd.textContent : '',
-            meta: meta, tags: tags, date: date, read: read };
-        };
-        var data = posts.slice(0, 3).map(parseP);
-        var lead = data[0], rows = data.slice(1, 3);
-        var leadHtml = '<a class="hb-lead" href="' + lead.href + '"><div class="cat">' + lead.tags + '</div><h4>' + lead.title + '</h4><p>' + lead.dek + '</p><div class="m">' + lead.date + (lead.read ? ' · ' + lead.read : '') + '</div></a>';
-        var rowsHtml = rows.map(function (p) {
-          return '<a class="hb-row" href="' + p.href + '"><div class="pt">' + p.title + '</div><div class="m">' + p.meta + '</div></a>';
-        }).join('');
-        homeBlog.innerHTML = leadHtml + rowsHtml;
-      })
-      .catch(function () { /* offline; the All writing link is the fallback */ });
-  }
+  // Home: featured Selected Work and Journal are now hardcoded directly in
+  // index.html (#home-work / #home-blog) rather than fetched + DOM-parsed at
+  // runtime. This removes two extra HTTP requests and main-thread parse work on
+  // every home load, and makes the featured cards visible to the browser's
+  // preload scanner. When the featured set changes, edit those sections in
+  // index.html to match work.html / blog.html (see CLAUDE.md recipes).
 
   // Scroll reveal for project cards
   var cards = document.querySelectorAll('.p');

@@ -1,4 +1,4 @@
-# Cloudflare Pages headers (https://developers.cloudflare.com/pages/configuration/headers/)
+# Cloudflare Workers static-assets headers (https://developers.cloudflare.com/workers/static-assets/headers/)
 # Long-cache true static media and the version-stamped CSS/JS (their references
 # carry a ?v=<hash> set by .github/scripts/bump-assets.ps1, so any change is a new
 # URL), but revalidate HTML every load so new deploys take effect immediately.

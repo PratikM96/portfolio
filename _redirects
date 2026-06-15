@@ -1,4 +1,4 @@
-# Cloudflare Pages redirects (https://developers.cloudflare.com/pages/configuration/redirects/)
+# Cloudflare Workers static-assets redirects (https://developers.cloudflare.com/workers/static-assets/redirects/)
 # Format:  /source  /destination  STATUS    (one rule per line, first match wins)
 #
 # Pages already handles these automatically, so they need NO rules here:

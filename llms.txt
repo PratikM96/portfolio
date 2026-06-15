@@ -1,0 +1,37 @@
+# Pratik Mehta
+
+> Creative Director and Brand Strategist in New York. 10+ years across brand identity, motion, UI/UX, social, and performance marketing, in fintech, sports and entertainment, e-commerce, and global events. CS degree from NYU. Gen AI used as a production layer, not a novelty. Open to creative-director and brand or marketing leadership roles.
+
+## Core pages
+- [Home](https://mehtapratik.com/): positioning, selected work, and contact.
+- [About](https://mehtapratik.com/about): background, approach, and career narrative.
+- [Resume](https://mehtapratik.com/resume): experience, skills, and education.
+- [Work](https://mehtapratik.com/work): selected case studies across eight industries.
+- [Brand](https://mehtapratik.com/brand): the brand system behind the site.
+- [Contact](https://mehtapratik.com/contact): email and availability.
+
+## Selected work
+- [SPORTIME Clubs](https://mehtapratik.com/work/sportime-clubs): brand and a video-first content engine across tennis, pickleball, and a $75M facility expansion.
+- [The Ninth](https://mehtapratik.com/work/the-ninth): esports membership concept with a live AI moment-clipper.
+- [Level](https://mehtapratik.com/work/level): responsible prediction-market product concept.
+- [WISP](https://mehtapratik.com/work/wisp): faceless live AI host concept.
+- [DealNews](https://mehtapratik.com/work/dealnews): marketplace and app redesign for 17M monthly users.
+- [The Forest Road Company](https://mehtapratik.com/work/frc): motion for a Series B media-finance firm.
+- [Richard Attias & Associates](https://mehtapratik.com/work/raa): environmental, digital, and print for the FII 2019 forum in Riyadh.
+- [Pipeline Medical](https://mehtapratik.com/work/pipeline-medical): brand and supplier marketplace for healthcare procurement.
+- [SR Love and Care](https://mehtapratik.com/work/sr-love-and-care): built and handed off a volunteer design team.
+- [Johnny Mac Tennis Project](https://mehtapratik.com/work/jmtp): event graphics and photography for two fundraisers.
+- [Agency FiveEighty](https://mehtapratik.com/work/agency-fiveeighty): broadcast motion and a 33-ad conquest campaign.
+- [Photography](https://mehtapratik.com/work/photography): sports, events, and personal work shot across New York.
+
+## Journal
+- [All posts](https://mehtapratik.com/blog): notes on brand, product, and the AI shift.
+- [Trust Is the Interface](https://mehtapratik.com/blog/trust-is-the-interface)
+- [GEO Is the New SEO](https://mehtapratik.com/blog/geo-is-the-new-seo)
+- [The Machine-Readable Brand](https://mehtapratik.com/blog/the-machine-readable-brand)
+- [Taste Is the Bottleneck Now](https://mehtapratik.com/blog/taste-is-the-bottleneck-now)
+- [GenAI Is a Production Layer, Not a Magic Trick](https://mehtapratik.com/blog/genai-production-layer-not-magic-trick)
+
+## Contact
+- Email: mehtadpratik@gmail.com
+- LinkedIn: https://linkedin.com/in/pratikm96

@@ -42,14 +42,14 @@
     if (!mount) return;
     mount.innerHTML =
       '<div class="nav-inner">' +
-        '<a class="brand" href="/index.html">Pratik Mehta<span class="brand-c">©</span></a>' +
+        '<a class="brand" href="/">Pratik Mehta<span class="brand-c">©</span></a>' +
         '<button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>' +
         '<div class="nav-links">' +
-          '<a href="/about.html">About</a>' +
-          '<a href="/brand.html">Brand</a>' +
-          '<a href="/work.html">Work</a>' +
-          '<a href="/blog.html">Journal</a>' +
-          '<a href="/contact.html">Contact ↗\uFE0E</a>' +
+          '<a href="/about">About</a>' +
+          '<a href="/brand">Brand</a>' +
+          '<a href="/work">Work</a>' +
+          '<a href="/blog">Journal</a>' +
+          '<a href="/contact">Contact ↗\uFE0E</a>' +
         '</div>' +
       '</div>';
   }
@@ -59,17 +59,17 @@
     var type = f.getAttribute('data-foot');
     var top = '';
     if (type === 'cta')
-      top = '<div class="fbig">Let\'s work<br/><a href="/contact.html">together↗\uFE0E</a></div>';
+      top = '<div class="fbig">Let\'s work<br/><a href="/contact">together↗\uFE0E</a></div>';
     else if (type === 'work')
-      top = '<div class="fbig fbig-next">Next:<br/><a class="js-next-project" href="/work.html">More work ↗\uFE0E</a></div>';
+      top = '<div class="fbig fbig-next">Next:<br/><a class="js-next-project" href="/work">More work ↗\uFE0E</a></div>';
     else if (type === 'blog')
-      top = '<div class="fbig fbig-next">Next:<br/><a class="js-next-post" href="/blog.html">More writing ↗\uFE0E</a></div>';
+      top = '<div class="fbig fbig-next">Next:<br/><a class="js-next-post" href="/blog">More writing ↗\uFE0E</a></div>';
     var credit = '<div>Pratik Mehta <span class="brand-c">©</span> · New York · 2026</div>';
     var social = '<div>' +
       '<a href="mailto:mehtadpratik@gmail.com">Email</a> / ' +
       '<a href="https://linkedin.com/in/pratikm96" target="_blank" rel="noopener noreferrer">LinkedIn</a> / ' +
       '<a href="https://instagram.com/pratikm96" target="_blank" rel="noopener noreferrer">Instagram</a> / ' +
-      '<a href="/privacy.html">Privacy</a></div>';
+      '<a href="/privacy">Privacy</a></div>';
     f.innerHTML = '<div class="wrap">' + top +
       '<div class="frow"' + (type === 'bare' ? ' style="margin-top:0"' : '') + '>' +
       credit + social + '</div></div>';
@@ -98,15 +98,15 @@
         Array.prototype.forEach.call(links, function (link) {
           var pick = pool[Math.floor(Math.random() * pool.length)];
           var t = pick.querySelector(titleSel);
-          var href = pick.getAttribute('href').replace(/^(\.\.\/)+/, '').replace(/^\//, '');
+          var href = pick.getAttribute('href').replace(/^(\.\.\/)+/, '').replace(/^\//, '').replace(/\.html$/, '');
           link.setAttribute('href', '/' + href);
           link.textContent = (t ? t.textContent.trim() : 'Next') + ' ↗\uFE0E';
         });
       })
       .catch(function () { /* keep the static fallback link */ });
   }
-  fillNext('.js-next-project', '/work.html', '.proj .p', 'h3');
-  fillNext('.js-next-post', '/blog.html', '.post-row:not(.soon)', '.pt');
+  fillNext('.js-next-project', '/work', '.proj .p', 'h3');
+  fillNext('.js-next-post', '/blog', '.post-row:not(.soon)', '.pt');
 
   // Hero texture now handled by a synchronous snippet in each page's <head>
   // (search "hero-cover-preload"). It picks a random texture, preloads it with

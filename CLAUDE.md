@@ -10,7 +10,7 @@ Files are served exactly as written. Deployed on Cloudflare (Workers static asse
 - Repo: `PratikM96/mehtapratik-site` (this folder, `live-site/`, is the git root)
 - Production branch: `main` → push to `main` = live in production
 - Content source-of-truth lives one level up: `../copy-master.md`, `../about-me-master.md`, `../metrics-master.md`. **Pull real copy and metrics from these — do not invent numbers.**
-- Reusable page templates: `../_dev/templates/` (kept outside this repo so they never deploy)
+- Page templates: there is no separate templates folder. Copy an existing page of the same type and replace its content, the live pages are the template so they never drift. Good bases: `work/sportime-clubs.html` (case study), `blog/trust-is-the-interface.html` (post).
 
 ## Golden rules
 
@@ -20,6 +20,8 @@ Files are served exactly as written. Deployed on Cloudflare (Workers static asse
 4. **Every new page needs a `<head>` block.** Per-page `<title>`, meta description, OG/Twitter tags, canonical, and JSON-LD are unique SEO content and must be filled in. Start from a template; don't ship placeholder copy.
 5. **Verify locally before pushing** (see Local preview). There are no tests — a broken page deploys straight to production.
 6. **Work on the `draft` branch, not `main`** (see Workflow). `main` is production.
+7. **Internal links use clean URLs** (`/work/sportime-clubs`, `/about`), never `.html`. Cloudflare serves the pretty URL, so an `.html` link just adds a redirect hop.
+8. **Bump the asset stamp when you change CSS or JS.** Run `.github/scripts/bump-assets.ps1` after editing `site.css`/`site.js` (see "Recipe: update CSS or JS"). They are cached for a year, so the change stays invisible until the stamp updates.
 
 ## Architecture
 
@@ -45,7 +47,7 @@ When creating a sub-page, double-check every relative path resolves from its fol
 - `blog/` — one HTML file per post
 - `concepts/` — interactive concept micro-sites (level, the-ninth, wisp), each its own world
 - `assets/` — `site.css`, `site.js`, `fonts/`
-- Images are **not** in the repo — they're served from `https://cdn.mehtapratik.com/...` (separate CDN, see `../cdn-mirror/`)
+- Images are **not** in the repo — they're served from `https://cdn.mehtapratik.com/...` (separate CDN; local staging copies live in `../cdn/`)
 
 ### Cloudflare / deploy config (edit with care)
 - `wrangler.jsonc` — Workers static-assets config; `not_found_handling: 404-page`
@@ -56,7 +58,7 @@ When creating a sub-page, double-check every relative path resolves from its fol
 
 ## Recipe: add a new WORK page
 
-1. **Create the file** `work/<slug>.html` from `../_dev/templates/work-page.html`. Fill in every `{{PLACEHOLDER}}`:
+1. **Create the file** `work/<slug>.html` by copying an existing case study (e.g. `work/sportime-clubs.html`) and replacing its content. Update the whole head:
    - `<title>`, meta description, OG/Twitter title+description+image, canonical URL, JSON-LD (`CreativeWork` + `BreadcrumbList`)
    - OG image: `https://cdn.mehtapratik.com/og/og-<slug>.jpg` (confirm the asset exists on the CDN, or note it as TODO)
    - Hero meta (Type / Role / Year / Disciplines), snapshot, body sections
@@ -72,7 +74,7 @@ When creating a sub-page, double-check every relative path resolves from its fol
 
 ## Recipe: add a new BLOG post
 
-1. **Create the file** `blog/<slug>.html` from `../_dev/templates/blog-post.html`. Fill placeholders:
+1. **Create the file** `blog/<slug>.html` by copying an existing post (e.g. `blog/trust-is-the-interface.html`) and replacing its content. Update:
    - `<title>`, meta description, OG/Twitter, canonical
    - JSON-LD: `BlogPosting` (set `datePublished`/`dateModified`), `BreadcrumbList`, and optional `FAQPage` if the post has an FAQ block
    - Hero: category tag, `<h1>`, post-meta line (`<b>section</b>`, tags, date, read time)
@@ -105,6 +107,47 @@ python -m http.server 8000
 ```
 
 Then open the local URL and check the page renders, nav/footer inject, and links work. Note: CDN images load from the live CDN, so they need internet.
+
+## Recipe: update CSS or JS
+
+`site.css` and `site.js` are cached for a year (immutable) using a content stamp, so a change is invisible to returning visitors until the stamp changes.
+
+1. Edit `assets/site.css` or `assets/site.js`.
+2. Run the stamper so every page points at the new version: `powershell -ExecutionPolicy Bypass -File .github\scripts\bump-assets.ps1`. It rewrites the `?v=` on every `site.css` / `site.js` reference to match the file's new hash. Safe to run anytime; if nothing changed it writes nothing.
+3. Preview, commit to `draft`.
+
+If you forget step 2, the CI check fails the pull request and tells you to run it, so a stale asset can never reach production.
+
+## Featured projects on /work
+
+The `/work` page builds its "Featured" pair (SPORTIME Clubs, The Ninth) in `site.js` from a `FEAT` list near the work-app code. Matching is by slug, so it works with clean URLs. If you change which projects are featured, update that `FEAT` list to the new slugs, otherwise the Featured row renders empty.
+
+## Automated checks (CI)
+
+Every pull request into `main` runs `.github/workflows/ci.yml`, which calls `.github/scripts/check_site.py`. It hard-fails the PR on:
+
+- a broken internal link or asset reference (a link to a page or file that does not exist)
+- a `site.css` / `site.js` reference whose `?v=` stamp is stale (you edited the file but did not run `bump-assets.ps1`)
+
+It also prints warnings (does not fail) for a page missing from `sitemap.xml`, or missing a title, meta description, or canonical.
+
+To make the check mandatory (recommended once you have seen it pass once): repo **Settings > Rules > Rulesets**, edit the `main` ruleset, turn on **Require status checks to pass**, and select the "Links, assets, cache stamps" check.
+
+## Gotchas
+
+- **Internal links are clean URLs** (`/work/x`, `/about`), never `.html`. Keep them that way.
+- **`_redirects` is load-bearing.** It holds 301s from old URLs (old WordPress paths, renamed projects). Never let it get dropped or overwritten.
+- **The CSP is Report-Only.** Before switching it to enforcing, keep the Cloudflare Insights and Google Fonts origins, or analytics and the concept-page fonts break.
+
+## Pre-merge checklist
+
+Before merging `draft` into `main`:
+
+- [ ] Previewed the changed pages on the Cloudflare preview URL.
+- [ ] New page: added to `sitemap.xml`, added its index card/row, updated the home featured block if it is now newest.
+- [ ] Edited CSS or JS: ran `bump-assets.ps1`.
+- [ ] Renamed or removed a URL: added a 301 to `_redirects`.
+- [ ] CI check is green.
 
 ## Workflow: branch → Cloudflare preview → merge
 

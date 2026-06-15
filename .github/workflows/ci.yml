@@ -1,0 +1,24 @@
+name: Site checks
+
+# Runs on every pull request into main (your draft -> main step), and can be
+# run manually from the Actions tab. It does not touch production; it only
+# reports pass/fail on the PR.
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  checks:
+    name: Links, assets, cache stamps
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Broken internal links/assets, and stale CSS/JS cache stamps.
+      # Pure Python standard library: no external actions, nothing to resolve or install.
+      - name: Resolve internal links, assets, and CSS/JS cache stamps
+        run: python3 .github/scripts/check_site.py
+
+      # (Optional HTML validation can be added later via a self-contained step.
+      # It was removed because the third-party action version was unresolvable.)

@@ -161,3 +161,7 @@ Before merging `draft` into `main`:
 5. When it looks right and **Site checks** is green, merge `draft` → `main` via the pull request, and production deploys.
 
 Keep commits scoped to one change so previews and rollbacks stay clean. In practice you do these steps in GitHub Desktop; the plain-language version is the update-and-deploy guide in `../_archive/reference-docs/`.
+
+## Commit messages
+
+When changes are staged for a push, write the commit message for Pratik to paste into GitHub Desktop: a concise Summary line plus a short bullet Description. Use the repo's conventional-commit prefixes (`fix`, `feat`, `docs`, `perf`, `refactor`, `assets`, `test`). Summarize only the files in the push; the git root is this folder (`site-files/`), so the masters one level up and `_archive/` are never part of a commit. No em-dashes.

@@ -15,15 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Blocking: broken internal links/assets, and stale CSS/JS cache stamps.
+      # Broken internal links/assets, and stale CSS/JS cache stamps.
+      # Pure Python standard library: no external actions, nothing to resolve or install.
       - name: Resolve internal links, assets, and CSS/JS cache stamps
         run: python3 .github/scripts/check_site.py
 
-      # Informational only: HTML validity. Won't fail the build (continue-on-error),
-      # so it never blocks a merge on a style nit. Promote to blocking later if it
-      # stays clean by removing continue-on-error.
-      - name: HTML validation (informational)
-        continue-on-error: true
-        uses: Cyb3r-Jak3/html5validator-action@v7
-        with:
-          root: .
+      # (Optional HTML validation can be added later via a self-contained step.
+      # It was removed because the third-party action version was unresolvable.)

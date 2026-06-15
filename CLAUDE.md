@@ -129,7 +129,7 @@ Every pull request into `main` runs `.github/workflows/ci.yml`, which calls `.gi
 - a broken internal link or asset reference (a link to a page or file that does not exist)
 - a `site.css` / `site.js` reference whose `?v=` stamp is stale (you edited the file but did not run `bump-assets.ps1`)
 
-It also prints warnings (does not fail) for a page missing from `sitemap.xml`, or missing a title, meta description, or canonical. HTML validity runs as an informational step.
+It also prints warnings (does not fail) for a page missing from `sitemap.xml`, or missing a title, meta description, or canonical.
 
 To make the check mandatory (recommended once you have seen it pass once): repo **Settings > Rules > Rulesets**, edit the `main` ruleset, turn on **Require status checks to pass**, and select the "Links, assets, cache stamps" check.
 

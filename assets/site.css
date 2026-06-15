@@ -442,6 +442,17 @@ body.kin h1.mega .kw.go{animation:kwrise .7s var(--ease) forwards}
   .tagline .blink{animation:none!important}
 }
 
+/* ===== Case-study "explore the build" link grid (work/wisp, the-ninth, level) ===== */
+.cs-explore .xhead{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.cs-explore h2{margin:.5rem 0 0}
+.cs-explore .xlede{color:var(--muted);max-width:62ch;line-height:1.65;margin:1rem 0 0}
+.cs-explore .xgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:1.9rem}
+.cs-explore .xl{display:block;border:1px solid var(--line);border-radius:10px;padding:18px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s,background .2s}
+.cs-explore .xl:hover{border-color:rgba(255,255,255,.42);background:rgba(255,255,255,.05)}
+.cs-explore .xl .xk{font-family:var(--mono);font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.cs-explore .xl .xt{font-size:1.04rem;margin-top:.5rem;font-weight:600;color:var(--fg)}
+.cs-explore .xl .xt span{opacity:.55}
+
 /* ===== Home Selected Work, featured hero + supporting (Option A) ===== */
 .hw-hero{display:grid;grid-template-columns:1.55fr 1fr;gap:1.6rem;align-items:end;margin-bottom:1.7rem}
 .hw-hero .cov{aspect-ratio:4/3;overflow:hidden;border-radius:5px;background:var(--bg-2)}

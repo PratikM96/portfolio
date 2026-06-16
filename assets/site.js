@@ -40,11 +40,14 @@
   function buildNav() {
     var mount = document.getElementById('site-nav');
     if (!mount) return;
+    // Subpages (case studies, blog posts) get the floating-capsule nav; main pages get the banded bar.
+    if (/^\/(work|blog)\/[^\/]+/.test(location.pathname)) mount.classList.add('nav-sub');
     mount.innerHTML =
       '<div class="nav-inner">' +
         '<a class="brand" href="/">Pratik Mehta<span class="brand-c">©</span></a>' +
         '<button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>' +
         '<div class="nav-links">' +
+          '<a class="nav-home" href="/">PM<span class="brand-c">©</span></a>' +
           '<a href="/about">About</a>' +
           '<a href="/brand">Brand</a>' +
           '<a href="/work">Work</a>' +

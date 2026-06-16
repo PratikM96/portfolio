@@ -64,9 +64,9 @@
     if (type === 'cta')
       top = '<div class="fbig">Let\'s work<br/><a href="/contact">together↗\uFE0E</a></div>';
     else if (type === 'work')
-      top = '<div class="fbig fbig-next">Next:<br/><a class="js-next-project" href="/work">More work ↗\uFE0E</a></div>';
+      top = '<div class="fbig fbig-next">Next:<br/><a class="js-next-project" href="/work">See more work ↗\uFE0E</a></div>';
     else if (type === 'blog')
-      top = '<div class="fbig fbig-next">Next:<br/><a class="js-next-post" href="/blog">More writing ↗\uFE0E</a></div>';
+      top = '<div class="fbig fbig-next">Next:<br/><a class="js-next-post" href="/blog">Read more writing ↗\uFE0E</a></div>';
     var credit = '<div>Pratik Mehta <span class="brand-c">©</span> · New York · 2026</div>';
     var social = '<div>' +
       '<a href="mailto:mehtadpratik@gmail.com">Email</a> / ' +

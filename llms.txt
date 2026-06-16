@@ -30,7 +30,7 @@
 - [GEO Is the New SEO](https://mehtapratik.com/blog/geo-is-the-new-seo)
 - [The Machine-Readable Brand](https://mehtapratik.com/blog/the-machine-readable-brand)
 - [Taste Is the Bottleneck Now](https://mehtapratik.com/blog/taste-is-the-bottleneck-now)
-- [GenAI Is a Production Layer, Not a Magic Trick](https://mehtapratik.com/blog/genai-production-layer-not-magic-trick)
+- [Gen AI Is a Production Layer, Not a Magic Trick](https://mehtapratik.com/blog/genai-production-layer-not-magic-trick)
 
 ## Contact
 - Email: mehtadpratik@gmail.com

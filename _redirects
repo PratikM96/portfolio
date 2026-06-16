@@ -27,15 +27,29 @@
 /work/raa-fii		     /work/raa		     301
 
 # --- Old blog posts -> current posts ---
-/blog/creative-science   /blog/cs-degree-creative-director-secret-weapon   301
-/blog/ux-business        /blog                                              301
+/blog/creative-science                     /blog/cs-degree-creative-director-secret-weapon   301
+/blog/cs-degree-taught-me-about-design     /blog/cs-degree-creative-director-secret-weapon   301
+/blog/ux-business                          /blog                                             301
+/blog/ux-starts-with-the-business-problem  /blog/audience-first-org-second                   301
+/blog/run-creative-teams-speed-quality     /blog/faster-without-the-shortcuts-showing        301
+/blog/sportime-social                      /blog/content-that-compounds                      301
+/blog/social-metrics-that-matter           /blog/content-that-compounds                      301
+/blog/55m-facility-launch                  /blog/content-that-compounds                      301
 
 # --- Old blog posts with no clear 1:1 -> blog index ---
-/blog/ai-workflow          /blog   301
-/blog/creative-lead        /blog   301
-/blog/creative-strategy    /blog   301
-/blog/wireframe-to-live    /blog   301
-/blog/video-first-trending /blog   301
+/blog/ai-workflow                      /blog   301
+/blog/creative-lead                    /blog   301
+/blog/creative-strategy                /blog   301
+/blog/wireframe-to-live                /blog   301
+/blog/video-first-trending             /blog   301
+/blog/how-to-subbrand                  /blog   301
+/blog/complex-to-simple                /blog   301
+/blog/pickleball-brand                 /blog   301
+/blog/pickleball-brand-from-zero       /blog   301
+/blog/dealnews-app-redesign            /blog   301
+/blog/brand-and-revenue-move-together  /blog   301
+/blog/motion-graphics-strategic-asset  /blog   301
+/blog/sub-brands-without-chaos         /blog   301
 
 # --- Old WordPress archives (tags, categories, dates) -> blog / work index ---
 /blog/tag/*             /blog   301
@@ -45,8 +59,26 @@
 /project-attributes/*   /work   301
 
 # --- Old standalone pages ---
-/services         /          301
-/privacy-policy   /privacy   301
+/services             /          301
+/projects             /work      301
+/home                 /          301
+/sitemap.html         /          301
+/opt-out-preferences  /privacy   301
+/privacy-policy       /privacy   301
+
+# --- Old WordPress portfolio/project pages -> closest case study ---
+/dealnews-subbrands    /work/dealnews           301
+/dealnews-subsite      /work/dealnews           301
+/raa-branding          /work/raa                301
+/sportime-pickleball   /work/sportime-clubs     301
+/sportime-marketing    /work/sportime-clubs     301
+/jmta-marketing        /work/sportime-clubs     301
+/jmtp-marketing        /work/jmtp               301
+/srlc-marketing        /work/sr-love-and-care   301
+/fiveeighty-animation  /work/agency-fiveeighty  301
+/frc-animation         /work/frc                301
+/dealnews-app          /work/dealnews           301
+/jmta-campaigns        /work/sportime-clubs     301
 
 # --- Concept roots -> case studies (deliverables live one level down, e.g. /concepts/wisp/demo) ---
 /concepts            /work                   302

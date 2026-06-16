@@ -80,6 +80,32 @@
   buildNav();
   buildFooter();
 
+  // Nav: transparent at the top of the page, banded once the page is scrolled.
+  (function () {
+    var nav = document.getElementById('site-nav');
+    if (!nav) return;
+    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // Dossier rail: highlight the in-page index entry for the section in view.
+  (function () {
+    var idx = document.querySelector('.dz-idx');
+    if (!idx) return;
+    var links = Array.prototype.slice.call(idx.querySelectorAll('a'));
+    var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    if (!secs.length) return;
+    var spy = function () {
+      var y = window.scrollY + window.innerHeight * 0.32, cur = 0;
+      for (var i = 0; i < secs.length; i++) { if (secs[i] && secs[i].offsetTop <= y) cur = i; }
+      links.forEach(function (a, j) { a.classList.toggle('on', j === cur); });
+    };
+    window.addEventListener('scroll', spy, { passive: true });
+    window.addEventListener('resize', spy);
+    spy();
+  })();
+
   // Fill any "next" link with a random project/post pulled live from the index,
   // excluding the current page, so footers never need editing when work is added.
   // Used by the injected work/blog footers AND by the bespoke concept-page
@@ -272,7 +298,7 @@
       setTimeout(function () { k.classList.add('go'); }, 110 + i * 105);
     });
     // scroll reveals (consistent across pages)
-    var REVEAL_SEL = '.about, .caps-grid > .cap, .inds, .approach-grid > .item, .stats > .s, .tcards > .tcard, .contact-cta';
+    var REVEAL_SEL = '.about, .caps-grid > .cap, .inds, .approach-grid > .item, .stats > .s, .tcards > .tcard, .contact-cta, .dz-media, .dz-grid2, .dz-statbar, .sb-cell, .sb-banner, .sb-overview, .sb-split, .sb-reflect-inner';
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' });

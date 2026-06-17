@@ -225,29 +225,40 @@
       var all = cards0.map(parse);
       var feat = FEATS.map(function (h) { var m = all.filter(function (p) { return slug(p.href) === h; }); return m[0]; }).filter(Boolean);
       var rest = all.filter(function (p) { return FEATS.indexOf(slug(p.href)) === -1; }).sort(function (a, b) { return b.sort - a.sort; });
+      var isConcept = function (p) { return (' ' + (p.tags || '') + ' ').indexOf(' concept ') !== -1; };
+      var clientRest = rest.filter(function (p) { return !isConcept(p); });
+      var conceptRest = rest.filter(isConcept);
 
       var featHtml = '<div class="wk-lab" style="padding-bottom:1.2rem;border-bottom:1px solid var(--line);margin-bottom:1.4rem">Featured</div><div class="wk-feat">' +
         feat.map(function (p) {
-          return '<a href="' + p.href + '"><div class="img"><img src="' + p.base + '" srcset="' + p.srcset + '" sizes="(max-width: 980px) 92vw, 600px" alt="' + p.title + '" loading="lazy" decoding="async"/></div>' +
+          var pill = isConcept(p) ? '<span class="ctag">Concept</span>' : '';
+          return '<a href="' + p.href + '"><div class="img">' + pill + '<img src="' + p.base + '" srcset="' + p.srcset + '" sizes="(max-width: 980px) 92vw, 600px" alt="' + p.title + '" loading="lazy" decoding="async"/></div>' +
             '<div class="fl"><h3>' + p.title + '</h3><div class="fmeta"><span class="wk-disc">' + p.disc + '</span><span class="wk-yr">' + p.yr + '</span></div></div></a>';
         }).join('') + '</div>';
 
       var cats = [['all', 'All'], ['brand', 'Brand'], ['uiux', 'UI/UX'], ['motion', 'Motion'], ['photo', 'Photo'], ['ai', 'AI']];
-      var barHtml = '<div class="wk-bar"><div class="wk-lab">Index, newest first</div><div class="wk-chips">' +
+      var barHtml = '<div class="wk-bar"><div class="wk-lab">Index</div><div class="wk-chips">' +
         cats.map(function (c, i) { return '<button class="wk-chip' + (i === 0 ? ' on' : '') + '" data-f="' + c[0] + '">' + c[1] + '</button>'; }).join('') + '</div></div>';
 
-      var idxHtml = '<div class="wk-index">' + rest.map(function (p, i) {
+      var liHtml = function (p, i) {
         return '<a class="wk-li" href="' + p.href + '" data-tags="' + p.tags + '" data-img="' + p.mid + '">' +
           '<span class="wn">' + ('0' + (i + 1)).slice(-2) + '</span>' +
           '<img class="wt" src="' + p.small + '" alt="" loading="lazy"/>' +
           '<div class="wm"><h3>' + p.title + '</h3><div class="wr"><span class="wk-disc">' + p.disc + '</span><span class="wk-yr">' + p.yr + '</span></div></div></a>';
-      }).join('') + '</div><div class="wk-empty" id="wk-empty">No projects in this discipline.</div><div class="wk-prev" id="wk-prev"><img alt=""/></div>';
+      };
+      var groupHtml = function (cls, label, list) {
+        if (!list.length) return '';
+        return '<div class="wk-group ' + cls + '"><div class="wk-ghead">' + label + '</div><div class="wk-index">' + list.map(liHtml).join('') + '</div></div>';
+      };
+      var groupsHtml = groupHtml('first', 'Selected client work', clientRest) + groupHtml('', 'Concepts', conceptRest) +
+        '<div class="wk-empty" id="wk-empty">No projects in this discipline.</div><div class="wk-prev" id="wk-prev"><img alt=""/></div>';
 
-      workApp.innerHTML = featHtml + barHtml + idxHtml;
+      workApp.innerHTML = featHtml + barHtml + groupsHtml;
       workApp.hidden = false;
       grid0.style.display = 'none';
 
       var wchips = workApp.querySelector('.wk-chips');
+      var wgroups = Array.prototype.slice.call(workApp.querySelectorAll('.wk-group'));
       var wlis = Array.prototype.slice.call(workApp.querySelectorAll('.wk-li'));
       var wempty = workApp.querySelector('#wk-empty');
       wchips.addEventListener('click', function (e) {
@@ -257,6 +268,9 @@
         wlis.forEach(function (li) {
           var ok = f === 'all' || (li.getAttribute('data-tags') || '').split(' ').indexOf(f) !== -1;
           li.classList.toggle('off', !ok); if (ok) shown++;
+        });
+        wgroups.forEach(function (g) {
+          g.classList.toggle('off', g.querySelectorAll('.wk-li:not(.off)').length === 0);
         });
         wempty.style.display = shown ? 'none' : 'block';
         if (typeof track === 'function') track('work_filter_use', { filter: f });
@@ -271,8 +285,10 @@
         li.addEventListener('focus', show);
         li.addEventListener('blur', hide);
       });
-      workApp.querySelector('.wk-index').addEventListener('mousemove', function (e) {
-        wprev.style.left = e.clientX + 'px'; wprev.style.top = e.clientY + 'px';
+      Array.prototype.slice.call(workApp.querySelectorAll('.wk-index')).forEach(function (idx) {
+        idx.addEventListener('mousemove', function (e) {
+          wprev.style.left = e.clientX + 'px'; wprev.style.top = e.clientY + 'px';
+        });
       });
     }
   }

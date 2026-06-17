@@ -233,7 +233,7 @@
         feat.map(function (p) {
           var pill = isConcept(p) ? '<span class="ctag">Concept</span>' : '';
           return '<a href="' + p.href + '"><div class="img">' + pill + '<img src="' + p.base + '" srcset="' + p.srcset + '" sizes="(max-width: 980px) 92vw, 600px" alt="' + p.title + '" loading="lazy" decoding="async"/></div>' +
-            '<div class="fl"><h3>' + p.title + '</h3><div class="fmeta"><span class="wk-disc">' + p.disc + '</span><span class="wk-yr">' + p.yr + '</span></div></div></a>';
+            '<div class="fl"><h3>' + p.title + '</h3><div class="fmeta"><span class="wk-disc">' + p.disc + '</span></div></div></a>';
         }).join('') + '</div>';
 
       var cats = [['all', 'All'], ['brand', 'Brand'], ['uiux', 'UI/UX'], ['motion', 'Motion'], ['photo', 'Photo'], ['ai', 'AI']];
@@ -244,7 +244,7 @@
         return '<a class="wk-li" href="' + p.href + '" data-tags="' + p.tags + '" data-img="' + p.mid + '">' +
           '<span class="wn">' + ('0' + (i + 1)).slice(-2) + '</span>' +
           '<img class="wt" src="' + p.small + '" alt="" loading="lazy"/>' +
-          '<div class="wm"><h3>' + p.title + '</h3><div class="wr"><span class="wk-disc">' + p.disc + '</span><span class="wk-yr">' + p.yr + '</span></div></div></a>';
+          '<div class="wm"><h3>' + p.title + '</h3><div class="wr"><span class="wk-disc">' + p.disc + '</span></div></div></a>';
       };
       var groupHtml = function (cls, label, list) {
         if (!list.length) return '';

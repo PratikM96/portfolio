@@ -159,14 +159,14 @@
   .toc a{font-family:var(--mono);font-size:.76rem;border:1px solid var(--line-2);color:var(--muted);padding:.45rem .9rem;border-radius:40px;transition:all .2s var(--ease)}
   .toc a:hover{background:var(--accent);color:#0a0a0a;border-color:var(--accent)}
   /* --- v1.3 hybrid overhaul: indexed-rail intros + wider prose --- */
-  .lead{max-width:74ch}
-  .sub{max-width:72ch}
+  .lead{max-width:none}
+  .sub{max-width:none}
   .irail{display:grid;grid-template-columns:182px 1fr;gap:clamp(1.4rem,3vw,2.8rem);align-items:start;margin-top:.2rem}
   .irail .rk{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.8;padding-top:.25rem}
   .irail .rk b{color:var(--accent-2);font-weight:400}
   .irail .rb > :first-child{margin-top:0}
   @media(max-width:760px){.irail{grid-template-columns:1fr;gap:.7rem}.irail .rk{padding-top:0}}
-  .bcols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.8rem,4vw,3.2rem);margin-top:1rem}
+  .bcols{display:grid;grid-template-columns:1fr;gap:clamp(1.8rem,4vw,3.2rem);margin-top:1rem}
   .bcols .h3b{margin-top:0}
   .bcols .sub{max-width:none}
   @media(max-width:760px){.bcols{grid-template-columns:1fr;gap:1.6rem}}

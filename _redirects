@@ -27,14 +27,26 @@
 /work/raa-fii		     /work/raa		     301
 
 # --- Old blog posts -> current posts ---
-/blog/creative-science                     /blog/cs-degree-creative-director-secret-weapon   301
-/blog/cs-degree-taught-me-about-design     /blog/cs-degree-creative-director-secret-weapon   301
+/blog/creative-science                     /blog/cross-channel-by-default   301
+/blog/cs-degree-taught-me-about-design     /blog/cross-channel-by-default   301
 /blog/ux-business                          /blog                                             301
 /blog/ux-starts-with-the-business-problem  /blog/audience-first-org-second                   301
-/blog/run-creative-teams-speed-quality     /blog/faster-without-the-shortcuts-showing        301
+/blog/run-creative-teams-speed-quality     /blog/content-that-compounds                      301
 /blog/sportime-social                      /blog/content-that-compounds                      301
 /blog/social-metrics-that-matter           /blog/content-that-compounds                      301
 /blog/55m-facility-launch                  /blog/content-that-compounds                      301
+
+# --- Removed or merged journal posts (2026-06-19 restructure) ---
+/blog/cs-degree-creative-director-secret-weapon  /blog/cross-channel-by-default          301
+/blog/geo-is-the-new-seo                         /blog/the-machine-readable-brand        301
+/blog/faster-without-the-shortcuts-showing       /blog/content-that-compounds            301
+/blog/taste-is-the-bottleneck-now                /blog/distinctiveness-is-the-only-moat   301
+/blog/genai-production-layer-not-magic-trick     /blog   301
+/blog/speculative-is-the-new-portfolio           /blog   301
+/blog/sports-fans-and-ai                         /blog   301
+/blog/designing-restraint                        /blog   301
+/blog/the-form-is-the-disclosure                 /blog   301
+/blog/trust-is-the-interface                     /blog   301
 
 # --- Old blog posts with no clear 1:1 -> blog index ---
 /blog/ai-workflow                      /blog   301

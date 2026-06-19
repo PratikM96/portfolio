@@ -25,12 +25,12 @@
 - [Photography](https://mehtapratik.com/work/photography): sports, events, and personal work shot across New York.
 
 ## Journal
-- [All posts](https://mehtapratik.com/blog): notes on brand, product, and the AI shift.
-- [Trust Is the Interface](https://mehtapratik.com/blog/trust-is-the-interface)
-- [GEO Is the New SEO](https://mehtapratik.com/blog/geo-is-the-new-seo)
+- [All posts](https://mehtapratik.com/blog): notes on brand, product, and the work.
+- [Audience-First, Org-Second](https://mehtapratik.com/blog/audience-first-org-second)
+- [Cross-Channel by Default](https://mehtapratik.com/blog/cross-channel-by-default)
+- [What 11.7M Impressions Taught Me About Content That Compounds](https://mehtapratik.com/blog/content-that-compounds)
+- [Distinctiveness Is the Only Moat Left](https://mehtapratik.com/blog/distinctiveness-is-the-only-moat)
 - [The Machine-Readable Brand](https://mehtapratik.com/blog/the-machine-readable-brand)
-- [Taste Is the Bottleneck Now](https://mehtapratik.com/blog/taste-is-the-bottleneck-now)
-- [Gen AI Is a Production Layer, Not a Magic Trick](https://mehtapratik.com/blog/genai-production-layer-not-magic-trick)
 
 ## Contact
 - Email: mehtadpratik@gmail.com

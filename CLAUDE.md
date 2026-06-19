@@ -9,8 +9,7 @@ Files are served exactly as written. Deployed on Cloudflare (Workers static asse
 
 - Repo: `PratikM96/portfolio` (this folder, `site-files/`, is the git root; the Cloudflare Worker is separately named `mehtapratik-site`)
 - Production branch: `main` → push to `main` = live in production
-- Content source-of-truth lives one level up: `../copy-master.md`, `../about-me-master.md`, `../metrics-master.md`. **Pull real copy and metrics from these — do not invent numbers.**
-- Page templates: there is no separate templates folder. Copy an existing page of the same type and replace its content, the live pages are the template so they never drift. Good bases: `work/sportime-clubs.html` (case study), `blog/trust-is-the-interface.html` (post).
+- Content source-of-truth lives one level up: `../copy-master.md`, `../about-me-master.md`, `../metrics-master.md`. **Pull real copy and metrics from these — if none exist, come up with reasonable metrics and provide me with reasoning why.**
 
 ## Golden rules
 
@@ -30,7 +29,7 @@ Files are served exactly as written. Deployed on Cloudflare (Workers static asse
 ### Shared chrome (injected by site.js)
 - **Nav:** every page includes `<nav id="site-nav"></nav>` (empty). `site.js` fills it. Lives in ONE place.
 - **Footer:** every page includes `<footer data-foot="TYPE"></footer>` (empty). `site.js` fills it based on TYPE:
-  - `cta` — generic call-to-action footer
+  - `cta`  — generic call-to-action footer
   - `work` — used on work/case-study pages; shows next-project link
   - `blog` — used on blog posts
   - `bare` — minimal (used on home and utility pages)
@@ -162,7 +161,7 @@ Before merging `draft` into `main`:
 4. Cloudflare builds a **preview URL** for the `draft` branch. Review the live rendered site there.
 5. When it looks right and **Site checks** is green, merge `draft` → `main` via the pull request, and production deploys.
 
-Keep commits scoped to one change so previews and rollbacks stay clean. In practice you do these steps in GitHub Desktop; the plain-language version is the update-and-deploy guide in `../_archive/reference-docs/`.
+Keep commits scoped to one change so previews and rollbacks stay clean. In practice you do these steps in GitHub Desktop;
 
 ## Commit messages
 

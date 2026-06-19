@@ -36,7 +36,7 @@
 <link rel="canonical" href="https://mehtapratik.com/brand" />
 <link rel="preconnect" href="https://cdn.mehtapratik.com" crossorigin />
 <link rel="preload" href="assets/fonts/Archivo-Expanded-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="assets/site.css?v=6e67b82b" />
+<link rel="stylesheet" href="assets/site.css?v=d75742cf" />
 <style>
   /* Brand-page-only specimen styles */
   .bsec{padding:clamp(3rem,8vw,5rem) 0;border-top:1px solid var(--line)}
@@ -114,11 +114,11 @@
   .cmx th,.cmx td{padding:.7rem .8rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
   .cmx th{color:var(--muted);font-weight:400;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em}
   .cmx td .r{color:#e4e4e4}
-  .badge{display:inline-block;font-family:var(--mono);font-size:.64rem;border:1px solid var(--line-2);border-radius:30px;padding:.12rem .55rem;letter-spacing:.06em}
+  .badge{display:inline-block;font-family:var(--mono);font-size:.64rem;border:1px solid var(--line-2);border-radius:var(--radius-pill);padding:.12rem .55rem;letter-spacing:.06em}
   .badge.aaa{color:var(--accent);border-color:rgba(31,224,200,.45)}
   .badge.aa{color:#e4e4e4}
   .badge.warn{color:var(--accent-2);border-color:rgba(255,111,97,.45)}
-  .dot{display:inline-block;width:13px;height:13px;border-radius:3px;border:1px solid var(--line);vertical-align:-2px;margin-right:.5rem}
+  .dot{display:inline-block;width:13px;height:13px;border-radius:var(--radius);border:1px solid var(--line);vertical-align:-2px;margin-right:.5rem}
 
   /* marks + lockups */
   .marks{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.4rem;margin-top:2.4rem}
@@ -179,7 +179,7 @@
 <nav id="site-nav"></nav>
 
 <header class="cs-hero has-cover" style="padding:9rem 0 2rem"><div class="wrap">
-  <div class="tagline"><span class="blink"></span> Brand guide · v1.5 · June 2026</div>
+  <div class="tagline"><span class="blink"></span> Brand guide · v1.6 · June 2026</div>
   <h1 class="page-title">The Brand<br/><span class="a">System</span></h1>
   <p class="page-intro">The full system behind mehtapratik.com. A working brand guide and a live case study in one.</p>
   <div class="toc">
@@ -301,7 +301,7 @@
     </div>
     <div>
       <h3 class="h3b">Light contexts</h3>
-      <p class="sub">The brand is dark-native. Where a surface must be light, like the resume PDF, print, or a logo card, the system inverts cleanly: Ink #0A0A0A text on Bone #FAFAFA, both accents holding AA or better on the light ground (teal and coral pass against Ink, which becomes the text). Keep the same three typefaces and the two-accent rule. Never introduce a third accent to compensate for the lighter field.</p>
+      <p class="sub">The brand is dark-native. Where a surface must be light, like the resume or print, the system inverts: Ink #0A0A0A text on Bone #FAFAFA, the same three typefaces, and the same two-accent rule. One change is deliberate and required. The dark-native accents are too light to read on a light ground (Electric Teal measures 1.6:1 on Bone, Coral 2.6:1, both under AA), so light contexts use a darker, verified pair: Teal Deep #0A8071 and Coral Deep #D03C21, each clearing AA at 4.5:1 or better for normal text. This is the one place the accents shift value, and it is a defined variation for the resume and print, documented so it reads as intentional, not a third accent added to fill the gap.</p>
     </div>
   </div>
 </div></section>
@@ -330,8 +330,8 @@
   <h3 class="h3b">The scale</h3>
   <p class="sub">Sizes are fluid with clamp, so type scales with the viewport instead of snapping at breakpoints. Min and max shown.</p>
   <table class="qref">
-    <tr><td>Mega title</td><td>Archivo Expanded 900 · clamp 3 to 13rem · uppercase · -.03em</td></tr>
-    <tr><td>Page title</td><td>Archivo Expanded 900 · clamp 2.6 to 7.5rem · uppercase · -.03em</td></tr>
+    <tr><td>Mega title</td><td>Archivo Expanded 900 · clamp 2.6 to 11rem · uppercase · -.03em</td></tr>
+    <tr><td>Page title</td><td>Archivo Expanded 900 · clamp 2.4 to 5.2rem · uppercase · -.03em</td></tr>
     <tr><td>Section head</td><td>Archivo Expanded 800 · clamp 1.8 to 3rem · uppercase · -.02em</td></tr>
     <tr><td>Card / project title</td><td>Archivo Expanded 800 · 1.3rem · uppercase · -.01em</td></tr>
     <tr><td>Standfirst</td><td>Archivo 500 · clamp 1.15 to 1.4rem · line 1.5</td></tr>
@@ -398,12 +398,12 @@
     <tr><td>Hover</td><td>0.8s image scale and grayscale clear; 0.2s color on links</td></tr>
     <tr><td>Scroll reveal</td><td>translateY 28px and fade, 0.7s, staggered on entry</td></tr>
     <tr><td>Nav and UI</td><td>0.2 to 0.35s transitions on color, transform, and panels</td></tr>
-    <tr><td>Marquee</td><td>26s linear loop, one marquee per page</td></tr>
+    <tr><td>Marquee</td><td>Loud teal band 26s; muted client strip 64s. One loud marquee per page, the muted strip may run alongside it</td></tr>
     <tr><td>Reduced motion</td><td>prefers-reduced-motion disables all animation and reveal</td></tr>
   </table>
   <p class="sub">The reel in production is built on the same vocabulary as the site: the same easing curve and the grayscale-to-color reveal will carry across its four chapters, Brand and Identity, Motion and Animation, Campaign and Social, UX and Digital, so the moving work and the static site read as one system.</p>
   <h3 class="h3b">Marquee, two treatments</h3>
-  <p class="sub">One scrolling band, two registers. The loud version fills teal with Ink text and runs a 26s loop, the deliberate exception to the rule that accents never fill large areas. The muted version carries the client roll in mono on a hairline, so the names read as quiet social proof, not decoration. Both run one per page and stop under reduced-motion.</p>
+  <p class="sub">One scrolling band, two registers. The loud version fills teal with Ink text and runs a 26s loop, the deliberate exception to the rule that accents never fill large areas, and it also carries the CTA band on the about and reel pages at the same speed. The muted version carries the client roll in mono on a hairline, so the names read as quiet social proof, not decoration. One loud band per page, with the muted strip allowed alongside it, and both stop under reduced-motion.</p>
 </div></section>
 <div class="marq"><div class="track">
   <span>ease cubic-bezier(.2,.7,.2,1)</span><span>✦</span><span>hover 0.8s</span><span>✦</span><span>reveal translateY 28px</span><span>✦</span><span>respects reduced-motion</span><span>✦</span><span>one marquee per page</span><span>✦</span><span>ease cubic-bezier(.2,.7,.2,1)</span><span>✦</span><span>hover 0.8s</span><span>✦</span><span>reveal translateY 28px</span><span>✦</span><span>respects reduced-motion</span><span>✦</span><span>one marquee per page</span><span>✦</span>
@@ -419,21 +419,29 @@
     <tr><td>Grid</td><td>12-column, ~1380px max width, 4vw gutters</td></tr>
     <tr><td>Section rhythm</td><td>5 to 6rem vertical space between sections</td></tr>
     <tr><td>Dividers</td><td>Hairline at 14% tint above section heads, never solid rules</td></tr>
-    <tr><td>Corner radius</td><td>4 to 6px. Never pill-rounded</td></tr>
+    <tr><td>Corner radius</td><td>6px on every rectangular surface (var --radius), 40px pill (var --radius-pill) for filters, tags, chips, and the primary button. Circles for the availability dot and avatars</td></tr>
     <tr><td>Card spans</td><td>7/5 and 6/4 column splits; aspect 16/10, 3/2, or 1/1</td></tr>
     <tr><td>Galleries</td><td>True masonry, equal gaps, no letterbox bars</td></tr>
   </table>
 
   <h3 class="h3b">Art direction</h3>
   <table class="qref">
-    <tr><td>Photography</td><td>Grayscale .25 to .3 at rest, clears to full color on hover. Subject-centered, documentary not staged</td></tr>
+    <tr><td>Photography</td><td>Portrait and gallery photography sits at grayscale .2 to .3 at rest and clears to full color on hover. Case-study covers and documentary case photos run full color. Subject-centered, documentary not staged</td></tr>
     <tr><td>Crops</td><td>4/5 portrait for the about photo; 16/10 for work cards; 1/1 for the square headshot and avatars</td></tr>
-    <tr><td>Covers</td><td>Abstract teal-on-ink backgrounds where no single still earns the space; real stills as video posters</td></tr>
+    <tr><td>Covers</td><td>Abstract textured backgrounds, teal-leaning with warm and cool variants, where no single still earns the space; real stills as video posters</td></tr>
     <tr><td>Logo cards</td><td>Client marks sit on a light #F0EDE8 card so dark or transparent logos stay visible on the dark page</td></tr>
   </table>
 
   <h3 class="h3b">Symbols</h3>
   <p class="sub">No icon library. The system uses a small, fixed set of glyphs: the teal triangle marker for lists, the ✦ separator in the marquee, the ↗︎&#xFE0E; arrow for external links and CTAs, and the blinking coral dot for availability. Anything beyond these is a one-off and should become a rule before it ships.</p>
+
+  <h3 class="h3b">Case-study templates</h3>
+  <p class="sub">Case studies use one of two layouts, assigned by project type per copy-master section 6. Both are built from the system tokens, so a case study reads as the same brand whichever it uses. The legacy single-column article (.cs-body) is retired.</p>
+  <table class="qref">
+    <tr><td>Dossier</td><td>Sticky split-screen case file: a fixed left rail (title, meta, in-page index, live readout) beside a scrolling main column. Classes .dossier, .dz-rail, .dz-main, .dz-ch, .dz-result, .dz-statbar, .dz-pull. For narrative, process-led work</td></tr>
+    <tr><td>Scoreboard</td><td>Numbers-first: a stat-board hero over alternating media and copy splits. Classes .sb-hero, .sb-board, .sb-cell, .sb-split, .sb-callout, .sb-reflect. For results-led work</td></tr>
+    <tr><td>Gallery</td><td>Masonry photo grid for the photography page. Equal gaps, grayscale at rest clearing on hover, no letterbox bars</td></tr>
+  </table>
 </div></section>
 
 <section class="bsec" id="components"><div class="wrap">
@@ -464,7 +472,7 @@
     <div class="cb">
       <div class="cs-result" style="margin:0"><div class="rl">Result</div><p>The outcome, stated plainly with a verified number. Teal outline, faint teal fill, coral label.</p></div>
     </div>
-    <div class="cn">Pattern: <b>.cs-result &gt; .rl + p</b>. The one place a number gets a frame. Never used without a real figure.</div>
+    <div class="cn">Pattern: <b>.cs-result &gt; .rl + p</b>. The one place a number gets a frame. Never used without a real figure. On case studies it ships as <b>.dz-result</b> (Dossier) or <b>.sb-callout</b> (Scoreboard), same treatment.</div>
   </div>
 
   <div class="comp">
@@ -477,7 +485,7 @@
         <div><div class="n">1</div><div class="l">Stylesheet</div></div>
       </div>
     </div>
-    <div class="cn">Display-face numerals in teal, mono labels. Pattern: <b>.cs-statbar &gt; .n + .l</b>. For projected or benchmark figures, label them as such.</div>
+    <div class="cn">Display-face numerals in teal, mono labels. Pattern: <b>.cs-statbar &gt; .n + .l</b>. Case studies use <b>.dz-statbar</b> or the Scoreboard <b>.sb-board</b> with the same pattern. For projected or benchmark figures, label them as such.</div>
   </div>
 
   <div class="comp">
@@ -554,9 +562,9 @@
     <tr><td>Email signature</td><td>Name in display face, role descriptor in mono Slate, then email / LinkedIn / Instagram. Teal links. No image, so it renders everywhere</td></tr>
     <tr><td>LinkedIn banner</td><td>1584 x 396, Ink with abstract teal cover, tagline in display face, left-aligned to clear the avatar</td></tr>
     <tr><td>Social post template</td><td>Square or 4/5, Ink ground, coral index plus display headline, mono caption strip, one image with the grayscale-to-color treatment</td></tr>
-    <tr><td>Resume / CV</td><td>Light inversion: Ink text on Bone, same three faces, coral for section markers, teal for links. Matches the live resume PDF</td></tr>
+    <tr><td>Resume / CV</td><td>Light inversion: Ink on Bone, same three faces, the light-mode accent pair (Teal Deep #0A8071, Coral Deep #D03C21), coral for section markers, teal for links. The /resume page is the canonical light variation</td></tr>
     <tr><td>Deck</td><td>16:9, Ink slides, numbered section dividers echoing the site index, one idea per slide, mono footer with name and page</td></tr>
-    <tr><td>Business card</td><td>Ink face with the aperture mark, Bone reverse with wordmark and role descriptor. 4 to 6px corner radius only if stock allows</td></tr>
+    <tr><td>Business card</td><td>Ink face with the aperture mark, Bone reverse with wordmark and role descriptor. 6px corner radius only if stock allows</td></tr>
   </table>
   <p class="sub">Drop real client names, links, and metrics from the resume into these before they ship. The template defines the look, not the claims.</p>
 </div></section>
@@ -592,6 +600,8 @@
     <tr><td>Body / secondary</td><td>#DCDCDC body · #CFCFCF mono · #7D7D7D Slate</td></tr>
     <tr><td>Lead accent</td><td>#1FE0C8 Electric Teal · identity &amp; interaction</td></tr>
     <tr><td>Second accent</td><td>#FF6F61 Coral · annotation layer</td></tr>
+    <tr><td>Light-mode accents</td><td>#0A8071 Teal Deep · #D03C21 Coral Deep · resume and print on Bone, AA verified</td></tr>
+    <tr><td>Radius</td><td>6px rectangular surfaces · 40px pill for filters, tags, and the primary button</td></tr>
     <tr><td>Display</td><td>Archivo Expanded, 700 to 900, uppercase, -.03em</td></tr>
     <tr><td>Workhorse</td><td>Archivo, 400 to 600</td></tr>
     <tr><td>Mono</td><td>Space Grotesk</td></tr>
@@ -601,7 +611,7 @@
   </table>
 
   <h3 class="h3b">Maintenance</h3>
-  <p class="sub">A living system, versioned. This page is rendered in the same stylesheet it documents, so it cannot drift from the site without the change showing here first. Questions about using the system, or anything it does not cover, go to <a href="mailto:mehtadpratik@gmail.com" style="color:var(--accent)">mehtadpratik@gmail.com</a>.</p>
+  <p class="sub">A living system, versioned. This page links the same stylesheet it documents and is kept in step with the site through a versioned reconciliation pass, not assumed to track it automatically. Questions about using the system, or anything it does not cover, go to <a href="mailto:mehtadpratik@gmail.com" style="color:var(--accent)">mehtadpratik@gmail.com</a>.</p>
   <div class="log">
     <div class="lr"><div class="lv">v1.0 · Jun 2026</div><div class="ld">Initial system documented alongside the site launch: brief, color, type, wordmark, motion, layout, voice, quick reference.</div></div>
     <div class="lr"><div class="lv">v1.1 · Jun 2026</div><div class="ld">Built out to a full guide: positioning and messaging, verified contrast matrix, type scale, aperture mark and lockups, motion tokens, component library, voice registers, applications, method, and accessibility.</div></div>
@@ -609,6 +619,7 @@
     <div class="lr"><div class="lv">v1.3 · Jun 2026</div><div class="ld">Layout overhaul: section intros set as an indexed rail with the prose widened out of the old half-column, reference sections kept as spec tables. Component library updated to the flat button system, a teal-outline primary that fills on hover and an underline secondary, replacing the old lifting pill. Minor copy alignment to the current masters.</div></div>
     <div class="lr"><div class="lv">v1.4 · Jun 2026</div><div class="ld">Canon update to the locked masters: voice section restated to the operator-with-a-point-of-view spec and the clipped-cadence instruction corrected, optimizer build-it-right-once language retired in the brief, the build-the-system note added to the tagline alternates, and the five-discipline enumeration restored across the bios and the hiring-manager register.</div></div>
     <div class="lr"><div class="lv">v1.5 · Jun 2026</div><div class="ld">Positioning reset to the resume-accurate masters: role descriptor moved to Creative &amp; Marketing Strategist, the brand-systems tagline replaced with "Creative that connects. Marketing that performs.", messaging pillars and bios rewritten, the Gen-AI-as-method language retired from voice and method, and all performance figures except SPORTIME and the SR Love &amp; Care team build removed across the bios and registers.</div></div>
+    <div class="lr"><div class="lv">v1.6 · Jun 2026</div><div class="ld">Reconciled the guide to the shipped stylesheet after a visual-system audit: documented the Dossier and Scoreboard case-study templates, corrected the type scale (mega 2.6 to 11rem, page title 2.4 to 5.2rem), set one radius system (6px surfaces, 40px pills), defined the AA-verified light-mode accent pair (Teal Deep #0A8071, Coral Deep #D03C21) for the resume and print as a deliberate variation, narrowed the photography and cover rules to what ships, and restated the marquee rule. Site side: radius and reveal tokens normalized and the CTA marquee set to the 26s loud speed.</div></div>
   </div>
 </div></section>
 

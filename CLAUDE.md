@@ -13,8 +13,6 @@ Files are served exactly as written. Deployed on Cloudflare (Workers static asse
 
 ## Golden rules
 
-**Rule 0, the one that bites most: edit this site only through the file tools (Read / Write / Edit) against the real path `C:\Users\Pratik\Desktop\Portfolio\site-files`.** Never edit, run `git`, or shell-script the repo through the Linux sandbox (bash). For this folder the sandbox can mount a stale or corrupted copy (truncated config, empty-looking `work/` and `assets/`, a null or phantom index) that is not the real disk, and it produces errors that look like repo corruption when the real repo is clean. It shows up most on the HTML pages, which change often. Re-read a file with the Read tool immediately before editing and trust that over anything bash reports. Use bash only for work that never touches the repo (for example, rendering a diagram).
-
 1. **Never hardcode the nav or footer.** They are injected by `assets/site.js`. Pages opt in with empty elements (see below). If you paste nav/footer markup into a page, you've created drift — don't.
 2. **One CSS file, one JS file.** All styling is in `assets/site.css`; all behavior in `assets/site.js`. Prefer existing classes over new inline styles. Add a new class to `site.css` rather than repeating inline styles across pages.
 3. **The home page's featured sections are static (hardcoded in `index.html`).** `#home-work` shows a pinned hero (SPORTIME Clubs) + the 3 most-recent other work; `#home-blog` shows the newest 3 posts. These were previously fetched from `work.html`/`blog.html` at runtime — that was removed for performance. **When the featured set changes, you must update `index.html` by hand** (see the recipes below). The markup mirrors what `work.html`/`blog.html` use (`.hw-hero`/`.hw-sup`, `.hb-lead`/`.hb-row`).
@@ -76,7 +74,7 @@ When creating a sub-page, double-check every relative path resolves from its fol
 
 ## Recipe: add a new BLOG post
 
-1. **Create the file** `blog/<slug>.html` by copying an existing post (e.g. `blog/trust-is-the-interface.html`) and replacing its content. Update:
+1. **Create the file** `blog/<slug>.html` by copying an existing post (e.g. `blog/the-machine-readable-brand.html`) and replacing its content. Update:
    - `<title>`, meta description, OG/Twitter, canonical
    - JSON-LD: `BlogPosting` (set `datePublished`/`dateModified`), `BreadcrumbList`, and optional `FAQPage` if the post has an FAQ block
    - Hero: category tag, `<h1>`, post-meta line (`<b>section</b>`, tags, date, read time)

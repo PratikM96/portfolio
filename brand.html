@@ -153,11 +153,22 @@
   .log .lr{display:grid;grid-template-columns:150px 1fr;gap:1.4rem;padding:1rem 0;border-bottom:1px solid var(--line)}
   .log .lv{color:var(--accent-2)} .log .ld{color:#cfcfcf;line-height:1.6}
   @media(max-width:560px){.log .lr{grid-template-columns:1fr;gap:.3rem}}
+  .log details summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.6rem;padding:1rem 0;border-bottom:1px solid var(--line);color:var(--accent-2);transition:color .2s var(--ease)}
+  .log details summary::-webkit-details-marker{display:none}
+  .log details summary::marker{content:""}
+  .log details summary .tgl{box-sizing:content-box;flex:none;width:0;height:0;border-left:6px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .2s var(--ease)}
+  .log details[open] summary .tgl{transform:rotate(90deg)}
+  .log details summary:hover{color:var(--accent)}
+  .log details summary .hc{color:var(--muted)}
+  .log details[open] summary{border-bottom:none}
 
-  /* in-page contents */
-  .toc{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:2.4rem}
-  .toc a{font-family:var(--mono);font-size:.76rem;border:1px solid var(--line-2);color:var(--muted);padding:.45rem .9rem;border-radius:40px;transition:all .2s var(--ease)}
-  .toc a:hover{background:var(--accent);color:#0a0a0a;border-color:var(--accent)}
+  /* in-page contents, grouped */
+  .bindex{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem 1.8rem;margin-top:2.4rem}
+  .bgrp .bgl{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem}
+  .bindex a{display:block;font-family:var(--mono);font-size:.8rem;color:#cfcfcf;line-height:2;transition:color .2s var(--ease)}
+  .bindex a .bn{color:var(--accent-2);margin-right:.5rem}
+  .bindex a:hover{color:var(--accent)}
+  @media(max-width:680px){.bindex{grid-template-columns:1fr 1fr;gap:1.2rem 1.4rem}}
   /* --- v1.3 hybrid overhaul: indexed-rail intros + wider prose --- */
   .lead{max-width:none}
   .sub{max-width:none}
@@ -182,20 +193,32 @@
   <div class="tagline"><span class="blink"></span> Brand guide · v1.7 · June 2026</div>
   <h1 class="page-title">The Brand<br/><span class="a">System</span></h1>
   <p class="page-intro">The full system behind mehtapratik.com. A working brand guide and a live case study in one.</p>
-  <div class="toc">
-    <a href="#brief">00 Brief</a>
-    <a href="#positioning">01 Positioning</a>
-    <a href="#color">02 Color</a>
-    <a href="#type">03 Type</a>
-    <a href="#logo">04 Logo</a>
-    <a href="#motion">05 Motion</a>
-    <a href="#layout">06 Layout</a>
-    <a href="#components">07 Components</a>
-    <a href="#voice">08 Voice</a>
-    <a href="#applications">09 Applications</a>
-    <a href="#method">10 Method</a>
-    <a href="#access">11 Accessibility</a>
-    <a href="#ref">12 Reference</a>
+  <div class="bindex">
+    <div class="bgrp">
+      <div class="bgl">Foundations</div>
+      <a href="#brief"><span class="bn">00</span>Brief</a>
+      <a href="#positioning"><span class="bn">01</span>Positioning</a>
+    </div>
+    <div class="bgrp">
+      <div class="bgl">Identity</div>
+      <a href="#color"><span class="bn">02</span>Color</a>
+      <a href="#type"><span class="bn">03</span>Type</a>
+      <a href="#logo"><span class="bn">04</span>Logo</a>
+      <a href="#motion"><span class="bn">05</span>Motion</a>
+    </div>
+    <div class="bgrp">
+      <div class="bgl">System</div>
+      <a href="#layout"><span class="bn">06</span>Layout</a>
+      <a href="#components"><span class="bn">07</span>Components</a>
+      <a href="#voice"><span class="bn">08</span>Voice</a>
+      <a href="#applications"><span class="bn">09</span>Applications</a>
+    </div>
+    <div class="bgrp">
+      <div class="bgl">Reference</div>
+      <a href="#method"><span class="bn">10</span>Method</a>
+      <a href="#access"><span class="bn">11</span>Accessibility</a>
+      <a href="#ref"><span class="bn">12</span>Reference</a>
+    </div>
   </div>
 </div></header>
 
@@ -623,14 +646,17 @@
   <h3 class="h3b">Maintenance</h3>
   <p class="sub">A living system, versioned. This page links the same stylesheet it documents and is kept in step with the site through a versioned reconciliation pass, not assumed to track it automatically. Questions about using the system, or anything it does not cover, go to <a href="mailto:mehtadpratik@gmail.com" style="color:var(--accent)">mehtadpratik@gmail.com</a>.</p>
   <div class="log">
-    <div class="lr"><div class="lv">v1.0 · Jun 2026</div><div class="ld">Initial system documented alongside the site launch: brief, color, type, wordmark, motion, layout, voice, quick reference.</div></div>
-    <div class="lr"><div class="lv">v1.1 · Jun 2026</div><div class="ld">Built out to a full guide: positioning and messaging, verified contrast matrix, type scale, aperture mark and lockups, motion tokens, component library, voice registers, applications, method, and accessibility.</div></div>
-    <div class="lr"><div class="lv">v1.2 · Jun 2026</div><div class="ld">Voice pass: first-person framing across the section leads, an origin note and a plain statement of what the brand is for in the brief, and the method rewritten in the same voice. Aligned the email-signature spec and the version number with the live site.</div></div>
-    <div class="lr"><div class="lv">v1.3 · Jun 2026</div><div class="ld">Layout overhaul: section intros set as an indexed rail with the prose widened out of the old half-column, reference sections kept as spec tables. Component library updated to the flat button system, a teal-outline primary that fills on hover and an underline secondary, replacing the old lifting pill. Minor copy alignment to the current masters.</div></div>
-    <div class="lr"><div class="lv">v1.4 · Jun 2026</div><div class="ld">Canon update to the locked masters: voice section restated to the operator-with-a-point-of-view spec and the clipped-cadence instruction corrected, optimizer build-it-right-once language retired in the brief, the build-the-system note added to the tagline alternates, and the five-discipline enumeration restored across the bios and the hiring-manager register.</div></div>
-    <div class="lr"><div class="lv">v1.5 · Jun 2026</div><div class="ld">Positioning reset to the resume-accurate masters: role descriptor moved to Creative &amp; Marketing Strategist, the brand-systems tagline replaced with "Creative that connects. Marketing that performs.", messaging pillars and bios rewritten, the Gen-AI-as-method language retired from voice and method, and all performance figures except SPORTIME and the SR Love &amp; Care team build removed across the bios and registers.</div></div>
-    <div class="lr"><div class="lv">v1.6 · Jun 2026</div><div class="ld">Reconciled the guide to the shipped stylesheet after a visual-system audit: documented the Dossier and Scoreboard case-study templates, corrected the type scale (mega 2.6 to 11rem, page title 2.4 to 5.2rem), set one radius system (6px surfaces, 40px pills), defined the AA-verified light-mode accent pair (Teal Deep #0A8071, Coral Deep #D03C21) for the resume and print as a deliberate variation, narrowed the photography and cover rules to what ships, and restated the marquee rule. Site side: radius and reveal tokens normalized and the CTA marquee set to the 26s loud speed.</div></div>
     <div class="lr"><div class="lv">v1.7 · Jun 2026</div><div class="ld">Copy and structure pass after a brand-guide best-practices review: tightened the Brief and Voice leads, cut repetition of the positioning phrase, added a tone-of-voice dimensions block to Voice, reframed Applications as build specs, trimmed the Method overlap, and added the SPORTIME result to the Brief so the guide earns its case-study framing.</div></div>
+    <details>
+      <summary><span class="tgl"></span> Show full history <span class="hc">v1.0 to v1.6</span></summary>
+      <div class="lr"><div class="lv">v1.6 · Jun 2026</div><div class="ld">Reconciled the guide to the shipped stylesheet after a visual-system audit: documented the Dossier and Scoreboard case-study templates, corrected the type scale (mega 2.6 to 11rem, page title 2.4 to 5.2rem), set one radius system (6px surfaces, 40px pills), defined the AA-verified light-mode accent pair (Teal Deep #0A8071, Coral Deep #D03C21) for the resume and print as a deliberate variation, narrowed the photography and cover rules to what ships, and restated the marquee rule. Site side: radius and reveal tokens normalized and the CTA marquee set to the 26s loud speed.</div></div>
+      <div class="lr"><div class="lv">v1.5 · Jun 2026</div><div class="ld">Positioning reset to the resume-accurate masters: role descriptor moved to Creative &amp; Marketing Strategist, the brand-systems tagline replaced with "Creative that connects. Marketing that performs.", messaging pillars and bios rewritten, the Gen-AI-as-method language retired from voice and method, and all performance figures except SPORTIME and the SR Love &amp; Care team build removed across the bios and registers.</div></div>
+      <div class="lr"><div class="lv">v1.4 · Jun 2026</div><div class="ld">Canon update to the locked masters: voice section restated to the operator-with-a-point-of-view spec and the clipped-cadence instruction corrected, optimizer build-it-right-once language retired in the brief, the build-the-system note added to the tagline alternates, and the five-discipline enumeration restored across the bios and the hiring-manager register.</div></div>
+      <div class="lr"><div class="lv">v1.3 · Jun 2026</div><div class="ld">Layout overhaul: section intros set as an indexed rail with the prose widened out of the old half-column, reference sections kept as spec tables. Component library updated to the flat button system, a teal-outline primary that fills on hover and an underline secondary, replacing the old lifting pill. Minor copy alignment to the current masters.</div></div>
+      <div class="lr"><div class="lv">v1.2 · Jun 2026</div><div class="ld">Voice pass: first-person framing across the section leads, an origin note and a plain statement of what the brand is for in the brief, and the method rewritten in the same voice. Aligned the email-signature spec and the version number with the live site.</div></div>
+      <div class="lr"><div class="lv">v1.1 · Jun 2026</div><div class="ld">Built out to a full guide: positioning and messaging, verified contrast matrix, type scale, aperture mark and lockups, motion tokens, component library, voice registers, applications, method, and accessibility.</div></div>
+      <div class="lr"><div class="lv">v1.0 · Jun 2026</div><div class="ld">Initial system documented alongside the site launch: brief, color, type, wordmark, motion, layout, voice, quick reference.</div></div>
+    </details>
   </div>
 </div></section>
 

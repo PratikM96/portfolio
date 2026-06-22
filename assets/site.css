@@ -642,4 +642,7 @@ body.kin h1.mega .kw.go{animation:kwrise .7s var(--ease) forwards}
 .cs-grid figcaption{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-top:.6rem}
 .cs-grid .panel .pl{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:.75rem 0 .35rem}
 .cs-grid .panel p{font-family:var(--sans);font-size:.95rem;color:var(--muted);line-height:1.6;margin:0}
+.cs-wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;align-items:start;margin:1.9rem 0}
+.cs-wall img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;display:block;border-radius:var(--radius);border:1px solid var(--line);background:var(--bg-2)}
+@media(max-width:760px){.cs-wall{grid-template-columns:repeat(2,minmax(0,1fr))}}
 

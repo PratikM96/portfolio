@@ -639,6 +639,7 @@ body.kin h1.mega .kw.go{animation:kwrise .7s var(--ease) forwards}
 .cs-grid figure{margin:0}
 .cs-grid img,.cs-grid video{width:100%;height:auto;display:block;border-radius:var(--radius);border:1px solid var(--line);background:var(--bg-2)}
 .cs-grid img.crop{aspect-ratio:3/2;object-fit:cover}
+.cs-grid video.crop{aspect-ratio:16/9;object-fit:cover}
 .cs-grid figcaption{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-top:.6rem}
 .cs-grid .panel .pl{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:.75rem 0 .35rem}
 .cs-grid .panel p{font-family:var(--sans);font-size:.95rem;color:var(--muted);line-height:1.6;margin:0}

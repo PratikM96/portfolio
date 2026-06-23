@@ -138,6 +138,7 @@ This check is **required**: a red X blocks the merge until it is green. (It is e
 - **Internal links are clean URLs** (`/work/x`, `/about`), never `.html`. Keep them that way.
 - **`_redirects` is load-bearing.** It holds 301s from old URLs (old WordPress paths, renamed projects). Never let it get dropped or overwritten.
 - **The CSP is Report-Only.** Before switching it to enforcing, keep the Cloudflare Insights and Google Fonts origins, or analytics and the concept-page fonts break.
+- **The availability line is duplicated, keep every copy in sync.** The public availability line, "Open to creative or marketing leadership roles," appears in `index.html` (the hero tagline, and the bottom CTA tagline where it drops the leading "Open to" because the heading beside it already reads "Open to the right role"), in `contact.html` (the meta description, the OG and Twitter description tags, and the visible intro), in the long boilerplate bio in `brand.html`, and in `llms.txt`. Several of those are invisible meta tags, which is how it drifts. Change every copy together, and keep the level honest, never "senior leadership" or a Head-of or Director claim (see `../copy-master.md` section 2).
 
 ## Pre-merge checklist
 

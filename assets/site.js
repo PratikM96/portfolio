@@ -40,6 +40,15 @@
   function buildNav() {
     var mount = document.getElementById('site-nav');
     if (!mount) return;
+    // Skip link (a11y): first focusable element, jumps to <main id="main">. Injected here so it
+    // rides the same single-source chrome as the nav. Idempotent.
+    if (!document.querySelector('.skip-link')) {
+      var skip = document.createElement('a');
+      skip.className = 'skip-link';
+      skip.href = '#main';
+      skip.textContent = 'Skip to content';
+      mount.parentNode.insertBefore(skip, mount);
+    }
     // Subpages (case studies, blog posts) get the floating-capsule nav; main pages get the banded bar.
     if (/^\/(work|blog)\/[^\/]+/.test(location.pathname)) mount.classList.add('nav-sub');
     mount.innerHTML =

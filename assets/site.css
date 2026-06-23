@@ -68,6 +68,10 @@ a{color:inherit;text-decoration:none}
 ::selection{background:var(--accent);color:#0a0a0a}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 4vw}
 
+/* ---------- skip link (a11y) ---------- */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--accent);color:#0a0a0a;font-family:var(--mono);font-size:.85rem;letter-spacing:.02em;padding:.7rem 1.1rem;border-bottom-right-radius:var(--radius)}
+.skip-link:focus{left:0}
+
 /* ---------- nav ---------- */
 nav{position:fixed;top:0;left:0;right:0;z-index:60;background:transparent;border-bottom:1px solid transparent;transition:background .3s var(--ease),border-color .3s var(--ease)}
 nav.scrolled{background:rgba(10,10,10,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom-color:var(--line)}
@@ -166,7 +170,6 @@ h1.mega .a{color:var(--accent)}
 
 /* ---------- shared utility: back links and captions ---------- */
 .backlink{font-family:var(--mono);font-size:.82rem;color:var(--accent)}
-.mt-cs{margin-top:1.4rem}
 .cap-note{font-family:var(--mono);font-size:.76rem;color:var(--muted)}
 .cs-link{font-family:var(--mono);font-size:.78rem;display:inline-block;margin-top:.7rem;color:var(--accent)}
 
@@ -244,12 +247,6 @@ h1.mega .a{color:var(--accent)}
 .cs-hero.has-cover::before{content:"";position:absolute;inset:0;z-index:0;background-image:linear-gradient(to bottom,rgba(10,10,10,.72),rgba(10,10,10,.92) 65%,var(--bg) 100%),var(--cover);background-size:cover;background-position:center;background-repeat:no-repeat}
 .cs-hero.has-cover .wrap{position:relative;z-index:1}
 .cs-hero.has-cover .marq{position:relative;z-index:1}  /* keep the hero marquee above the cover overlay */
-.cs-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.8rem 0;margin-top:2.4rem}
-.cs-meta .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
-.cs-meta .v{font-family:var(--mono);font-size:.86rem;color:#e4e4e4;line-height:1.5}
-@media(max-width:680px){.cs-meta{grid-template-columns:1fr 1fr}}
-.cs-snapshot{font-family:var(--disp);font-weight:700;font-size:clamp(1.4rem,3vw,2.2rem);text-transform:none;line-height:1.2;letter-spacing:-.01em;padding:3rem 0}
-.cs-snapshot .a{color:var(--accent)}
 .cs-body{max-width:760px;margin:0 auto;padding-bottom:0}
 .cs-body h2{font-family:var(--disp);font-weight:800;font-size:clamp(1.5rem,3vw,2.2rem);text-transform:uppercase;letter-spacing:-.02em;margin:3.5rem 0 1.2rem}
 .cs-body h3{font-family:var(--disp);font-weight:700;font-size:1.15rem;text-transform:uppercase;color:var(--accent);margin:2.4rem 0 .8rem;letter-spacing:-.01em}
@@ -264,20 +261,6 @@ h1.mega .a{color:var(--accent)}
 .cs-media img,.cs-media video{border-radius:var(--radius);width:100%;height:auto}
 .cs-media .cap{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:.7rem}
 .cs-media.full{max-width:none}
-/* Image set: two-up centered grid. Each tile sizes to its own image, so there are no
-   letterbox bars on any image, regardless of its aspect ratio or background. Odd counts center the orphan. */
-.cs-grid2{columns:2;column-gap:1.4rem;margin:2.4rem 0}
-.cs-grid2 img,.cs-grid2 video{width:100%;height:auto;display:block;border-radius:var(--radius);border:1px solid var(--line);break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;margin:0 0 1.4rem}
-@media(max-width:680px){.cs-grid2{columns:1}}
-/* Logo on a light card so dark/transparent marks stay visible on the dark page.
-   Logo cards keep a fixed comfortable height since a mark should not stretch to fill a tile. */
-.cs-grid2 img.logo-card,.cs-media img.logo-card{background:#f0ede8;padding:2rem;object-fit:contain;height:240px}
-.cs-grid2 img.logo-card{width:100%}
-.cs-media .logo-card{border-radius:var(--radius)}
-/* Tier 3 photo crop: case-study photos lock to 3:2 landscape / 2:3 portrait in-frame,
-   whatever the source ratio. Use class "ph" (landscape) or "ph-v" (portrait) on any case-study photo. */
-.cs-grid2 img.ph,.cs-media img.ph{aspect-ratio:3/2;object-fit:cover;width:100%}
-.cs-grid2 img.ph-v,.cs-media img.ph-v{aspect-ratio:2/3;object-fit:cover;width:100%}
 .cs-statbar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);margin:2.4rem 0}
 .cs-statbar>div{padding:1.5rem .85rem;border-right:1px solid var(--line);min-width:0}
 .cs-statbar>div:last-child{border-right:none}
@@ -285,12 +268,6 @@ h1.mega .a{color:var(--accent)}
 .cs-statbar .n .accent{color:var(--accent)}
 .cs-statbar .l{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-top:.5rem;line-height:1.45}
 @media(max-width:680px){.cs-statbar{grid-template-columns:1fr 1fr}.cs-statbar>div:nth-child(2n){border-right:none}.cs-statbar>div:nth-child(1),.cs-statbar>div:nth-child(2){border-bottom:1px solid var(--line)}}
-.cs-numbers-h{font-family:var(--disp);font-weight:900;font-size:clamp(1.3rem,3vw,1.8rem);letter-spacing:-.02em;text-transform:uppercase;margin:clamp(2.6rem,6vw,3.6rem) 0 0}
-/* Case study reflection band (Variant C: full-bleed tinted) */
-.cs-reflect{background:linear-gradient(180deg,rgba(31,224,200,.055),rgba(31,224,200,.02));border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:clamp(.8rem,2vw,1.4rem) 0 clamp(2.6rem,6vw,4rem);padding:clamp(2.4rem,6vw,3.6rem) 0}
-.cs-reflect-inner{max-width:760px;margin:0 auto}
-.cs-reflect .eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 1rem}
-.cs-reflect p{font-family:var(--sans);font-size:clamp(1.06rem,2vw,1.2rem);line-height:1.72;margin:0;color:#f0f0f0}
 
 /* ---------- blog index ---------- */
 .blog-group{margin-top:3.4rem}
@@ -375,7 +352,6 @@ a[style*="color:var(--accent)"]:hover,a.backlink:hover,a.cs-link:hover{color:var
 .work-app[hidden]{display:none}
 .wk-lab{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .wk-disc{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;color:var(--accent);text-transform:uppercase}
-.wk-yr{color:var(--accent-2);font-family:var(--mono);font-size:.7rem;letter-spacing:.05em}
 .wk-feat{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
 .wk-feat>a{display:block}
 .wk-feat .img{aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;background:var(--bg-2);position:relative}
